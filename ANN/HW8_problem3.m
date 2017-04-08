@@ -2,18 +2,24 @@ clear all;
 close all;
 rng(0);
 
-% INITIAL VALS
+%% Load Data
+% Load the data and randomly permutate
+% [classes, fields] = read_CTG_data();
+% num_classes = 3;
+[num_classes, classes, fields] = image_data_loader();
+
+
+%% Set Initial Vals
 eta = 0.5;
 num_hidden_nodes = 20;
-num_output_nodes = 3;
+%num_output_nodes = 3;
+num_output_nodes = num_classes;
 activation_fxn = @(x) 1./(1 + exp(-x));
 training_iters = 1000;
 threshold = 0.5;
 
-%% Load and Standardize Data
-% Load the data and randomly permutate
-[num_classes, classes, fields] = read_CTG_data();
-
+%% Standardize Data
+% randomly permutate
 classifiers = unique(classes);
 num_classes = numel(classifiers);
 num_data_rows = length(fields(:,1));
@@ -51,7 +57,7 @@ std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
 num_data_cols = num_data_cols + 1;
 
 % Reformat training classes
-new_training_classes = zeros(num_training_rows,3);
+new_training_classes = zeros(num_training_rows,num_classes);
 for i = 1:num_training_rows
     new_training_classes(i,training_classes(i)) = 1;
 end
