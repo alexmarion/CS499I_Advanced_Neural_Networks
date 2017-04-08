@@ -12,15 +12,15 @@ threshold = 0.5;
 
 %% Load and Standardize Data
 % Load the data and randomly permutate
-[class, fields] = read_CTG_data();
+[num_classes, classes, fields] = read_CTG_data();
 
-classifiers = unique(class);
+classifiers = unique(classes);
 num_classes = numel(classifiers);
 num_data_rows = length(fields(:,1));
 num_data_cols = length(fields(1,:));
 
 % Concatinate data for shuffling
-fields_and_classes = [fields class];
+fields_and_classes = [fields classes];
 shuffled_fields_and_classes = fields_and_classes(randperm(num_data_rows),:);
 shuffled_fields = shuffled_fields_and_classes(:,1:end-1);
 shuffled_classes = shuffled_fields_and_classes(:,end);
