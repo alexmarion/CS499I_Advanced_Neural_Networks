@@ -1,4 +1,4 @@
-function [ num_classes, classes, fields ] = image_data_loader()
+function [ num_classes, classes, fields ] = load_image_data()
     % image_map = double(rgb2gray(imread('./faces/00001/test.ppm')));
     % image_fields = reshape(image_map, [1,numel(image_map)]);
 
