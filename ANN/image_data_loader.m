@@ -11,7 +11,7 @@ function [ num_classes, classes, fields ] = image_data_loader()
     % Loop through all class folders
     for class_folder = class_folders'
         current_dir = dir(fullfile(root,class_folder.name));
-        disp(class_folder.name)
+        % disp(class_folder.name)
         % Get all images from current class folder
         for imgs = current_dir
             current_imgs = remove_dot_dirs(imgs);

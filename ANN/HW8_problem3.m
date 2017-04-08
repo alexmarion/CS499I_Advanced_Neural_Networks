@@ -11,12 +11,12 @@ rng(0);
 
 %% Set Initial Vals
 eta = 0.5;
-num_hidden_nodes = 20;
+num_hidden_nodes = 200;
 %num_output_nodes = 3;
 num_output_nodes = num_classes;
 activation_fxn = @(x) 1./(1 + exp(-x));
 training_iters = 1000;
-threshold = 0.5;
+%threshold = 0.5;
 
 %% Standardize Data
 % randomly permutate
@@ -52,9 +52,9 @@ std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(s
 std_testing_data = [std_testing_fields, testing_classes];
 
 % Add bias node and increase column size by 1
-std_training_fields = [ones(num_training_rows, 1), std_training_fields];
-std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
-num_data_cols = num_data_cols + 1;
+%std_training_fields = [ones(num_training_rows, 1), std_training_fields];
+%std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
+%num_data_cols = num_data_cols + 1;
 
 % Reformat training classes
 new_training_classes = zeros(num_training_rows,num_classes);
