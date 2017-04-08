@@ -2,7 +2,7 @@ function [ num_classes, classes, fields ] = image_data_loader()
     % image_map = double(rgb2gray(imread('./faces/00001/test.ppm')));
     % image_fields = reshape(image_map, [1,numel(image_map)]);
 
-    root = './faces';
+    root = './facesTemp';
     class_folders = dir(root);
     class_folders = remove_dot_dirs(class_folders);
 
