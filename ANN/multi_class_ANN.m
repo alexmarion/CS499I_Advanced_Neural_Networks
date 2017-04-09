@@ -4,28 +4,24 @@ rng(0);
 
 %% Load Data
 % Load the data and randomly permutate
-% [classes, fields] = read_CTG_data();
-% num_classes = 3;
 [num_classes, classes, fields] = load_image_data();
 
 
 %% Set Initial Vals
 eta = 0.5;
 num_hidden_nodes = 20;
-%num_output_nodes = 3;
 num_output_nodes = num_classes;
 activation_fxn = @(x) 1./(1 + exp(-x));
 training_iters = 1000;
-%threshold = 0.5;
 
-%% Standardize Data
-% randomly permutate
+%% Select Training and Testing Sets
+% Initialize vars
 classifiers = unique(classes);
 num_classes = numel(classifiers);
 num_data_rows = length(fields(:,1));
 num_data_cols = length(fields(1,:));
 
-% Concatinate data for shuffling
+% Concatinate data for shuffling and randomly permutate
 fields_and_classes = [fields classes];
 shuffled_fields_and_classes = fields_and_classes(randperm(num_data_rows),:);
 shuffled_fields = shuffled_fields_and_classes(:,1:end-1);
@@ -40,9 +36,11 @@ training_classes = shuffled_classes(1:two_thirds,:);
 testing_fields = shuffled_fields(two_thirds+1:end,:);
 testing_classes = shuffled_classes(two_thirds+1:end,:);
 
+% Get number of training rows and number of testing rows
 num_training_rows = length(training_fields(:,1));
 num_testing_rows = length(testing_fields(:,1));
 
+%% Standardize Data
 % Standardize data via training mean and training std dev
 [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
 std_training_data = [std_training_fields, training_classes];
@@ -52,9 +50,9 @@ std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(s
 std_testing_data = [std_testing_fields, testing_classes];
 
 % Add bias node and increase column size by 1
-%std_training_fields = [ones(num_training_rows, 1), std_training_fields];
-%std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
-%num_data_cols = num_data_cols + 1;
+std_training_fields = [ones(num_training_rows, 1), std_training_fields];
+std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
+num_data_cols = num_data_cols + 1;
 
 % Reformat training classes
 new_training_classes = zeros(num_training_rows,num_classes);
@@ -105,7 +103,7 @@ while iter < training_iters
     training_error(iter,:) = [iter,err];
 end
 
-% Testing
+%% Testing
 % Compute hidden layer
 testing_h = activation_fxn(std_testing_fields * beta);
 
