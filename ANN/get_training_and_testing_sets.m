@@ -9,7 +9,35 @@ function [ training_fields,training_classes,testing_fields,testing_classes ] = g
     
     if type == 1
         %% Type 1: Leave One Out
+        % Initialize training to all, testing to empty
+        training_fields = fields;
+        training_classes = classes;
+        testing_fields = [];
+        testing_classes = [];
         
+        classifiers = unique(classes);
+        
+        % Find the number of instances of the class
+        for idx = 1:length(classifiers)
+            class = classifiers(idx);
+            class_idxs = find(training_classes == class);
+            %num_instances = length(class_idxs);
+            
+            % Choose a random class instance
+            class_start_idx = class_idxs(1);
+            class_end_idx = class_idxs(end);
+            rand_idx = randi([class_start_idx class_end_idx],1,1);
+            
+            % disp([class, class_start_idx, class_end_idx, rand_idx]);
+            
+            % Add instance to testing data
+            testing_fields(end+1,:) = training_fields(rand_idx,:);
+            testing_classes(end+1,:) = training_classes(rand_idx,:);
+
+            % Remove instance from training data
+            training_fields(rand_idx,:) = [];
+            training_classes(rand_idx,:) = [];
+        end
     else
         %% Default: 2/3 Training 1/3 Testing
         % Initialize vars

@@ -13,7 +13,7 @@ D = [];         % Testing classes
 
 % random number from 1 to number of images in class
 a = 1;
-b = size(A(B == 1, :),1);
+b = size(A(B == 2, :),1);
 r = randi([a b],1,1);   % Single random integer
 
 % Add to testing data

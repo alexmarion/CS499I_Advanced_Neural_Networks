@@ -21,23 +21,7 @@ num_classes = numel(classifiers);
 num_data_rows = length(fields(:,1));
 num_data_cols = length(fields(1,:));
 
-% % Concatinate data for shuffling and randomly permutate
-% fields_and_classes = [fields classes];
-% shuffled_fields_and_classes = fields_and_classes(randperm(num_data_rows),:);
-% shuffled_fields = shuffled_fields_and_classes(:,1:end-1);
-% shuffled_classes = shuffled_fields_and_classes(:,end);
-% 
-% % Find index of top 2/3
-% two_thirds = ceil((num_data_rows/3)*2);
-% 
-% % Extract top 2/3 for training, buttom 1/3 for testing
-% training_fields = shuffled_fields(1:two_thirds,:);
-% training_classes = shuffled_classes(1:two_thirds,:);
-% testing_fields = shuffled_fields(two_thirds+1:end,:);
-% testing_classes = shuffled_classes(two_thirds+1:end,:);
-
-[training_fields,training_classes,testing_fields,testing_classes] = get_training_and_testing_sets(fields,classes);
-
+[training_fields,training_classes,testing_fields,testing_classes] = get_training_and_testing_sets(fields,classes,1);
 
 % Get number of training rows and number of testing rows
 num_training_rows = length(training_fields(:,1));
@@ -52,7 +36,7 @@ std_testing_fields = testing_fields - repmat(training_fields_mean,size(testing_f
 std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(std_testing_fields,1),1);
 std_testing_data = [std_testing_fields, testing_classes];
 
-% Add bias node and increase column size by 1
+% Add bias node and increase number of columns by 1
 std_training_fields = [ones(num_training_rows, 1), std_training_fields];
 std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
 num_data_cols = num_data_cols + 1;
