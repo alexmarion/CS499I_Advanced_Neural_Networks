@@ -9,7 +9,7 @@ rng(0);
 
 %% Set Initial Vals
 eta = 0.5;
-num_hidden_nodes = 20;
+num_hidden_nodes = 200;
 num_output_nodes = num_classes;
 activation_fxn = @(x) 1./(1 + exp(-x));
 training_iters = 1000;
