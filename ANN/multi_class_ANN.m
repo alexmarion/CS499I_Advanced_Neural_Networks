@@ -3,9 +3,12 @@ close all;
 rng(0);
 
 %% Control Flow Values
-should_perform_PCA = true;
+data_selection_type = 0;
+should_perform_PCA = false;
 percent_field_retention = .95;
-should_std_data = false;
+should_std_data = true;
+should_add_bias_to_input = true;
+should_add_bias_to_hidden = false;
 
 %% Load Data
 % Load the data and randomly permutate
@@ -21,7 +24,7 @@ training_iters = 1000;
 
 %% Perform PCA
 if should_perform_PCA
-    fields = PCA(fields,percent_field_retention);a
+    fields = PCA(fields,percent_field_retention);
 end
 
 %% Select Training and Testing Sets
@@ -31,7 +34,7 @@ num_classes = numel(classifiers);
 num_data_rows = length(fields(:,1));
 num_data_cols = length(fields(1,:));
 
-[training_fields,training_classes,testing_fields,testing_classes] = get_training_and_testing_sets(fields,classes,1);
+[training_fields,training_classes,testing_fields,testing_classes] = get_training_and_testing_sets(fields,classes,data_selection_type);
 
 % Get number of training rows and number of testing rows
 num_training_rows = length(training_fields(:,1));
@@ -52,10 +55,12 @@ else
 end
 
 
-% Add bias node and increase number of columns by 1
-std_training_fields = [ones(num_training_rows, 1), std_training_fields];
-std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
-num_data_cols = num_data_cols + 1;
+if should_add_bias_to_input
+    % Add bias node and increase number of columns by 1
+    std_training_fields = [ones(num_training_rows, 1), std_training_fields];
+    std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
+    num_data_cols = num_data_cols + 1;
+end
 
 % Reformat training classes
 new_training_classes = zeros(num_training_rows,num_classes);
@@ -70,6 +75,10 @@ iter = 0;
 range = [-1,1];
 beta = (range(2)-range(1)).*rand(num_data_cols, num_hidden_nodes) + range(1);
 theta = (range(2)-range(1)).*rand(num_hidden_nodes, num_output_nodes) + range(1);
+
+if should_add_bias_to_hidden
+    theta = [ones(num_hidden_nodes,1) theta];
+end
 
 % Matrix to track training error for plotting
 training_error = zeros(training_iters, 2);
@@ -91,7 +100,6 @@ while iter < training_iters
     theta = theta + ((eta/num_training_rows) * delta_output' * training_h)';
 
     % Compute hidden error
-    %delta_hidden = repmat(theta',num_training_rows,1) .* repmat(delta_output,1,num_hidden_nodes) .* (training_h .* (1 - training_h));
     delta_hidden = (theta * delta_output')' .* (training_h .* (1 - training_h));
 
     % Update beta

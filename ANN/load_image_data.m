@@ -2,7 +2,7 @@ function [ num_classes, classes, fields ] = load_image_data()
     % image_map = double(rgb2gray(imread('./faces/00001/test.ppm')));
     % image_fields = reshape(image_map, [1,numel(image_map)]);
 
-    root = './faces';
+    root = './yalefaces';
     class_folders = dir(root);
     class_folders = remove_dot_dirs(class_folders);
 
@@ -18,7 +18,11 @@ function [ num_classes, classes, fields ] = load_image_data()
             % Loop through each image in current class folder
             for img = current_imgs'
                 % Convert image to grayscale and load each pixel value into a field
-                image_map = double(rgb2gray(imread(fullfile(root,class_folder.name,img.name))));
+                % image_map = double(rgb2gray(imread(fullfile(root,class_folder.name,img.name))));
+                % image_map = double(imread(fullfile(root,class_folder.name,img.name)));
+                
+                image = imread(fullfile(root,class_folder.name,img.name));
+                image_map = double(imresize(image,[40 40]));
                 image_fields = reshape(image_map, [1,numel(image_map)]);
                 % Append the class to the end of the fields
                 image_fields(end + 1) = str2double(class_folder.name);
