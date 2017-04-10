@@ -2,6 +2,10 @@ clear all;
 close all;
 rng(0);
 
+%% Control Flow Values
+should_perform_PCA = true;
+percent_field_retention = .95;
+
 %% Load Data
 % Load the data and randomly permutate
 [num_classes, classes, fields] = load_image_data();
@@ -9,10 +13,15 @@ rng(0);
 
 %% Set Initial Vals
 eta = 0.5;
-num_hidden_nodes = 200;
+num_hidden_nodes = 20;
 num_output_nodes = num_classes;
 activation_fxn = @(x) 1./(1 + exp(-x));
 training_iters = 1000;
+
+%% Perform PCA
+if should_perform_PCA
+    fields = PCA(fields,percent_field_retention);a
+end
 
 %% Select Training and Testing Sets
 % Initialize vars
