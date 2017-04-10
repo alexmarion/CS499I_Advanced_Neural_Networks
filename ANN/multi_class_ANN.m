@@ -5,6 +5,7 @@ rng(0);
 %% Control Flow Values
 should_perform_PCA = true;
 percent_field_retention = .95;
+should_std_data = false;
 
 %% Load Data
 % Load the data and randomly permutate
@@ -37,13 +38,19 @@ num_training_rows = length(training_fields(:,1));
 num_testing_rows = length(testing_fields(:,1));
 
 %% Standardize Data
-% Standardize data via training mean and training std dev
-[std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
-std_training_data = [std_training_fields, training_classes];
+if should_std_data
+    % Standardize data via training mean and training std dev
+    [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
+    % std_training_data = [std_training_fields, training_classes];
 
-std_testing_fields = testing_fields - repmat(training_fields_mean,size(testing_fields,1),1);
-std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(std_testing_fields,1),1);
-std_testing_data = [std_testing_fields, testing_classes];
+    std_testing_fields = testing_fields - repmat(training_fields_mean,size(testing_fields,1),1);
+    std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(std_testing_fields,1),1);
+    % std_testing_data = [std_testing_fields, testing_classes];
+else
+    std_training_fields = training_fields;
+    std_testing_fields = testing_fields;
+end
+
 
 % Add bias node and increase number of columns by 1
 std_training_fields = [ones(num_training_rows, 1), std_training_fields];
