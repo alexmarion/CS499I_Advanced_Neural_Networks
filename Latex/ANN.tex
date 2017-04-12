@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Drexel University}\\[1.5cm] % Name of your university/college
+\textsc{\Large CS499I}\\[0.5cm] % Major heading such as course name
+\textsc{\large Advanced Neural Networks}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Facial Recognition With Artificial Neural Networks}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Alexander \textsc{Marion}\\
+Matthew \textsc{D'Amore}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Dr. Matthew \textsc{Burlick}
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+\end{titlepage}
+
+\newpage
+
+\section{Artificial Neural Networks}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Accuracy & 0.940639\\
+Testing Error & 0.059361\\
+\hline
+\end{tabular}
+\caption{ANN Testing Error}
+\end{center}
+\end{table}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[height=11cm]{problem1_training_error.png}
+\caption{Training Error for ANN}
+\end{center}
+\end{figure}
+
+\newpage
+
+\section{The Precision-Recall Tradeoff}\label{naive}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[height=11cm]{problem2_PRC.png}
+\caption{PR-Graph for ANN}
+\end{center}
+\end{figure}
+
+\newpage
+\section{Multi-Class Artificial Neural Networks}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Accuracy & 0.956215\\
+Testing Error & 0.043785\\
+\hline
+\end{tabular}
+\caption{ANN Testing Error}
+\end{center}
+\end{table}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[height=11cm]{problem3_training_error.png}
+\caption{Training Error for Multi-Class ANN}
+\end{center}
+\end{figure}
+\end{document}
