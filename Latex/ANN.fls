@@ -92,6 +92,7 @@ OUTPUT ANN.pdf
 INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT problem1_training_error.png
 INPUT ./problem1_training_error.png
 INPUT ./problem1_training_error.png

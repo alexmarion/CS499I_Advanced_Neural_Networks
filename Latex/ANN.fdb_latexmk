@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1491960531 "ANN.tex" "ANN.pdf" "ANN" 1491960531
+["pdflatex"] 1491962850 "ANN.tex" "ANN.pdf" "ANN" 1491962850
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -55,8 +55,8 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1486254116 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "ANN.aux" 1491960531 801 61928f0929a6bd616c38397291618009 ""
-  "ANN.tex" 1491960530 3502 2525681ea9bba5afb8671833ff7312e3 ""
+  "ANN.aux" 1491962850 1123 43bd9560c5770a9068e31d6ed4c4401b ""
+  "ANN.tex" 1491962848 5151 edc08fb1ed0e220ee4af7ac0185ce0e1 ""
   "problem1_training_error.png" 1489713169 14530 e0d360eddd8885d114f13ce35bfd4e06 ""
   "problem2_PRC.png" 1489713131 14001 35f2e92152c3941bf1507d31aa1600e0 ""
   "problem3_training_error.png" 1489713212 12668 520b5073c33578357e5233178e9ad9c4 ""

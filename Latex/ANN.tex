@@ -70,6 +70,49 @@ Dr. Matthew \textsc{Burlick}
 
 \newpage
 
+\section{Datasets}
+\textbf{Yale Faces Database} \quad This dataset contains 165 grayscale images in GIF format of 15 individuals with 11 images per person. There is one image per each of the following configurations: center-light, w/glasses, happy, left-light, w/no glasses, normal, right-light, sad, sleepy, surprised, and wink.
+
+\section{Testing Parameters}
+The following variants are tested for accuracy:
+\begin{enumerate}
+  \item With and without a bias node at the input layer
+  \item With and without a bias node at the hidden layer
+  \item With and without standardizing features
+  \item With and without applying PCA to reduce the number of features to 95\%
+  \item With and without applying LDA to maximize data separability
+\end{enumerate}
+Empirical data was generated to optimize the following parameters:
+\begin{enumerate}
+  \item Image size
+  \item Hidden layer size
+  \item Termination criteria
+\end{enumerate}
+
+\section{Baseline Accuracy}
+The baseline accuracy was created using the negative form of all variants with the exception of data standardization. Initial parameters are listed below:
+\begin{enumerate}
+  \item Input layer bias node: N
+  \item Hidden layer bias node: N
+  \item Standardization of features: Y
+  \item PCA application: N
+  \item LDA application: N
+  \item Image size: 40x40
+  \item Hidden layer size: 20
+  \item Termination criteria: 1000 iterations
+\end{enumerate}
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{|l|l|}
+      \hline
+      Accuracy & 0.800000\\
+      Testing Error & 0.200000\\
+      \hline
+    \end{tabular}
+    \caption{ANN Testing Error}
+  \end{center}
+\end{table}
+
 \section{Artificial Neural Networks}
 \begin{table}[h]
 \begin{center}

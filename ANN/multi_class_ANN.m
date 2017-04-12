@@ -7,7 +7,7 @@ data_selection_type = 0;
 should_perform_PCA = false;
 percent_field_retention = .95;
 should_std_data = true;
-should_add_bias_to_input = true;
+should_add_bias_to_input = false;
 should_add_bias_to_hidden = false;
 
 %% Load Data
