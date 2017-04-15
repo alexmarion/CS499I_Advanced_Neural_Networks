@@ -6,7 +6,7 @@ rng(0);
 data_selection_type = 0;
 
 should_add_bias_to_input = false;
-should_add_bias_to_hidden = false;
+should_add_bias_to_hidden = true;
 should_std_data = true;
 should_perform_PCA = true;
 percent_field_retention = .95;

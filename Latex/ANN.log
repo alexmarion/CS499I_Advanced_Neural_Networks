@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 APR 2017 16:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 APR 2017 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -450,34 +450,79 @@ File: YYYNN_training_error.png Graphic file (type png)
 Package pdftex.def Info: YYYNN_training_error.png used on input line 370.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
 
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 389--389
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 382--382
  [][] 
  []
 
 
-Overfull \hbox (2.25012pt too wide) detected at line 391
+Overfull \hbox (2.25012pt too wide) detected at line 384
  [][] 
  []
 
-<YYYYN_training_error.png, id=42, 513.92pt x 385.44pt>
+<YYNYN_training_error.png, id=42, 513.92pt x 385.44pt>
+File: YYNYN_training_error.png Graphic file (type png)
+ <use YYNYN_training_error.png>
+Package pdftex.def Info: YYNYN_training_error.png used on input line 388.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [7 <./NNYYN_training_error.png (PNG copy)> <./YYYNN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 404--404
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 406
+ [][] 
+ []
+
+<YNYYN_training_error.png, id=46, 513.92pt x 385.44pt>
+File: YNYYN_training_error.png Graphic file (type png)
+ <use YNYYN_training_error.png>
+Package pdftex.def Info: YNYYN_training_error.png used on input line 410.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 426--426
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 428
+ [][] 
+ []
+
+<NYYYN_training_error.png, id=47, 513.92pt x 385.44pt>
+File: NYYYN_training_error.png Graphic file (type png)
+ <use NYYYN_training_error.png>
+Package pdftex.def Info: NYYYN_training_error.png used on input line 432.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [8 <./YYNYN_training_error.png (PNG copy)> <./YNYYN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 448--448
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 450
+ [][] 
+ []
+
+<YYYYN_training_error.png, id=51, 513.92pt x 385.44pt>
 File: YYYYN_training_error.png Graphic file (type png)
  <use YYYYN_training_error.png>
-Package pdftex.def Info: YYYYN_training_error.png used on input line 395.
+Package pdftex.def Info: YYYYN_training_error.png used on input line 454.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [7 <./NNYYN_training_error.png (PNG copy)> <./YYYNN_training_error.png (PNG copy)>] [8 <./YYYYN_training_error.png (PNG copy)>] (./ANN.aux) ) 
+ [9 <./NYYYN_training_error.png (PNG copy)> <./YYYYN_training_error.png (PNG copy)>] (./ANN.aux) ) 
 Here is how much of TeX's memory you used:
- 2858 strings out of 493014
- 40465 string characters out of 6133351
- 111232 words of memory out of 5000000
- 6350 multiletter control sequences out of 15000+600000
+ 2879 strings out of 493014
+ 40954 string characters out of 6133351
+ 111286 words of memory out of 5000000
+ 6368 multiletter control sequences out of 15000+600000
  10418 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,32p,336b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ANN.pdf (9 pages, 201976 bytes).
+Output written on ANN.pdf (10 pages, 233898 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1492289594 "ANN.tex" "ANN.pdf" "ANN" 1492289594
+["pdflatex"] 1492290085 "ANN.tex" "ANN.pdf" "ANN" 1492290085
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -58,8 +58,8 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1486254116 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "ANN.aux" 1492289594 4097 c937feb1cba25f3982fc37fff8e73b52 ""
-  "ANN.tex" 1492289592 11693 cb87a85a5a3d660be34d140cc54dc717 ""
+  "ANN.aux" 1492290085 4910 87ed722a9bacf051f7f7c078324bd4f2 ""
+  "ANN.tex" 1492290082 13163 909fd06e6f9e45fc55070c52bc5717b6 ""
   "NNNNN_training_error.png" 1492279317 9277 a3e784764bf0a6a585d3fbf592717506 ""
   "NNNYN_training_error.png" 1492288711 9886 a428aa4a8e90a6644da0f07e48b8174b ""
   "NNYNN_training_error.png" 1492288086 9954 effc01554e26709a8d7d44e38acd3a62 ""
@@ -67,10 +67,13 @@
   "NYNNN_training_error.png" 1492287864 8949 df3e5bf41512b8344cb219334606bc69 ""
   "NYNYN_training_error.png" 1492289431 10057 12163d34799cf1beb88e9cfccbd2125e ""
   "NYYNN_training_error.png" 1492289272 9884 3910f6c241a339b03785777e7172747b ""
+  "NYYYN_training_error.png" 1492290040 10650 ee09ae708e8fb42cf9e3dc9fd8a2a474 ""
   "YNNNN_training_error.png" 1492279704 9548 50b9151a124097c7d9a1ccbdd812efa4 ""
   "YNNYN_training_error.png" 1492289128 9540 543899f43b1500b4888c4e0ff8aec0fc ""
   "YNYNN_training_error.png" 1492288927 9973 6f348f53b378b130781eeb83c037cc2b ""
+  "YNYYN_training_error.png" 1492289879 10837 413aaf6ed4062a5b15f8cebb4d145e2b ""
   "YYNNN_training_error.png" 1492286325 8659 aefeeb72413bae5bc2fa1f83a11a5b19 ""
+  "YYNYN_training_error.png" 1492289761 9267 08b87c5388bfbb31de23aef617eac956 ""
   "YYYNN_training_error.png" 1492286432 10046 5e24179d2e2cae0c9ea6b48d9a351c17 ""
   "YYYYN_training_error.png" 1492286575 10663 91020f11e9344d6478d40f9a2c07cfee ""
   "baseline_training_error.png" 1491962780 9954 c6ceb8ea68251d1705bc0fce4bb10373 ""
