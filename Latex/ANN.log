@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  11 APR 2017 22:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 APR 2017 16:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -69,15 +69,7 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count91
-\float@exts=\toks16
-\float@box=\box26
-\@float@everytoks=\toks17
-\@floatcapt=\box27
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/10 v2.15b AMS math features
 \@mathmargin=\skip43
 
@@ -86,7 +78,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2000/06/29 v2.01 AMS text
  (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks18
+\@emptytoks=\toks16
 \ex@=\dimen113
 )) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -94,58 +86,92 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count92
+\inf@bad=\count91
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count93
-\leftroot@=\count94
+\uproot@=\count92
+\leftroot@=\count93
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count95
-\DOTSCASE@=\count96
+\classnum@=\count94
+\DOTSCASE@=\count95
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box28
-\strutbox@=\box29
+\Mathstrutbox@=\box26
+\strutbox@=\box27
 \big@size=\dimen115
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count97
-\c@MaxMatrixCols=\count98
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
 \dotsspace@=\muskip10
-\c@parentequation=\count99
-\dspbrk@lvl=\count100
-\tag@help=\toks19
-\row@=\count101
-\column@=\count102
-\maxfields@=\count103
-\andhelp@=\toks20
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
+\tag@help=\toks17
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
+\andhelp@=\toks18
 \eqnshift@=\dimen116
 \alignsep@=\dimen117
 \tagshift@=\dimen118
 \tagwidth@=\dimen119
 \totwidth@=\dimen120
 \lineht@=\dimen121
-\@envbody=\toks21
+\@envbody=\toks19
 \multlinegap=\skip44
 \multlinetaggap=\skip45
-\mathdisplay@stack=\toks22
+\mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count103
+\float@exts=\toks21
+\float@box=\box28
+\@float@everytoks=\toks22
+\@floatcapt=\box29
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/capt-of/capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box30
+\sift@deathcycles=\count104
+\@vwid@loff=\dimen122
+\@vwid@roff=\dimen123
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen124
+\lightrulewidth=\dimen125
+\cmidrulewidth=\dimen126
+\belowrulesep=\dimen127
+\belowbottomsep=\dimen128
+\aboverulesep=\dimen129
+\abovetopsep=\dimen130
+\cmidrulesep=\dimen131
+\cmidrulekern=\dimen132
+\defaultaddspace=\dimen133
+\@cmidla=\count105
+\@cmidlb=\count106
+\@aboverulesep=\dimen134
+\@belowrulesep=\dimen135
+\@thisruleclass=\count107
+\@lastruleclass=\count108
+\@thisrulewidth=\dimen136
 ) (./ANN.aux)
 \openout1 = `ANN.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -183,16 +209,16 @@ LaTeX Font Info:    ... okay on input line 7.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count104
-\scratchdimen=\dimen122
-\scratchbox=\box30
-\nofMPsegments=\count105
-\nofMParguments=\count106
+\scratchcounter=\count109
+\scratchdimen=\dimen137
+\scratchbox=\box31
+\nofMPsegments=\count110
+\nofMParguments=\count111
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count107
-\MPscratchDim=\dimen123
-\MPnumerator=\count108
-\makeMPintoPDFobject=\count109
+\MPscratchCnt=\count112
+\MPscratchDim=\dimen138
+\MPnumerator=\count113
+\makeMPintoPDFobject=\count114
 \everyMPtoPDFconversion=\toks24
 ) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO)
@@ -229,41 +255,229 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 127--127
+ [][] 
+ []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+
+Overfull \hbox (2.25012pt too wide) detected at line 129
+ [][] 
+ []
+
+<baseline_training_error.png, id=10, 513.92pt x 385.44pt>
+File: baseline_training_error.png Graphic file (type png)
+ <use baseline_training_error.png>
+Package pdftex.def Info: baseline_training_error.png used on input line 133.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [1 <./baseline_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 147--147
+ [][] 
+ []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Overfull \hbox (2.25012pt too wide) detected at line 149
+ [][] 
+ []
 
-<problem1_training_error.png, id=10, 833.1125pt x 670.505pt>
-File: problem1_training_error.png Graphic file (type png)
- <use problem1_training_error.png>
-Package pdftex.def Info: problem1_training_error.png used on input line 132.
-(pdftex.def)             Requested size: 388.88065pt x 312.9803pt.
- [1] [2 <./problem1_training_error.png (PNG copy)>] <problem2_PRC.png, id=17, 833.1125pt x 670.505pt>
-File: problem2_PRC.png Graphic file (type png)
- <use problem2_PRC.png>
-Package pdftex.def Info: problem2_PRC.png used on input line 142.
-(pdftex.def)             Requested size: 388.88065pt x 312.9803pt.
- [3 <./problem2_PRC.png (PNG copy)>] <problem3_training_error.png, id=21, 833.1125pt x 670.505pt>
-File: problem3_training_error.png Graphic file (type png)
- <use problem3_training_error.png>
-Package pdftex.def Info: problem3_training_error.png used on input line 163.
-(pdftex.def)             Requested size: 388.88065pt x 312.9803pt.
- [4 <./problem3_training_error.png (PNG copy)>] (./ANN.aux) ) 
+<NNNNN_training_error.png, id=14, 513.92pt x 385.44pt>
+File: NNNNN_training_error.png Graphic file (type png)
+ <use NNNNN_training_error.png>
+Package pdftex.def Info: NNNNN_training_error.png used on input line 153.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 165--165
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 167
+ [][] 
+ []
+
+<YNNNN_training_error.png, id=15, 513.92pt x 385.44pt>
+File: YNNNN_training_error.png Graphic file (type png)
+ <use YNNNN_training_error.png>
+Package pdftex.def Info: YNNNN_training_error.png used on input line 171.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 184--184
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 186
+ [][] 
+ []
+
+<NYNNN_training_error.png, id=16, 513.92pt x 385.44pt>
+File: NYNNN_training_error.png Graphic file (type png)
+ <use NYNNN_training_error.png>
+Package pdftex.def Info: NYNNN_training_error.png used on input line 190.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [2 <./NNNNN_training_error.png (PNG copy)> <./YNNNN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 202--202
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 204
+ [][] 
+ []
+
+<NNYNN_training_error.png, id=20, 513.92pt x 385.44pt>
+File: NNYNN_training_error.png Graphic file (type png)
+ <use NNYNN_training_error.png>
+Package pdftex.def Info: NNYNN_training_error.png used on input line 208.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 220--220
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 222
+ [][] 
+ []
+
+<NNNYN_training_error.png, id=21, 513.92pt x 385.44pt>
+File: NNNYN_training_error.png Graphic file (type png)
+ <use NNNYN_training_error.png>
+Package pdftex.def Info: NNNYN_training_error.png used on input line 226.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [3 <./NYNNN_training_error.png (PNG copy)> <./NNYNN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 244--244
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 246
+ [][] 
+ []
+
+<YYNNN_training_error.png, id=25, 513.92pt x 385.44pt>
+File: YYNNN_training_error.png Graphic file (type png)
+ <use YYNNN_training_error.png>
+Package pdftex.def Info: YYNNN_training_error.png used on input line 250.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 262--262
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 264
+ [][] 
+ []
+
+<YNYNN_training_error.png, id=26, 513.92pt x 385.44pt>
+File: YNYNN_training_error.png Graphic file (type png)
+ <use YNYNN_training_error.png>
+Package pdftex.def Info: YNYNN_training_error.png used on input line 268.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [4 <./NNNYN_training_error.png (PNG copy)> <./YYNNN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 280--280
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 282
+ [][] 
+ []
+
+<YNNYN_training_error.png, id=30, 513.92pt x 385.44pt>
+File: YNNYN_training_error.png Graphic file (type png)
+ <use YNNYN_training_error.png>
+Package pdftex.def Info: YNNYN_training_error.png used on input line 286.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 302--302
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 304
+ [][] 
+ []
+
+<NYYNN_training_error.png, id=31, 513.92pt x 385.44pt>
+File: NYYNN_training_error.png Graphic file (type png)
+ <use NYYNN_training_error.png>
+Package pdftex.def Info: NYYNN_training_error.png used on input line 308.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [5 <./YNYNN_training_error.png (PNG copy)> <./YNNYN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 320--320
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 322
+ [][] 
+ []
+
+<NYNYN_training_error.png, id=35, 513.92pt x 385.44pt>
+File: NYNYN_training_error.png Graphic file (type png)
+ <use NYNYN_training_error.png>
+Package pdftex.def Info: NYNYN_training_error.png used on input line 326.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 342--342
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 344
+ [][] 
+ []
+
+<NNYYN_training_error.png, id=36, 513.92pt x 385.44pt>
+File: NNYYN_training_error.png Graphic file (type png)
+ <use NNYYN_training_error.png>
+Package pdftex.def Info: NNYYN_training_error.png used on input line 348.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [6 <./NYYNN_training_error.png (PNG copy)> <./NYNYN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 364--364
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 366
+ [][] 
+ []
+
+<YYYNN_training_error.png, id=41, 513.92pt x 385.44pt>
+File: YYYNN_training_error.png Graphic file (type png)
+ <use YYYNN_training_error.png>
+Package pdftex.def Info: YYYNN_training_error.png used on input line 370.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 389--389
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 391
+ [][] 
+ []
+
+<YYYYN_training_error.png, id=42, 513.92pt x 385.44pt>
+File: YYYYN_training_error.png Graphic file (type png)
+ <use YYYYN_training_error.png>
+Package pdftex.def Info: YYYYN_training_error.png used on input line 395.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [7 <./NNYYN_training_error.png (PNG copy)> <./YYYNN_training_error.png (PNG copy)>] [8 <./YYYYN_training_error.png (PNG copy)>] (./ANN.aux) ) 
 Here is how much of TeX's memory you used:
- 2657 strings out of 493014
- 36693 string characters out of 6133351
- 108213 words of memory out of 5000000
- 6172 multiletter control sequences out of 15000+600000
+ 2858 strings out of 493014
+ 40465 string characters out of 6133351
+ 111232 words of memory out of 5000000
+ 6350 multiletter control sequences out of 15000+600000
  10418 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,7n,32p,336b,262s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,10n,32p,336b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ANN.pdf (5 pages, 101994 bytes).
+Output written on ANN.pdf (9 pages, 201976 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 24 compressed objects within 1 object stream
+ 64 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

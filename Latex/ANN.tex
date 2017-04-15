@@ -1,8 +1,37 @@
 \documentclass[12pt]{article}
 \usepackage[margin=0.7in]{geometry}
 \usepackage{graphicx}
-\usepackage{float}
 \usepackage{amsmath}
+\usepackage{float}
+\usepackage{capt-of}
+\usepackage{varwidth}
+\usepackage{booktabs}
+
+% Define a command to layout a table
+% Inpute values are #1 input layer bias node
+%                   #2 hidden layer bias node
+%                   #3 standardization of features
+%                   #4 PCA applied
+%                   #5 LDA applied
+%                   #6 Accuracy
+%                   #7 Testing Error
+%                   #8 Table Caption
+\newcommand{\accuracyAndTestErrorTable}[8]{
+  \begin{tabular}{l|l}
+    \hline
+    Input layer bias node & #1 \\
+    Hidden layer bias node & #2 \\
+    Standardization of features & #3 \\
+    PCA applied & #4 \\
+    LDA applied & #5 \\
+    \hline
+    Accuracy & #6 \\
+    Testing Error & #7 \\
+    \hline
+  \end{tabular}
+  ~\\[60pt]
+  \caption{#8}
+}
 
 \begin{document}
 
@@ -90,78 +119,285 @@ Empirical data was generated to optimize the following parameters:
 \end{enumerate}
 
 \section{Baseline Accuracy}
-The baseline accuracy was created using the negative form of all variants with the exception of data standardization. Initial parameters are listed below:
-\begin{enumerate}
-  \item Input layer bias node: N
-  \item Hidden layer bias node: N
-  \item Standardization of features: Y
-  \item PCA application: N
-  \item LDA application: N
-  \item Image size: 40x40
-  \item Hidden layer size: 20
-  \item Termination criteria: 1000 iterations
-\end{enumerate}
-\begin{table}[h]
-  \begin{center}
-    \begin{tabular}{|l|l|}
-      \hline
-      Accuracy & 0.800000\\
-      Testing Error & 0.200000\\
-      \hline
-    \end{tabular}
-    \caption{ANN Testing Error}
-  \end{center}
-\end{table}
-
-\section{Artificial Neural Networks}
-\begin{table}[h]
+The baseline accuracy was created using the negative form of all variants with the exception of data standardization. The baseline parameters were as follows: 40 by 40 sized images, a hidden layer size of 20, and 1000 training iterations.
 \begin{center}
-\begin{tabular}{|l|l|}
-\hline
-Accuracy & 0.940639\\
-Testing Error & 0.059361\\
-\hline
-\end{tabular}
-\caption{ANN Testing Error}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{N}{Y}{N}{N}{0.800000}{0.200000}{Baseline accuracy and testing}
+      \label{table:baseline}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{baseline_training_error.png}
+      \captionof{figure}{Plot of baseline training error}
+      \label{fig:baseline_img}
+    \end{minipage}
+  \end{table}
 \end{center}
-\end{table}
 
-
-\begin{figure}[H]
+% NNNNN
+\section{Variant Accuracy Testing}
+All variants were tested using 40 by 40 sized images, a hidden layer size of 20, and 1000 training iterations.
 \begin{center}
-\includegraphics[height=11cm]{problem1_training_error.png}
-\caption{Training Error for ANN}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{N}{N}{N}{N}{0.145455}{0.854545}{NNNNN accuracy and testing}
+      \label{table:NNNNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NNNNN_training_error.png}
+      \captionof{figure}{Plot of NNNNN training error}
+      \label{fig:NNNNN}
+    \end{minipage}
+  \end{table}
 \end{center}
-\end{figure}
 
-\newpage
-
-\section{The Precision-Recall Tradeoff}\label{naive}
-\begin{figure}[H]
+% YNNNN
 \begin{center}
-\includegraphics[height=11cm]{problem2_PRC.png}
-\caption{PR-Graph for ANN}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{Y}{N}{N}{N}{N}{0.272727}{0.727273}{YNNNN accuracy and testing}
+      \label{table:YNNNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{YNNNN_training_error.png}
+      \captionof{figure}{Plot of YNNNN training error}
+      \label{fig:YNNNN}
+    \end{minipage}
+  \end{table}
 \end{center}
-\end{figure}
 
-\newpage
-\section{Multi-Class Artificial Neural Networks}
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{|l|l|}
-\hline
-Accuracy & 0.956215\\
-Testing Error & 0.043785\\
-\hline
-\end{tabular}
-\caption{ANN Testing Error}
-\end{center}
-\end{table}
 
-\begin{figure}[H]
+% NYNNN
 \begin{center}
-\includegraphics[height=11cm]{problem3_training_error.png}
-\caption{Training Error for Multi-Class ANN}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{Y}{N}{N}{N}{0.181818}{0.818182}{NYNNN accuracy and testing}
+      \label{table:NYNNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NYNNN_training_error.png}
+      \captionof{figure}{Plot of NYNNN training error}
+      \label{fig:NYNNN}
+    \end{minipage}
+  \end{table}
 \end{center}
-\end{figure}
+
+% NNYNN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{N}{Y}{N}{N}{0.800000}{0.200000}{NNYNN accuracy and testing}
+      \label{table:NNYNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NNYNN_training_error.png}
+      \captionof{figure}{Plot of NNYNN training error}
+      \label{fig:NNYNN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+% NNNYN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{N}{N}{Y}{N}{0.254545}{0.745455}{NNNYN accuracy and testing}
+      \label{table:NNNYN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NNNYN_training_error.png}
+      \captionof{figure}{Plot of NNNYN training error}
+      \label{fig:NNNYN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+
+
+% NNNNY
+
+
+
+% YYNNN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{Y}{Y}{N}{N}{N}{0.400000}{0.600000}{YYNNN accuracy and testing}
+      \label{table:YYNNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{YYNNN_training_error.png}
+      \captionof{figure}{Plot of YYNNN training error}
+      \label{fig:YYNNN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+% YNYNN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{Y}{N}{Y}{N}{N}{0.818182}{0.181818}{YNYNN accuracy and testing}
+      \label{table:YNYNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{YNYNN_training_error.png}
+      \captionof{figure}{Plot of YNYNN training error}
+      \label{fig:YNYNN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+% YNNYN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{Y}{N}{N}{Y}{N}{0.200000}{0.800000}{YNNYN accuracy and testing}
+      \label{table:YNNYN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{YNNYN_training_error.png}
+      \captionof{figure}{Plot of YNNYN training error}
+      \label{fig:YNNYN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+
+% YNNNY
+
+
+% NYYNN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{Y}{Y}{N}{N}{0.818182}{0.181818}{NYYNN accuracy and testing}
+      \label{table:NYYNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NYYNN_training_error.png}
+      \captionof{figure}{Plot of NYYNN training error}
+      \label{fig:NYYNN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+% NYNYN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{Y}{N}{Y}{N}{0.254545}{0.745455}{NYNYN accuracy and testing}
+      \label{table:NYNYN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NYNYN_training_error.png}
+      \captionof{figure}{Plot of NYNYN training error}
+      \label{fig:NYNYN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+
+% NYNNY
+
+
+% NNYYN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{N}{N}{Y}{Y}{N}{0.145455}{0.854545}{NNYYN accuracy and testing}
+      \label{table:NNYYN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{NNYYN_training_error.png}
+      \captionof{figure}{Plot of NNYYN training error}
+      \label{fig:NNYYN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+
+% NNYNY
+
+
+% YYYNN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{Y}{Y}{Y}{N}{N}{0.800000}{0.200000}{YYYNN accuracy and testing}
+      \label{table:YYYNN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{YYYNN_training_error.png}
+      \captionof{figure}{Plot of YYYNN training error}
+      \label{fig:YYYNN}
+    \end{minipage}
+  \end{table}
+\end{center}
+
+% YYNYN
+% YYNNY
+% YNYYN
+% YNYNY
+% NYYYN
+% NYYNY
+
+% YYYYN
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \accuracyAndTestErrorTable{Y}{Y}{Y}{Y}{N}{0.181818}{0.818182}{YYYYN accuracy and testing}
+      \label{table:YYYYN}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{YYYYN_training_error.png}
+      \captionof{figure}{Plot of YYYYN training error}
+      \label{fig:YYYYN}
+    \end{minipage}
+  \end{table}
+\end{center}
 \end{document}
+
+% YYYNY

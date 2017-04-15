@@ -4,11 +4,13 @@ rng(0);
 
 %% Control Flow Values
 data_selection_type = 0;
-should_perform_PCA = false;
-percent_field_retention = .95;
-should_std_data = true;
+
 should_add_bias_to_input = false;
 should_add_bias_to_hidden = false;
+should_std_data = true;
+should_perform_PCA = true;
+percent_field_retention = .95;
+should_perform_LDA = false;
 
 %% Load Data
 % Load the data and randomly permutate
@@ -77,7 +79,10 @@ beta = (range(2)-range(1)).*rand(num_data_cols, num_hidden_nodes) + range(1);
 theta = (range(2)-range(1)).*rand(num_hidden_nodes, num_output_nodes) + range(1);
 
 if should_add_bias_to_hidden
-    theta = [ones(num_hidden_nodes,1) theta];
+    % theta = [ones(num_hidden_nodes,1) theta];
+    % beta = [ones(1,num_hidden_nodes);beta];
+    beta = [ones(num_data_cols,1) beta];
+    theta = [ones(1,num_output_nodes);theta];
 end
 
 % Matrix to track training error for plotting
