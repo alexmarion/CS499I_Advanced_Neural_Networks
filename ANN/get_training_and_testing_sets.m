@@ -1,6 +1,4 @@
 function [ training_fields,training_classes,testing_fields,testing_classes ] = get_training_and_testing_sets( fields,classes,type )
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
 
     % Optional argument 'type' is set to default if not supplied
     if ~exist('type','var') || isempty(type)
