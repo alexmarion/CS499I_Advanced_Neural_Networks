@@ -143,5 +143,3 @@ plot(training_error(:,1), training_error(:,2));
 legend('Training Error');
 xlabel('Iteration');
 ylabel('Error');
-
-
