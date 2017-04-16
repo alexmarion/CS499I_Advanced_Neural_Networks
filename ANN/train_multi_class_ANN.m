@@ -17,6 +17,11 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
     if should_perform_PCA
         fields = PCA(fields,percent_field_retention);
     end
+    
+    %% Perform LDA
+    if should_perform_LDA
+        % TODO: Implement multi class LDA
+    end
 
     %% Select Training and Testing Sets
     % Initialize vars
