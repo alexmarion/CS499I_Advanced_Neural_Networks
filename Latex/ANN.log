@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  17 APR 2017 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  17 APR 2017 13:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -507,36 +507,31 @@ Overfull \hbox (2.25012pt too wide) detected at line 453
 File: YNYNN_training_error.png Graphic file (type png)
 <use YNYNN_training_error.png>
 Package pdftex.def Info: YNYNN_training_error.png used on input line 457.
-(pdftex.def)             Requested size: 426.79134pt x 320.09744pt.
-
-Overfull \hbox (118.91774pt too wide) in paragraph at lines 457--458
- [][] 
- []
-
-[9 <./YYYYN_training_error.png (PNG copy)>] <num_iterations_empirical.png, id=54, 1124.2pt x 843.15pt>
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ <num_iterations_empirical.png, id=51, 1124.2pt x 843.15pt>
 File: num_iterations_empirical.png Graphic file (type png)
  <use num_iterations_empirical.png>
 Package pdftex.def Info: num_iterations_empirical.png used on input line 468.
-(pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- [10 <./num_iterations_empirical.png (PNG copy)>] <hidden_node_empirical.png, id=58, 513.92pt x 385.44pt>
+(pdftex.def)             Requested size: 355.65944pt x 266.73868pt.
+ [9 <./YYYYN_training_error.png (PNG copy)>] <hidden_node_empirical.png, id=55, 1124.2pt x 843.15pt>
 File: hidden_node_empirical.png Graphic file (type png)
  <use hidden_node_empirical.png>
 Package pdftex.def Info: hidden_node_empirical.png used on input line 475.
-(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [11 <./hidden_node_empirical.png (PNG copy)>] (./ANN.aux) ) 
+(pdftex.def)             Requested size: 355.65944pt x 266.73868pt.
+ [10 <./num_iterations_empirical.png (PNG copy)> <./hidden_node_empirical.png (PNG copy)>] (./ANN.aux) ) 
 Here is how much of TeX's memory you used:
  2886 strings out of 493014
  41170 string characters out of 6133351
- 111308 words of memory out of 5000000
+ 111306 words of memory out of 5000000
  6374 multiletter control sequences out of 15000+600000
  10418 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,32p,336b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ANN.pdf (12 pages, 288943 bytes).
+Output written on ANN.pdf (11 pages, 317975 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

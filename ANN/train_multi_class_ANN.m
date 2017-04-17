@@ -1,11 +1,11 @@
-function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to_input,should_add_bias_to_hidden,should_std_data,should_perform_PCA,should_perform_LDA,num_hidden_nodes,training_iters )
+function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to_input,should_add_bias_to_hidden,should_std_data,should_perform_PCA,should_perform_LDA,num_hidden_nodes,training_iters,image_size )
     %% Control Flow Values
     data_selection_type = 0;
     percent_field_retention = .95;
 
     %% Load Data
     % Load the data and randomly permutate
-    [num_classes, classes, fields] = load_image_data();
+    [num_classes, classes, fields] = load_image_data(image_size,image_size);
 
 
     %% Set Initial Vals

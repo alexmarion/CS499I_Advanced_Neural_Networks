@@ -12,9 +12,12 @@ should_perform_PCA = true;
 percent_field_retention = .95;
 should_perform_LDA = false;
 
+image_height = 40
+image_width = 40
+
 %% Load Data
 % Load the data and randomly permutate
-[num_classes, classes, fields] = load_image_data();
+[num_classes, classes, fields] = load_image_data(image_height,image_width);
 
 
 %% Set Initial Vals

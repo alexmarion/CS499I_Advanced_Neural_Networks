@@ -1,4 +1,4 @@
-function [ num_classes, classes, fields ] = load_image_data()
+function [ num_classes, classes, fields ] = load_image_data(image_height,image_width)
     % image_map = double(rgb2gray(imread('./faces/00001/test.ppm')));
     % image_fields = reshape(image_map, [1,numel(image_map)]);
 
@@ -22,7 +22,7 @@ function [ num_classes, classes, fields ] = load_image_data()
                 % image_map = double(imread(fullfile(root,class_folder.name,img.name)));
                 
                 image = imread(fullfile(root,class_folder.name,img.name));
-                image_map = double(imresize(image,[40 40]));
+                image_map = double(imresize(image,[image_height image_width]));
                 image_fields = reshape(image_map, [1,numel(image_map)]);
                 % Append the class to the end of the fields
                 image_fields(end + 1) = str2double(class_folder.name);
