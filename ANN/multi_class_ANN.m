@@ -6,14 +6,14 @@ rng(0);
 data_selection_type = 0;
 
 should_add_bias_to_input = false;
-should_add_bias_to_hidden = true;
+should_add_bias_to_hidden = false;
 should_std_data = true;
 should_perform_PCA = true;
 percent_field_retention = .95;
 should_perform_LDA = false;
 
-image_height = 40
-image_width = 40
+image_height = 40;
+image_width = 40;
 
 %% Load Data
 % Load the data and randomly permutate
@@ -26,11 +26,6 @@ num_hidden_nodes = 20;
 num_output_nodes = num_classes;
 activation_fxn = @(x) 1./(1 + exp(-x));
 training_iters = 1000;
-
-%% Perform PCA
-if should_perform_PCA
-    fields = PCA(fields,percent_field_retention);
-end
 
 %% Select Training and Testing Sets
 % Initialize vars
@@ -59,7 +54,23 @@ else
     std_testing_fields = testing_fields;
 end
 
+%% Perform PCA
+if should_perform_PCA
+    % TODO: call PCA on testing and training and change way features
+    % are kept
+    projection_vectors = PCA(std_training_fields,percent_field_retention);
+    std_training_fields = std_training_fields * projection_vectors;
+    std_testing_fields = std_testing_fields * projection_vectors;
 
+    num_data_cols = length(std_training_fields(1,:));
+end
+
+%% Perform LDA
+if should_perform_LDA
+    % TODO: Implement multi class LDA
+end
+
+%% Add bias nodes to input layer
 if should_add_bias_to_input
     % Add bias node and increase number of columns by 1
     std_training_fields = [ones(num_training_rows, 1), std_training_fields];
@@ -99,7 +110,7 @@ while iter < training_iters
 
     % Compute output layer    
     training_o = activation_fxn(training_h * theta);
-    
+
     %% Backward Propagation
     % Compute output error
     delta_output = new_training_classes - training_o;
@@ -115,7 +126,7 @@ while iter < training_iters
 
     % Choose maximum output node as value
     [~,training_o] = max(training_o,[],2);
-    
+
     % Log training error
     num_correct = numel(find(~(training_classes - training_o)));
     err = 1 - (num_correct/num_training_rows);
@@ -131,14 +142,10 @@ testing_o = activation_fxn(testing_h * theta);
 
 % Choose maximum output node as value
 [~,testing_o] = max(testing_o,[],2);
-    
+
 % Compute number of correct predictions
 num_correct = numel(find(~(testing_classes - testing_o)));
 Accuracy = num_correct/num_testing_rows;
-
-% Compute accuracy as a percentage of classes predicted correctly
-fprintf('Accuracy = %f\n', Accuracy);
-fprintf('Testing Error = %f\n',1 - Accuracy);
 
 % Plot the training error
 figure();

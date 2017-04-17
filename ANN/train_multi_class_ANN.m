@@ -13,16 +13,6 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
     num_output_nodes = num_classes;
     activation_fxn = @(x) 1./(1 + exp(-x));
 
-    %% Perform PCA
-    if should_perform_PCA
-        fields = PCA(fields,percent_field_retention);
-    end
-    
-    %% Perform LDA
-    if should_perform_LDA
-        % TODO: Implement multi class LDA
-    end
-
     %% Select Training and Testing Sets
     % Initialize vars
     classifiers = unique(classes);
@@ -49,8 +39,24 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
         std_training_fields = training_fields;
         std_testing_fields = testing_fields;
     end
+    
+    %% Perform PCA
+    if should_perform_PCA
+        % TODO: call PCA on testing and training and change way features
+        % are kept
+        projection_vectors = PCA(std_training_fields,percent_field_retention);
+        std_training_fields = std_training_fields * projection_vectors;
+        std_testing_fields = std_testing_fields * projection_vectors;
+        
+        num_data_cols = length(std_training_fields(1,:));
+    end
+    
+    %% Perform LDA
+    if should_perform_LDA
+        % TODO: Implement multi class LDA
+    end
 
-
+    %% Add bias nodes to input layer
     if should_add_bias_to_input
         % Add bias node and increase number of columns by 1
         std_training_fields = [ones(num_training_rows, 1), std_training_fields];
@@ -126,5 +132,12 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
     % Compute number of correct predictions
     num_correct = numel(find(~(testing_classes - testing_o)));
     Accuracy = num_correct/num_testing_rows;
+    
+    % Plot the training error
+    figure();
+    plot(training_error(:,1), training_error(:,2));
+    legend('Training Error');
+    xlabel('Iteration');
+    ylabel('Error');
 end
 
