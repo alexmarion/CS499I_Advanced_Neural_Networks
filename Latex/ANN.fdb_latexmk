@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1492290085 "ANN.tex" "ANN.pdf" "ANN" 1492290085
+["pdflatex"] 1492447814 "ANN.tex" "ANN.pdf" "ANN" 1492447815
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -58,11 +58,10 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1486254116 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "ANN.aux" 1492290085 4910 87ed722a9bacf051f7f7c078324bd4f2 ""
-  "ANN.tex" 1492290082 13163 909fd06e6f9e45fc55070c52bc5717b6 ""
+  "ANN.aux" 1492447815 5373 65b467883b9abda1fc06f8c8c1f81e52 ""
+  "ANN.tex" 1492447812 14330 535518901947a9f64c6a9f7b1147c75e ""
   "NNNNN_training_error.png" 1492279317 9277 a3e784764bf0a6a585d3fbf592717506 ""
   "NNNYN_training_error.png" 1492288711 9886 a428aa4a8e90a6644da0f07e48b8174b ""
-  "NNYNN_training_error.png" 1492288086 9954 effc01554e26709a8d7d44e38acd3a62 ""
   "NNYYN_training_error.png" 1492289542 11010 b6b3f4046c91c90755ecda4b66256a49 ""
   "NYNNN_training_error.png" 1492287864 8949 df3e5bf41512b8344cb219334606bc69 ""
   "NYNYN_training_error.png" 1492289431 10057 12163d34799cf1beb88e9cfccbd2125e ""
@@ -77,7 +76,9 @@
   "YYYNN_training_error.png" 1492286432 10046 5e24179d2e2cae0c9ea6b48d9a351c17 ""
   "YYYYN_training_error.png" 1492286575 10663 91020f11e9344d6478d40f9a2c07cfee ""
   "baseline_training_error.png" 1491962780 9954 c6ceb8ea68251d1705bc0fce4bb10373 ""
+  "hidden_node_empirical.png" 1492369164 19757 def339ff216e5febb1ecf355cc0e83b6 ""
+  "num_iterations_empirical.png" 1492446902 42891 6ea07e47a40018fe8d4f6452fa89a85e ""
   (generated)
+  "ANN.pdf"
   "ANN.aux"
   "ANN.log"
-  "ANN.pdf"

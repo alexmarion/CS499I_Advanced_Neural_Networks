@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 APR 2017 17:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  17 APR 2017 12:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -324,27 +324,27 @@ Overfull \hbox (2.25012pt too wide) detected at line 204
  [][] 
  []
 
-<NNYNN_training_error.png, id=20, 513.92pt x 385.44pt>
-File: NNYNN_training_error.png Graphic file (type png)
- <use NNYNN_training_error.png>
-Package pdftex.def Info: NNYNN_training_error.png used on input line 208.
-(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
-
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 220--220
- [][] 
- []
-
-
-Overfull \hbox (2.25012pt too wide) detected at line 222
- [][] 
- []
-
-<NNNYN_training_error.png, id=21, 513.92pt x 385.44pt>
+<NNNYN_training_error.png, id=20, 513.92pt x 385.44pt>
 File: NNNYN_training_error.png Graphic file (type png)
  <use NNNYN_training_error.png>
-Package pdftex.def Info: NNNYN_training_error.png used on input line 226.
+Package pdftex.def Info: NNNYN_training_error.png used on input line 208.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [3 <./NYNNN_training_error.png (PNG copy)> <./NNYNN_training_error.png (PNG copy)>]
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 226--226
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 228
+ [][] 
+ []
+
+<YYNNN_training_error.png, id=21, 513.92pt x 385.44pt>
+File: YYNNN_training_error.png Graphic file (type png)
+ <use YYNNN_training_error.png>
+Package pdftex.def Info: YYNNN_training_error.png used on input line 232.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [3 <./NYNNN_training_error.png (PNG copy)> <./NNNYN_training_error.png (PNG copy)>]
 Overfull \hbox (2.25012pt too wide) in paragraph at lines 244--244
  [][] 
  []
@@ -354,10 +354,10 @@ Overfull \hbox (2.25012pt too wide) detected at line 246
  [][] 
  []
 
-<YYNNN_training_error.png, id=25, 513.92pt x 385.44pt>
-File: YYNNN_training_error.png Graphic file (type png)
- <use YYNNN_training_error.png>
-Package pdftex.def Info: YYNNN_training_error.png used on input line 250.
+<YNYNN_training_error.png, id=25, 513.92pt x 385.44pt>
+File: YNYNN_training_error.png Graphic file (type png)
+ <use YNYNN_training_error.png>
+Package pdftex.def Info: YNYNN_training_error.png used on input line 250.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
 
 Overfull \hbox (2.25012pt too wide) in paragraph at lines 262--262
@@ -369,25 +369,25 @@ Overfull \hbox (2.25012pt too wide) detected at line 264
  [][] 
  []
 
-<YNYNN_training_error.png, id=26, 513.92pt x 385.44pt>
-File: YNYNN_training_error.png Graphic file (type png)
- <use YNYNN_training_error.png>
-Package pdftex.def Info: YNYNN_training_error.png used on input line 268.
-(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [4 <./NNNYN_training_error.png (PNG copy)> <./YYNNN_training_error.png (PNG copy)>]
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 280--280
- [][] 
- []
-
-
-Overfull \hbox (2.25012pt too wide) detected at line 282
- [][] 
- []
-
-<YNNYN_training_error.png, id=30, 513.92pt x 385.44pt>
+<YNNYN_training_error.png, id=26, 513.92pt x 385.44pt>
 File: YNNYN_training_error.png Graphic file (type png)
  <use YNNYN_training_error.png>
-Package pdftex.def Info: YNNYN_training_error.png used on input line 286.
+Package pdftex.def Info: YNNYN_training_error.png used on input line 268.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [4 <./YYNNN_training_error.png (PNG copy)> <./YNYNN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 284--284
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 286
+ [][] 
+ []
+
+<NYYNN_training_error.png, id=30, 513.92pt x 385.44pt>
+File: NYYNN_training_error.png Graphic file (type png)
+ <use NYYNN_training_error.png>
+Package pdftex.def Info: NYYNN_training_error.png used on input line 290.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
 
 Overfull \hbox (2.25012pt too wide) in paragraph at lines 302--302
@@ -399,42 +399,42 @@ Overfull \hbox (2.25012pt too wide) detected at line 304
  [][] 
  []
 
-<NYYNN_training_error.png, id=31, 513.92pt x 385.44pt>
-File: NYYNN_training_error.png Graphic file (type png)
- <use NYYNN_training_error.png>
-Package pdftex.def Info: NYYNN_training_error.png used on input line 308.
-(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [5 <./YNYNN_training_error.png (PNG copy)> <./YNNYN_training_error.png (PNG copy)>]
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 320--320
- [][] 
- []
-
-
-Overfull \hbox (2.25012pt too wide) detected at line 322
- [][] 
- []
-
-<NYNYN_training_error.png, id=35, 513.92pt x 385.44pt>
+<NYNYN_training_error.png, id=31, 513.92pt x 385.44pt>
 File: NYNYN_training_error.png Graphic file (type png)
  <use NYNYN_training_error.png>
-Package pdftex.def Info: NYNYN_training_error.png used on input line 326.
+Package pdftex.def Info: NYNYN_training_error.png used on input line 308.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
-
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 342--342
+ [5 <./YNNYN_training_error.png (PNG copy)> <./NYYNN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 324--324
  [][] 
  []
 
 
-Overfull \hbox (2.25012pt too wide) detected at line 344
+Overfull \hbox (2.25012pt too wide) detected at line 326
  [][] 
  []
 
-<NNYYN_training_error.png, id=36, 513.92pt x 385.44pt>
+<NNYYN_training_error.png, id=35, 513.92pt x 385.44pt>
 File: NNYYN_training_error.png Graphic file (type png)
  <use NNYYN_training_error.png>
-Package pdftex.def Info: NNYYN_training_error.png used on input line 348.
+Package pdftex.def Info: NNYYN_training_error.png used on input line 330.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [6 <./NYYNN_training_error.png (PNG copy)> <./NYNYN_training_error.png (PNG copy)>]
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 346--346
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 348
+ [][] 
+ []
+
+<YYYNN_training_error.png, id=36, 513.92pt x 385.44pt>
+File: YYYNN_training_error.png Graphic file (type png)
+ <use YYYNN_training_error.png>
+Package pdftex.def Info: YYYNN_training_error.png used on input line 352.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [6 <./NYNYN_training_error.png (PNG copy)> <./NNYYN_training_error.png (PNG copy)>]
 Overfull \hbox (2.25012pt too wide) in paragraph at lines 364--364
  [][] 
  []
@@ -444,85 +444,99 @@ Overfull \hbox (2.25012pt too wide) detected at line 366
  [][] 
  []
 
-<YYYNN_training_error.png, id=41, 513.92pt x 385.44pt>
-File: YYYNN_training_error.png Graphic file (type png)
- <use YYYNN_training_error.png>
-Package pdftex.def Info: YYYNN_training_error.png used on input line 370.
-(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
-
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 382--382
- [][] 
- []
-
-
-Overfull \hbox (2.25012pt too wide) detected at line 384
- [][] 
- []
-
-<YYNYN_training_error.png, id=42, 513.92pt x 385.44pt>
+<YYNYN_training_error.png, id=41, 513.92pt x 385.44pt>
 File: YYNYN_training_error.png Graphic file (type png)
  <use YYNYN_training_error.png>
-Package pdftex.def Info: YYNYN_training_error.png used on input line 388.
+Package pdftex.def Info: YYNYN_training_error.png used on input line 370.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [7 <./NNYYN_training_error.png (PNG copy)> <./YYYNN_training_error.png (PNG copy)>]
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 404--404
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 386--386
  [][] 
  []
 
 
-Overfull \hbox (2.25012pt too wide) detected at line 406
+Overfull \hbox (2.25012pt too wide) detected at line 388
  [][] 
  []
 
-<YNYYN_training_error.png, id=46, 513.92pt x 385.44pt>
+<YNYYN_training_error.png, id=42, 513.92pt x 385.44pt>
 File: YNYYN_training_error.png Graphic file (type png)
  <use YNYYN_training_error.png>
-Package pdftex.def Info: YNYYN_training_error.png used on input line 410.
+Package pdftex.def Info: YNYYN_training_error.png used on input line 392.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
-
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 426--426
+ [7 <./YYYNN_training_error.png (PNG copy)> <./YYNYN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 408--408
  [][] 
  []
 
 
-Overfull \hbox (2.25012pt too wide) detected at line 428
+Overfull \hbox (2.25012pt too wide) detected at line 410
  [][] 
  []
 
-<NYYYN_training_error.png, id=47, 513.92pt x 385.44pt>
+<NYYYN_training_error.png, id=46, 513.92pt x 385.44pt>
 File: NYYYN_training_error.png Graphic file (type png)
  <use NYYYN_training_error.png>
-Package pdftex.def Info: NYYYN_training_error.png used on input line 432.
+Package pdftex.def Info: NYYYN_training_error.png used on input line 414.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [8 <./YYNYN_training_error.png (PNG copy)> <./YNYYN_training_error.png (PNG copy)>]
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 448--448
+
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 430--430
  [][] 
  []
 
 
-Overfull \hbox (2.25012pt too wide) detected at line 450
+Overfull \hbox (2.25012pt too wide) detected at line 432
  [][] 
  []
 
-<YYYYN_training_error.png, id=51, 513.92pt x 385.44pt>
+<YYYYN_training_error.png, id=47, 513.92pt x 385.44pt>
 File: YYYYN_training_error.png Graphic file (type png)
  <use YYYYN_training_error.png>
-Package pdftex.def Info: YYYYN_training_error.png used on input line 454.
+Package pdftex.def Info: YYYYN_training_error.png used on input line 436.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [9 <./NYYYN_training_error.png (PNG copy)> <./YYYYN_training_error.png (PNG copy)>] (./ANN.aux) ) 
+ [8 <./YNYYN_training_error.png (PNG copy)> <./NYYYN_training_error.png (PNG copy)>]
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 451--451
+ [][] 
+ []
+
+
+Overfull \hbox (2.25012pt too wide) detected at line 453
+ [][] 
+ []
+
+File: YNYNN_training_error.png Graphic file (type png)
+<use YNYNN_training_error.png>
+Package pdftex.def Info: YNYNN_training_error.png used on input line 457.
+(pdftex.def)             Requested size: 426.79134pt x 320.09744pt.
+
+Overfull \hbox (118.91774pt too wide) in paragraph at lines 457--458
+ [][] 
+ []
+
+[9 <./YYYYN_training_error.png (PNG copy)>] <num_iterations_empirical.png, id=54, 1124.2pt x 843.15pt>
+File: num_iterations_empirical.png Graphic file (type png)
+ <use num_iterations_empirical.png>
+Package pdftex.def Info: num_iterations_empirical.png used on input line 468.
+(pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
+ [10 <./num_iterations_empirical.png (PNG copy)>] <hidden_node_empirical.png, id=58, 513.92pt x 385.44pt>
+File: hidden_node_empirical.png Graphic file (type png)
+ <use hidden_node_empirical.png>
+Package pdftex.def Info: hidden_node_empirical.png used on input line 475.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [11 <./hidden_node_empirical.png (PNG copy)>] (./ANN.aux) ) 
 Here is how much of TeX's memory you used:
- 2879 strings out of 493014
- 40954 string characters out of 6133351
- 111286 words of memory out of 5000000
- 6368 multiletter control sequences out of 15000+600000
+ 2886 strings out of 493014
+ 41170 string characters out of 6133351
+ 111308 words of memory out of 5000000
+ 6374 multiletter control sequences out of 15000+600000
  10418 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,32p,336b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ANN.pdf (10 pages, 233898 bytes).
+Output written on ANN.pdf (12 pages, 288943 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 77 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

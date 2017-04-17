@@ -111,9 +111,6 @@ INPUT ./YNNNN_training_error.png
 INPUT NYNNN_training_error.png
 INPUT ./NYNNN_training_error.png
 INPUT ./NYNNN_training_error.png
-INPUT NNYNN_training_error.png
-INPUT ./NNYNN_training_error.png
-INPUT ./NNYNN_training_error.png
 INPUT NNNYN_training_error.png
 INPUT ./NNNYN_training_error.png
 INPUT ./NNNYN_training_error.png
@@ -150,6 +147,14 @@ INPUT ./NYYYN_training_error.png
 INPUT YYYYN_training_error.png
 INPUT ./YYYYN_training_error.png
 INPUT ./YYYYN_training_error.png
+INPUT YNYNN_training_error.png
+INPUT ./YNYNN_training_error.png
+INPUT num_iterations_empirical.png
+INPUT ./num_iterations_empirical.png
+INPUT ./num_iterations_empirical.png
+INPUT hidden_node_empirical.png
+INPUT ./hidden_node_empirical.png
+INPUT ./hidden_node_empirical.png
 INPUT ANN.aux
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
