@@ -5,7 +5,7 @@ rng(0);
 %% Control Flow Values
 data_selection_type = 0;
 
-should_add_bias_to_input = false;
+should_add_bias_to_input = true;
 should_add_bias_to_hidden = false;
 should_std_data = true;
 should_perform_PCA = true;
@@ -56,8 +56,6 @@ end
 
 %% Perform PCA
 if should_perform_PCA
-    % TODO: call PCA on testing and training and change way features
-    % are kept
     projection_vectors = PCA(std_training_fields,percent_field_retention);
     std_training_fields = std_training_fields * projection_vectors;
     std_testing_fields = std_testing_fields * projection_vectors;
@@ -146,6 +144,9 @@ testing_o = activation_fxn(testing_h * theta);
 % Compute number of correct predictions
 num_correct = numel(find(~(testing_classes - testing_o)));
 Accuracy = num_correct/num_testing_rows;
+
+fprintf('Testing Accuracy = %f\n', Accuracy);
+fprintf('Testing Error = %f\n',1 - Accuracy);
 
 % Plot the training error
 figure();
