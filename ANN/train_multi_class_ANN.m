@@ -131,6 +131,6 @@ function [ testing_accuracy,training_accuracy ] = train_multi_class_ANN( should_
     plot(training_accuracy(:,1), training_accuracy(:,2));
     legend('Training Error');
     xlabel('Iteration');
-    ylabel('Error');
+    ylabel('Accuracy');
 end
 

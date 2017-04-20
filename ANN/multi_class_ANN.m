@@ -5,10 +5,10 @@ rng(0);
 %% Control Flow Values
 data_selection_type = 0;
 
-should_add_bias_to_input = true;
-should_add_bias_to_hidden = true;
-should_std_data = true;
-should_perform_PCA = true;
+should_add_bias_to_input = false;
+should_add_bias_to_hidden = false;
+should_std_data = false;
+should_perform_PCA = false;
 percent_field_retention = .95;
 
 image_height = 40;
@@ -85,12 +85,14 @@ beta = (range(2)-range(1)).*rand(num_data_cols, num_hidden_nodes) + range(1);
 theta = (range(2)-range(1)).*rand(num_hidden_nodes, num_output_nodes) + range(1);
 
 if should_add_bias_to_hidden
+    % theta = [ones(num_hidden_nodes,1) theta];
+    % beta = [ones(1,num_hidden_nodes);beta];
     beta = [ones(num_data_cols,1) beta];
     theta = [ones(1,num_output_nodes);theta];
 end
 
 % Matrix to track training error for plotting
-training_error = zeros(training_iters, 2);
+training_accuracy = zeros(training_iters, 2);
 
 while iter < training_iters
     iter = iter + 1;    
@@ -119,8 +121,8 @@ while iter < training_iters
 
     % Log training error
     num_correct = numel(find(~(training_classes - training_o)));
-    err = 1 - (num_correct/num_training_rows);
-    training_error(iter,:) = [iter,err];
+    acc = num_correct/num_training_rows;
+    training_accuracy(iter,:) = [iter,acc];
 end
 
 %% Testing
@@ -135,14 +137,11 @@ testing_o = activation_fxn(testing_h * theta);
 
 % Compute number of correct predictions
 num_correct = numel(find(~(testing_classes - testing_o)));
-Accuracy = num_correct/num_testing_rows;
-
-fprintf('Testing Accuracy = %f\n', Accuracy);
-fprintf('Testing Error = %f\n',1 - Accuracy);
+testing_accuracy = num_correct/num_testing_rows;
 
 % Plot the training error
 figure();
-plot(training_error(:,1), training_error(:,2));
-legend('Training Error');
+plot(training_accuracy(:,1), training_accuracy(:,2));
+legend('Training Accuracy');
 xlabel('Iteration');
-ylabel('Error');
+ylabel('Accuracy');
