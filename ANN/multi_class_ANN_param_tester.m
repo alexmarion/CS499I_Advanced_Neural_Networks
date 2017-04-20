@@ -6,7 +6,7 @@ rng(0);
 % for i=1:numel(training_iters)
 %     num_iters = training_iters(i);
 %     disp(num_iters);
-%     [accuracy,training_error] = train_multi_class_ANN(true,false,true,false,false,20,num_iters,40);
+%     [accuracy,training_error] = train_multi_class_ANN(true,false,true,false,20,num_iters,40);
 %     accuracies(i,:) = [num_iters,accuracy];
 % end
 % 
@@ -22,7 +22,7 @@ rng(0);
 % for i=1:numel(num_hidden_nodes)
 %     num_hidden = num_hidden_nodes(i);
 %     disp(num_hidden);
-%     [accuracy,training_error] = train_multi_class_ANN(true,false,true,false,false,num_hidden,1000,40);
+%     [accuracy,training_error] = train_multi_class_ANN(true,false,true,false,num_hidden,1000,40);
 %     accuracies(i,:) = [num_hidden,accuracy];
 % end
 % 
@@ -38,7 +38,7 @@ accuracies = zeros(numel(image_sizes),2);
 for i=1:numel(image_sizes)
     image_size = image_sizes(i);
     disp(image_size);
-    [accuracy,training_error] = train_multi_class_ANN(true,false,true,false,false,20,1000,image_size);
+    [accuracy,training_error] = train_multi_class_ANN(true,false,true,false,20,1000,image_size);
     accuracies(i,:) = [image_size,accuracy];
 end
 

@@ -6,11 +6,10 @@ rng(0);
 data_selection_type = 0;
 
 should_add_bias_to_input = true;
-should_add_bias_to_hidden = false;
+should_add_bias_to_hidden = true;
 should_std_data = true;
 should_perform_PCA = true;
 percent_field_retention = .95;
-should_perform_LDA = false;
 
 image_height = 40;
 image_width = 40;
@@ -63,11 +62,6 @@ if should_perform_PCA
     num_data_cols = length(std_training_fields(1,:));
 end
 
-%% Perform LDA
-if should_perform_LDA
-    % TODO: Implement multi class LDA
-end
-
 %% Add bias nodes to input layer
 if should_add_bias_to_input
     % Add bias node and increase number of columns by 1
@@ -91,8 +85,6 @@ beta = (range(2)-range(1)).*rand(num_data_cols, num_hidden_nodes) + range(1);
 theta = (range(2)-range(1)).*rand(num_hidden_nodes, num_output_nodes) + range(1);
 
 if should_add_bias_to_hidden
-    % theta = [ones(num_hidden_nodes,1) theta];
-    % beta = [ones(1,num_hidden_nodes);beta];
     beta = [ones(num_data_cols,1) beta];
     theta = [ones(1,num_output_nodes);theta];
 end

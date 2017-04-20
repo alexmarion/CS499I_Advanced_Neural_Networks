@@ -1,4 +1,4 @@
-function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to_input,should_add_bias_to_hidden,should_std_data,should_perform_PCA,should_perform_LDA,num_hidden_nodes,training_iters,image_size )
+function [ testing_accuracy,training_accuracy ] = train_multi_class_ANN( should_add_bias_to_input,should_add_bias_to_hidden,should_std_data,should_perform_PCA,num_hidden_nodes,training_iters,image_size )
     %% Control Flow Values
     data_selection_type = 0;
     percent_field_retention = .95;
@@ -42,18 +42,11 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
     
     %% Perform PCA
     if should_perform_PCA
-        % TODO: call PCA on testing and training and change way features
-        % are kept
         projection_vectors = PCA(std_training_fields,percent_field_retention);
         std_training_fields = std_training_fields * projection_vectors;
         std_testing_fields = std_testing_fields * projection_vectors;
         
         num_data_cols = length(std_training_fields(1,:));
-    end
-    
-    %% Perform LDA
-    if should_perform_LDA
-        % TODO: Implement multi class LDA
     end
 
     %% Add bias nodes to input layer
@@ -86,7 +79,7 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
     end
 
     % Matrix to track training error for plotting
-    training_error = zeros(training_iters, 2);
+    training_accuracy = zeros(training_iters, 2);
 
     while iter < training_iters
         iter = iter + 1;    
@@ -115,8 +108,8 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
 
         % Log training error
         num_correct = numel(find(~(training_classes - training_o)));
-        err = 1 - (num_correct/num_training_rows);
-        training_error(iter,:) = [iter,err];
+        acc = num_correct/num_training_rows;
+        training_accuracy(iter,:) = [iter,acc];
     end
 
     %% Testing
@@ -131,11 +124,11 @@ function [ Accuracy,training_error ] = train_multi_class_ANN( should_add_bias_to
 
     % Compute number of correct predictions
     num_correct = numel(find(~(testing_classes - testing_o)));
-    Accuracy = num_correct/num_testing_rows;
+    testing_accuracy = num_correct/num_testing_rows;
     
     % Plot the training error
     figure();
-    plot(training_error(:,1), training_error(:,2));
+    plot(training_accuracy(:,1), training_accuracy(:,2));
     legend('Training Error');
     xlabel('Iteration');
     ylabel('Error');
