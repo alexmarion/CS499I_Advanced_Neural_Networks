@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 APR 2017 20:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 APR 2017 20:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -272,144 +272,46 @@ Package pdftex.def Info: accuracy_imgs/baseline_training_accuracy.png used on in
  [1 <./accuracy_imgs/baseline_training_accuracy.png (PNG copy)>] <accuracy_imgs/NNNN_training_accuracy.png, id=14, 513.92pt x 385.44pt>
 File: accuracy_imgs/NNNN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/NNNN_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/NNNN_training_accuracy.png used on input line 180.
+Package pdftex.def Info: accuracy_imgs/NNNN_training_accuracy.png used on input line 164.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  <accuracy_imgs/YNNN_training_accuracy.png, id=15, 513.92pt x 385.44pt>
 File: accuracy_imgs/YNNN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/YNNN_training_accuracy.png>
 Package pdftex.def Info: accuracy_imgs/YNNN_training_accuracy.png used on input line 183.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ <accuracy_imgs/NYNN_training_accuracy.png, id=16, 513.92pt x 385.44pt>
+File: accuracy_imgs/NYNN_training_accuracy.png Graphic file (type png)
+ <use accuracy_imgs/NYNN_training_accuracy.png>
+Package pdftex.def Info: accuracy_imgs/NYNN_training_accuracy.png used on input line 186.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [2 <./accuracy_imgs/NNNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNNN_training_accuracy.png (PNG copy)>] <accuracy_imgs/NNNY_training_accuracy.png, id=20, 513.92pt x 385.44pt>
+File: accuracy_imgs/NNNY_training_accuracy.png Graphic file (type png)
+ <use accuracy_imgs/NNNY_training_accuracy.png>
+Package pdftex.def Info: accuracy_imgs/NNNY_training_accuracy.png used on input line 189.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ <accuracy_imgs/YYNN_training_accuracy.png, id=21, 513.92pt x 385.44pt>
+File: accuracy_imgs/YYNN_training_accuracy.png Graphic file (type png)
+ <use accuracy_imgs/YYNN_training_accuracy.png>
+Package pdftex.def Info: accuracy_imgs/YYNN_training_accuracy.png used on input line 192.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [3 <./accuracy_imgs/NYNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/NNNY_training_accuracy.png (PNG copy)>] <accuracy_imgs/YNYN_training_accuracy.png, id=25, 513.92pt x 385.44pt>
+File: accuracy_imgs/YNYN_training_accuracy.png Graphic file (type png)
+ <use accuracy_imgs/YNYN_training_accuracy.png>
+Package pdftex.def Info: accuracy_imgs/YNYN_training_accuracy.png used on input line 195.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ <accuracy_imgs/YNNY_training_accuracy.png, id=26, 513.92pt x 385.44pt>
+File: accuracy_imgs/YNNY_training_accuracy.png Graphic file (type png)
+ <use accuracy_imgs/YNNY_training_accuracy.png>
+Package pdftex.def Info: accuracy_imgs/YNNY_training_accuracy.png used on input line 198.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
+ [4 <./accuracy_imgs/YYNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNYN_training_accuracy.png (PNG copy)>] <accuracy_imgs/NYYN_training_accuracy.png, id=30, 513.92pt x 385.44pt>
+File: accuracy_imgs/NYYN_training_accuracy.png Graphic file (type png)
+ <use accuracy_imgs/NYYN_training_accuracy.png>
+Package pdftex.def Info: accuracy_imgs/NYYN_training_accuracy.png used on input line 201.
+(pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
 
-./ANN.tex:216: Undefined control sequence.
-l.216       \accuracyAndTestErrorTable
-                                      {N}{N}{N}{N}{N}{0.145455}{0.854545}{NN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `NNNNN_training_error.png' not found on input line 222.
-
-
-./ANN.tex:222: Package pdftex.def Error: File `NNNNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.222 ...cs[width=100mm]{NNNNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[2 <./accuracy_imgs/NNNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNNN_training_accuracy.png (PNG copy)>]
-./ANN.tex:234: Undefined control sequence.
-l.234       \accuracyAndTestErrorTable
-                                      {Y}{N}{N}{N}{N}{0.272727}{0.727273}{YN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YNNNN_training_error.png' not found on input line 240.
-
-
-./ANN.tex:240: Package pdftex.def Error: File `YNNNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.240 ...cs[width=100mm]{YNNNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-./ANN.tex:253: Undefined control sequence.
-l.253       \accuracyAndTestErrorTable
-                                      {N}{Y}{N}{N}{N}{0.181818}{0.818182}{NY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `NYNNN_training_error.png' not found on input line 259.
-
-
-./ANN.tex:259: Package pdftex.def Error: File `NYNNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.259 ...cs[width=100mm]{NYNNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[3]
-./ANN.tex:271: Undefined control sequence.
-l.271       \accuracyAndTestErrorTable
-                                      {N}{N}{N}{Y}{N}{0.254545}{0.745455}{NN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `NNNYN_training_error.png' not found on input line 277.
-
-
-./ANN.tex:277: Package pdftex.def Error: File `NNNYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.277 ...cs[width=100mm]{NNNYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[4]
-./ANN.tex:295: Undefined control sequence.
-l.295       \accuracyAndTestErrorTable
-                                      {Y}{Y}{N}{N}{N}{0.400000}{0.600000}{YY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YYNNN_training_error.png' not found on input line 301.
-
-
-./ANN.tex:301: Package pdftex.def Error: File `YYNNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.301 ...cs[width=100mm]{YYNNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-./ANN.tex:313: Undefined control sequence.
-l.313       \accuracyAndTestErrorTable
+./ANN.tex:225: Undefined control sequence.
+l.225       \accuracyAndTestErrorTable
                                       {Y}{N}{Y}{N}{N}{0.818182}{0.181818}{YN...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -418,326 +320,69 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: File `YNYNN_training_error.png' not found on input line 319.
+LaTeX Warning: File `YNYNN_training_error.png' not found on input line 231.
 
 
-./ANN.tex:319: Package pdftex.def Error: File `YNYNN_training_error.png' not found.
+./ANN.tex:231: Package pdftex.def Error: File `YNYNN_training_error.png' not found.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.319 ...cs[width=100mm]{YNYNN_training_error.png}
+l.231 ...cs[width=100mm]{YNYNN_training_error.png}
                                                   
 Using draft setting for this image.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[5]
-./ANN.tex:331: Undefined control sequence.
-l.331       \accuracyAndTestErrorTable
-                                      {Y}{N}{N}{Y}{N}{0.200000}{0.800000}{YN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+[5 <./accuracy_imgs/YNNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYYN_training_accuracy.png (PNG copy)>]
+
+LaTeX Warning: File `num_iterations_empirical.png' not found on input line 242.
 
 
-LaTeX Warning: File `YNNYN_training_error.png' not found on input line 337.
-
-
-./ANN.tex:337: Package pdftex.def Error: File `YNNYN_training_error.png' not found.
+./ANN.tex:242: Package pdftex.def Error: File `num_iterations_empirical.png' not found.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.337 ...cs[width=100mm]{YNNYN_training_error.png}
+l.242 ...idth=125mm]{num_iterations_empirical.png}
                                                   
 Using draft setting for this image.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [6]
-./ANN.tex:353: Undefined control sequence.
-l.353       \accuracyAndTestErrorTable
-                                      {N}{Y}{Y}{N}{N}{0.818182}{0.181818}{NY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+
+LaTeX Warning: File `hidden_node_empirical.png' not found on input line 249.
 
 
-LaTeX Warning: File `NYYNN_training_error.png' not found on input line 359.
-
-
-./ANN.tex:359: Package pdftex.def Error: File `NYYNN_training_error.png' not found.
+./ANN.tex:249: Package pdftex.def Error: File `hidden_node_empirical.png' not found.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.359 ...cs[width=100mm]{NYYNN_training_error.png}
+l.249 ...s[width=125mm]{hidden_node_empirical.png}
                                                   
 Using draft setting for this image.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-./ANN.tex:371: Undefined control sequence.
-l.371       \accuracyAndTestErrorTable
-                                      {N}{Y}{N}{Y}{N}{0.254545}{0.745455}{NY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `NYNYN_training_error.png' not found on input line 377.
-
-
-./ANN.tex:377: Package pdftex.def Error: File `NYNYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.377 ...cs[width=100mm]{NYNYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[7]
-./ANN.tex:393: Undefined control sequence.
-l.393       \accuracyAndTestErrorTable
-                                      {N}{N}{Y}{Y}{N}{0.145455}{0.854545}{NN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `NNYYN_training_error.png' not found on input line 399.
-
-
-./ANN.tex:399: Package pdftex.def Error: File `NNYYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.399 ...cs[width=100mm]{NNYYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[8]
-./ANN.tex:415: Undefined control sequence.
-l.415       \accuracyAndTestErrorTable
-                                      {Y}{Y}{Y}{N}{N}{0.800000}{0.200000}{YY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YYYNN_training_error.png' not found on input line 421.
-
-
-./ANN.tex:421: Package pdftex.def Error: File `YYYNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.421 ...cs[width=100mm]{YYYNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-./ANN.tex:433: Undefined control sequence.
-l.433       \accuracyAndTestErrorTable
-                                      {Y}{Y}{N}{Y}{N}{0.200000}{0.800000}{YY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YYNYN_training_error.png' not found on input line 439.
-
-
-./ANN.tex:439: Package pdftex.def Error: File `YYNYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.439 ...cs[width=100mm]{YYNYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[9]
-./ANN.tex:455: Undefined control sequence.
-l.455       \accuracyAndTestErrorTable
-                                      {Y}{N}{Y}{Y}{N}{0.181818}{0.818182}{YN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YNYYN_training_error.png' not found on input line 461.
-
-
-./ANN.tex:461: Package pdftex.def Error: File `YNYYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.461 ...cs[width=100mm]{YNYYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[10]
-./ANN.tex:477: Undefined control sequence.
-l.477       \accuracyAndTestErrorTable
-                                      {N}{Y}{Y}{Y}{N}{0.145455}{0.854545}{NY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `NYYYN_training_error.png' not found on input line 483.
-
-
-./ANN.tex:483: Package pdftex.def Error: File `NYYYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.483 ...cs[width=100mm]{NYYYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-./ANN.tex:499: Undefined control sequence.
-l.499       \accuracyAndTestErrorTable
-                                      {Y}{Y}{Y}{Y}{N}{0.181818}{0.818182}{YY...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YYYYN_training_error.png' not found on input line 505.
-
-
-./ANN.tex:505: Package pdftex.def Error: File `YYYYN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.505 ...cs[width=100mm]{YYYYN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[11]
-./ANN.tex:520: Undefined control sequence.
-l.520       \accuracyAndTestErrorTable
-                                      {Y}{N}{Y}{N}{N}{0.818182}{0.181818}{YN...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `YNYNN_training_error.png' not found on input line 526.
-
-
-./ANN.tex:526: Package pdftex.def Error: File `YNYNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.526 ...cs[width=100mm]{YNYNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[12]
-
-LaTeX Warning: File `num_iterations_empirical.png' not found on input line 537.
-
-
-./ANN.tex:537: Package pdftex.def Error: File `num_iterations_empirical.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.537 ...idth=125mm]{num_iterations_empirical.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[13]
-
-LaTeX Warning: File `hidden_node_empirical.png' not found on input line 544.
-
-
-./ANN.tex:544: Package pdftex.def Error: File `hidden_node_empirical.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.544 ...s[width=125mm]{hidden_node_empirical.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[14] [15] (./ANN.aux) ) 
+[7] [8] (./ANN.aux) ) 
 Here is how much of TeX's memory you used:
- 2836 strings out of 493014
- 39709 string characters out of 6133351
- 109584 words of memory out of 5000000
- 6320 multiletter control sequences out of 15000+600000
+ 2834 strings out of 493014
+ 40431 string characters out of 6133351
+ 110419 words of memory out of 5000000
+ 6326 multiletter control sequences out of 15000+600000
  10587 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,32p,336b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on ANN.pdf (16 pages, 102074 bytes).
+Output written on ANN.pdf (9 pages, 159198 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
