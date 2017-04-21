@@ -46,7 +46,7 @@
       \hfill
       \begin{minipage}[b]{0.6\linewidth}
         \centering
-        \includegraphics[width=100mm]{accuracy_imgs/#1#2#3#4_training_accuracy.png}
+        \includegraphics[width=100mm]{./accuracy_imgs/#1#2#3#4_training_accuracy.png}
         \captionof{figure}{#1#2#3#4 Training Accuracy}
         \label{fig:#1#2#3#4}
       \end{minipage}
@@ -208,22 +208,7 @@ All variants were tested using 40 by 40 sized images, a hidden layer size of 20,
 
 \section{Empirical Parameter Accuracy Testing}
 All empirical data was gathered using the following variant which had the highest accuracy from the variant testing:
-\begin{center}
-  \begin{table}[H]
-    \begin{varwidth}[b]{0.4\linewidth}
-      \centering
-      \accuracyAndTestErrorTable{Y}{N}{Y}{N}{N}{0.818182}{0.181818}{YNYNN accuracy and testing}
-      \label{table:param_base}
-    \end{varwidth}%
-    \hfill
-    \begin{minipage}[b]{0.6\linewidth}
-      \centering
-      \includegraphics[width=100mm]{YNYNN_training_error.png}
-      \captionof{figure}{Plot of YNYNN training error}
-      \label{fig:param_base}
-    \end{minipage}
-  \end{table}
-\end{center}
+\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.8182}
 
 \begin{enumerate}
   \item Number of Training Iterations
