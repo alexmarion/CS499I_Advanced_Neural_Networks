@@ -12,25 +12,46 @@
 %                   #2 hidden layer bias node
 %                   #3 standardization of features
 %                   #4 PCA applied
-%                   #5 LDA applied
-%                   #6 Accuracy
-%                   #7 Testing Error
-%                   #8 Table Caption
-\newcommand{\accuracyAndTestErrorTable}[8]{
+%                   #5 Testing Accuracy
+%                   #6 Table Caption
+\newcommand{\testingAccuracyTable}[6] {
   \begin{tabular}{l|l}
     \hline
     Input layer bias node & #1 \\
     Hidden layer bias node & #2 \\
     Standardization of features & #3 \\
     PCA applied & #4 \\
-    LDA applied & #5 \\
     \hline
-    Testing Accuracy & #6 \\
-    Testing Error & #7 \\
+    Testing Accuracy & #5 \\
     \hline
   \end{tabular}
   ~\\[60pt]
-  \caption{#8}
+  \caption{#6}
+}
+
+% Define a command to layout a table and plot
+% Inpute values are #1 input layer bias node
+%                   #2 hidden layer bias node
+%                   #3 standardization of features
+%                   #4 PCA applied
+%                   #5 Testing Accuracy
+\newcommand{\testingAccuracyTableAndPlot}[5] {
+  \begin{center}
+    \begin{table}[H]
+      \begin{varwidth}[b]{0.4\linewidth}
+        \centering
+        \testingAccuracyTable{#1}{#2}{#3}{#4}{#5}{#1#2#3#4 Testing Accuracy}
+        \label{table:#1#2#3#4}
+      \end{varwidth}%
+      \hfill
+      \begin{minipage}[b]{0.6\linewidth}
+        \centering
+        \includegraphics[width=100mm]{accuracy_imgs/#1#2#3#4_training_accuracy.png}
+        \captionof{figure}{#1#2#3#4 Training Accuracy}
+        \label{fig:#1#2#3#4}
+      \end{minipage}
+    \end{table}
+  \end{center}
 }
 
 \begin{document}
@@ -109,7 +130,6 @@ The following variants are tested for accuracy:
   \item With and without a bias node at the hidden layer
   \item With and without standardizing features
   \item With and without applying PCA to reduce the number of features to 95\%
-  \item With and without applying LDA to maximize data separability
 \end{enumerate}
 Empirical data was generated to optimize the following parameters:
 \begin{enumerate}
@@ -124,22 +144,71 @@ The baseline accuracy was created using the negative form of all variants with t
   \begin{table}[H]
     \begin{varwidth}[b]{0.4\linewidth}
       \centering
-      \accuracyAndTestErrorTable{N}{N}{Y}{N}{N}{0.800000}{0.200000}{Baseline accuracy and testing}
+      \testingAccuracyTable{N}{N}{Y}{N}{0.800000}{Baseline Testing Accuracy}
       \label{table:baseline}
     \end{varwidth}%
     \hfill
     \begin{minipage}[b]{0.6\linewidth}
       \centering
-      \includegraphics[width=100mm]{baseline_training_error.png}
-      \captionof{figure}{Plot of baseline training error}
+      \includegraphics[width=100mm]{accuracy_imgs/baseline_training_accuracy.png}
+      \captionof{figure}{Baseline Training Accuracy}
       \label{fig:baseline_img}
     \end{minipage}
   \end{table}
 \end{center}
 
-% NNNNN
 \section{Variant Accuracy Testing}
 All variants were tested using 40 by 40 sized images, a hidden layer size of 20, and 1000 training iterations.
+
+% NNNN
+\testingAccuracyTableAndPlot{N}{N}{N}{N}{0.1455}
+% \begin{center}
+%   \begin{table}[H]
+%     \begin{varwidth}[b]{0.4\linewidth}
+%       \centering
+%       \testingAccuracyTable{N}{N}{N}{N}{0.1455}{NNNN Testing Accuracy}
+%       \label{table:NNNN}
+%     \end{varwidth}%
+%     \hfill
+%     \begin{minipage}[b]{0.6\linewidth}
+%       \centering
+%       \includegraphics[width=100mm]{accuracy_imgs/NNNN_training_accuracy.png}
+%       \captionof{figure}{NNNN Training Accuracy}
+%       \label{fig:NNNN}
+%     \end{minipage}
+%   \end{table}
+% \end{center}
+
+% YNNN
+\testingAccuracyTableAndPlot{Y}{N}{N}{N}{0.2727}
+
+% NYNN
+
+% NNNY
+
+% YYNN
+
+% YNYN
+
+% YNNY
+
+% NYYN
+
+% NYNY
+
+% NNYY
+
+% YYYN
+
+% YYNY
+
+% YNYY
+
+% NYYY
+
+% YYYY
+
+% NNNNN
 \begin{center}
   \begin{table}[H]
     \begin{varwidth}[b]{0.4\linewidth}

@@ -137,7 +137,7 @@ testing_o = activation_fxn(testing_h * theta);
 
 % Compute number of correct predictions
 num_correct = numel(find(~(testing_classes - testing_o)));
-testing_accuracy = num_correct/num_testing_rows;
+testing_accuracy = num_correct/num_testing_rows
 
 % Plot the training error
 figure();
