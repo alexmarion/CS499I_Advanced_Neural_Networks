@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 APR 2017 20:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 APR 2017 20:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -277,41 +277,157 @@ Package pdftex.def Info: accuracy_imgs/NNNN_training_accuracy.png used on input 
  <accuracy_imgs/YNNN_training_accuracy.png, id=15, 513.92pt x 385.44pt>
 File: accuracy_imgs/YNNN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/YNNN_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/YNNN_training_accuracy.png used on input line 183.
+Package pdftex.def Info: accuracy_imgs/YNNN_training_accuracy.png used on input line 167.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  <accuracy_imgs/NYNN_training_accuracy.png, id=16, 513.92pt x 385.44pt>
 File: accuracy_imgs/NYNN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/NYNN_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/NYNN_training_accuracy.png used on input line 186.
+Package pdftex.def Info: accuracy_imgs/NYNN_training_accuracy.png used on input line 170.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  [2 <./accuracy_imgs/NNNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNNN_training_accuracy.png (PNG copy)>] <accuracy_imgs/NNNY_training_accuracy.png, id=20, 513.92pt x 385.44pt>
 File: accuracy_imgs/NNNY_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/NNNY_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/NNNY_training_accuracy.png used on input line 189.
+Package pdftex.def Info: accuracy_imgs/NNNY_training_accuracy.png used on input line 173.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  <accuracy_imgs/YYNN_training_accuracy.png, id=21, 513.92pt x 385.44pt>
 File: accuracy_imgs/YYNN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/YYNN_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/YYNN_training_accuracy.png used on input line 192.
+Package pdftex.def Info: accuracy_imgs/YYNN_training_accuracy.png used on input line 176.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  [3 <./accuracy_imgs/NYNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/NNNY_training_accuracy.png (PNG copy)>] <accuracy_imgs/YNYN_training_accuracy.png, id=25, 513.92pt x 385.44pt>
 File: accuracy_imgs/YNYN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/YNYN_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/YNYN_training_accuracy.png used on input line 195.
+Package pdftex.def Info: accuracy_imgs/YNYN_training_accuracy.png used on input line 179.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  <accuracy_imgs/YNNY_training_accuracy.png, id=26, 513.92pt x 385.44pt>
 File: accuracy_imgs/YNNY_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/YNNY_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/YNNY_training_accuracy.png used on input line 198.
+Package pdftex.def Info: accuracy_imgs/YNNY_training_accuracy.png used on input line 182.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  [4 <./accuracy_imgs/YYNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNYN_training_accuracy.png (PNG copy)>] <accuracy_imgs/NYYN_training_accuracy.png, id=30, 513.92pt x 385.44pt>
 File: accuracy_imgs/NYYN_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/NYYN_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/NYYN_training_accuracy.png used on input line 201.
+Package pdftex.def Info: accuracy_imgs/NYYN_training_accuracy.png used on input line 185.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
 
-./ANN.tex:225: Undefined control sequence.
-l.225       \accuracyAndTestErrorTable
+
+LaTeX Warning: File `accuracy_imgs/NYNY_training_accuracy.png' not found on input line 188.
+
+
+./ANN.tex:188: Package pdftex.def Error: File `accuracy_imgs/NYNY_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.188 ...gAccuracyTableAndPlot{N}{Y}{N}{Y}{0.2364}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[5 <./accuracy_imgs/YNNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYYN_training_accuracy.png (PNG copy)>]
+
+LaTeX Warning: File `accuracy_imgs/NNYY_training_accuracy.png' not found on input line 191.
+
+
+./ANN.tex:191: Package pdftex.def Error: File `accuracy_imgs/NNYY_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.191 ...gAccuracyTableAndPlot{N}{N}{Y}{Y}{0.8000}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `accuracy_imgs/YYYN_training_accuracy.png' not found on input line 194.
+
+
+./ANN.tex:194: Package pdftex.def Error: File `accuracy_imgs/YYYN_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.194 ...gAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.8000}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[6]
+
+LaTeX Warning: File `accuracy_imgs/YYNY_training_accuracy.png' not found on input line 197.
+
+
+./ANN.tex:197: Package pdftex.def Error: File `accuracy_imgs/YYNY_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.197 ...gAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.2000}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `accuracy_imgs/YNYY_training_accuracy.png' not found on input line 200.
+
+
+./ANN.tex:200: Package pdftex.def Error: File `accuracy_imgs/YNYY_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.200 ...gAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.8182}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[7]
+
+LaTeX Warning: File `accuracy_imgs/NYYY_training_accuracy.png' not found on input line 203.
+
+
+./ANN.tex:203: Package pdftex.def Error: File `accuracy_imgs/NYYY_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.203 ...gAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.8000}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `accuracy_imgs/YYYY_training_accuracy.png' not found on input line 206.
+
+
+./ANN.tex:206: Package pdftex.def Error: File `accuracy_imgs/YYYY_training_accuracy.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.206 ...gAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.8182}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[8]
+./ANN.tex:215: Undefined control sequence.
+l.215       \accuracyAndTestErrorTable
                                       {Y}{N}{Y}{N}{N}{0.818182}{0.181818}{YN...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -320,69 +436,69 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-LaTeX Warning: File `YNYNN_training_error.png' not found on input line 231.
+LaTeX Warning: File `YNYNN_training_error.png' not found on input line 221.
 
 
-./ANN.tex:231: Package pdftex.def Error: File `YNYNN_training_error.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231 ...cs[width=100mm]{YNYNN_training_error.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[5 <./accuracy_imgs/YNNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYYN_training_accuracy.png (PNG copy)>]
-
-LaTeX Warning: File `num_iterations_empirical.png' not found on input line 242.
-
-
-./ANN.tex:242: Package pdftex.def Error: File `num_iterations_empirical.png' not found.
+./ANN.tex:221: Package pdftex.def Error: File `YNYNN_training_error.png' not found.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.242 ...idth=125mm]{num_iterations_empirical.png}
+l.221 ...cs[width=100mm]{YNYNN_training_error.png}
                                                   
 Using draft setting for this image.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[6]
+[9]
 
-LaTeX Warning: File `hidden_node_empirical.png' not found on input line 249.
+LaTeX Warning: File `num_iterations_empirical.png' not found on input line 232.
 
 
-./ANN.tex:249: Package pdftex.def Error: File `hidden_node_empirical.png' not found.
+./ANN.tex:232: Package pdftex.def Error: File `num_iterations_empirical.png' not found.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.249 ...s[width=125mm]{hidden_node_empirical.png}
+l.232 ...idth=125mm]{num_iterations_empirical.png}
                                                   
 Using draft setting for this image.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[7] [8] (./ANN.aux) ) 
+[10]
+
+LaTeX Warning: File `hidden_node_empirical.png' not found on input line 239.
+
+
+./ANN.tex:239: Package pdftex.def Error: File `hidden_node_empirical.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.239 ...s[width=125mm]{hidden_node_empirical.png}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[11] [12] (./ANN.aux) ) 
 Here is how much of TeX's memory you used:
- 2834 strings out of 493014
- 40431 string characters out of 6133351
- 110419 words of memory out of 5000000
- 6326 multiletter control sequences out of 15000+600000
+ 2855 strings out of 493014
+ 40739 string characters out of 6133351
+ 110549 words of memory out of 5000000
+ 6340 multiletter control sequences out of 15000+600000
  10587 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,32p,336b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on ANN.pdf (9 pages, 159198 bytes).
+Output written on ANN.pdf (13 pages, 162492 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
