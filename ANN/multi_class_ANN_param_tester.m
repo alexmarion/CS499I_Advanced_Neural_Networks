@@ -45,17 +45,21 @@ rng(0);
 % hold off;
 
 %% Size of Image Testing
-image_sizes = 1:300;
+image_sizes = 10:10:100;
 training_accuracies = zeros(numel(image_sizes),2);
 testing_accuracies = zeros(numel(image_sizes),2);
 
-for i=1:numel(image_sizes)
+tic
+
+parfor(i=1:numel(image_sizes),4)
     image_size = image_sizes(i);
-    disp(image_size);
-    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,500,10,image_size);
+    % disp(image_size);
+    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,500,image_size);
     training_accuracies(i,:) = [image_size,training_accuracy(end,2)];
     testing_accuracies(i,:) = [image_size,testing_accuracy];
 end
+
+toc
 
 figure();
 hold on;
