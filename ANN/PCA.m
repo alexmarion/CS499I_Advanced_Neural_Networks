@@ -9,6 +9,18 @@ function [ projection_vectors ] = PCA( fields,percent_field_retention )
     while sum(sum(D(:,count:end)))/T < percent_field_retention
         count = count - 1;
     end
-    projection_vectors = V(:,count:end);    
+    projection_vectors = V(:,count:end);
+
+
+    % Get sum of all eigenvalues
+%     [V,D] = pca(fields);
+%     T = sum(D(:));
+%     
+%     count = size(D,1);
+%     while sum(sum(D(:,count:end)))/T < percent_field_retention
+%         count = count - 1;
+%     end
+%     %projection_vectors = V(:,count:end);   
+%     projection_vectors = D(:,1:34);
 end
 
