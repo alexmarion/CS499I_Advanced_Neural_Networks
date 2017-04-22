@@ -52,7 +52,7 @@ testing_accuracies = zeros(numel(image_sizes),2);
 for i=1:numel(image_sizes)
     image_size = image_sizes(i);
     disp(image_size);
-    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,10,image_size);
+    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,500,10,image_size);
     training_accuracies(i,:) = [image_size,training_accuracy(end,2)];
     testing_accuracies(i,:) = [image_size,testing_accuracy];
 end
