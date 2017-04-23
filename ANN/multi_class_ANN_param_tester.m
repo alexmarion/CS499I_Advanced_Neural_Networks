@@ -65,9 +65,15 @@ toc
 
 figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2));
-plot(testing_accuracies(:,1), testing_accuracies(:,2));
-legend('Training Accuracy','Testing Accuracy');
+plot(training_accuracies(:,1), training_accuracies(:,2),'bx');
+[xPts,yPts] = get_trendline(training_accuracies,10,100,3);
+plot(xPts,yPts,'b');
+
+plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
+[xPts,yPts] = get_trendline(testing_accuracies,10,100,3);
+plot(xPts,yPts,'r');
+
+legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
 xlabel('Image Size');
 ylabel('Accuracy');
 hold off;
