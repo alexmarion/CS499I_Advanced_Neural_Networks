@@ -44,30 +44,61 @@ rng(0);
 % ylabel('Accuracy');
 % hold off;
 
+% %% Size of Image Testing
+% image_sizes = 10:5:200;
+% training_accuracies = zeros(numel(image_sizes),2);
+% testing_accuracies = zeros(numel(image_sizes),2);
+% 
+% tic
+% 
+% for(i=1:numel(image_sizes))
+%     break;
+%     image_size = image_sizes(i);
+%     disp(image_size);
+%     [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,500,image_size);
+%     training_accuracies(i,:) = [image_size,training_accuracy(end,2)];
+%     testing_accuracies(i,:) = [image_size,testing_accuracy];
+%     break;
+% end
+% 
+% toc
+% 
+% figure();
+% hold on;
+% plot(training_accuracies(:,1), training_accuracies(:,2));
+% plot(testing_accuracies(:,1), testing_accuracies(:,2));
+% legend('Training Accuracy','Testing Accuracy');
+% xlabel('Image Size');
+% ylabel('Accuracy');
+% hold off;
+
 %% Size of Image Testing
-image_sizes = 10:5:200;
-training_accuracies = zeros(numel(image_sizes),2);
-testing_accuracies = zeros(numel(image_sizes),2);
+learning_rates = 0.05:0.05:20;
+training_accuracies = zeros(numel(learning_rates),2);
+testing_accuracies = zeros(numel(learning_rates),2);
 
 tic
 
-for(i=1:numel(image_sizes))
-    break;
-    image_size = image_sizes(i);
-    disp(image_size);
-    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,500,image_size);
-    training_accuracies(i,:) = [image_size,training_accuracy(end,2)];
-    testing_accuracies(i,:) = [image_size,testing_accuracy];
-    break;
+for i=1:numel(learning_rates)
+    learning_rate = learning_rates(i);
+    disp(learning_rate);
+    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,50,30,learning_rate);
+    training_accuracies(i,:) = [learning_rate,training_accuracy(end,2)];
+    testing_accuracies(i,:) = [learning_rate,testing_accuracy];
 end
 
 toc
 
 figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2));
-plot(testing_accuracies(:,1), testing_accuracies(:,2));
+plot(training_accuracies(:,1), training_accuracies(:,2),'x');
+plot(testing_accuracies(:,1), testing_accuracies(:,2),'o');
+training_coeffs = polyfit(training_accuracies(:,1), training_accuracies(:,2),3);
+testing_coeffs = polyfit(testing_accuracies(:,1), testing_accuracies(:,2),3);
+xPts = 0.05:0.01:20;
+plot(xPts,polyval(training_coeffs, xPts),'k');
+plot(xPts,polyval(testing_coeffs, xPts), 'k');
 legend('Training Accuracy','Testing Accuracy');
-xlabel('Image Size');
+xlabel('Learning Rate');
 ylabel('Accuracy');
 hold off;
