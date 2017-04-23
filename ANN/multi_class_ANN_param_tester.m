@@ -26,40 +26,40 @@ rng(0);
 % plot(xPts,yPts,'r');
 % 
 % legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
-% xlabel('Image Size');
+% xlabel('Number of Iterations');
 % ylabel('Accuracy');
 % hold off;
 
 %% Number of Hidden Nodes Testing
-start_pt = 20;
-end_pt = 1600;
-num_hidden_nodes = 20:20:1600;
-training_accuracies = zeros(numel(num_hidden_nodes),2);
-testing_accuracies = zeros(numel(num_hidden_nodes),2);
-
-for i=1:numel(num_hidden_nodes)
-    num_hidden = num_hidden_nodes(i);
-    disp(num_hidden);
-    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,num_hidden,10,40,0.5);
-    training_accuracies(i,:) = [num_hidden,training_accuracy(end,2)];
-    testing_accuracies(i,:) = [num_hidden,testing_accuracy];
-end
-
-figure();
-hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'bx');
-[xPts,yPts] = get_trendline(training_accuracies,start_pt,end_pt,3);
-plot(xPts,yPts,'b');
-
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
-[xPts,yPts] = get_trendline(testing_accuracies,start_pt,end_pt,3);
-plot(xPts,yPts,'r');
-
-legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
-xlabel('Image Size');
-ylabel('Accuracy');
-hold off;
-
+% start_pt = 20;
+% end_pt = 1600;
+% num_hidden_nodes = start_pt:20:end_pt;
+% training_accuracies = zeros(numel(num_hidden_nodes),2);
+% testing_accuracies = zeros(numel(num_hidden_nodes),2);
+% 
+% for i=1:numel(num_hidden_nodes)
+%     num_hidden = num_hidden_nodes(i);
+%     disp(num_hidden);
+%     [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,num_hidden,10,40,0.5);
+%     training_accuracies(i,:) = [num_hidden,training_accuracy(end,2)];
+%     testing_accuracies(i,:) = [num_hidden,testing_accuracy];
+% end
+% 
+% figure();
+% hold on;
+% plot(training_accuracies(:,1), training_accuracies(:,2),'bx');
+% [xPts,yPts] = get_trendline(training_accuracies,start_pt,end_pt,3);
+% plot(xPts,yPts,'b');
+% 
+% plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
+% [xPts,yPts] = get_trendline(testing_accuracies,start_pt,end_pt,3);
+% plot(xPts,yPts,'r');
+% 
+% legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
+% xlabel('Number of Hidden Nodes');
+% ylabel('Accuracy');
+% hold off;
+% 
 
 %% Size of Image Testing
 % start_pt = 10;
@@ -126,6 +126,38 @@ hold off;
 % plot(xPts,yPts,'r');
 % 
 % legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
-% xlabel('Image Size');
+% xlabel('Learning Rate');
 % ylabel('Accuracy');
 % hold off;
+
+%% Percent Field Retention
+start_pt = 0.01;
+end_pt = 1;
+percent_field_retention = start_pt:0.01:end_pt;
+training_accuracies = zeros(numel(percent_field_retention),2);
+testing_accuracies = zeros(numel(percent_field_retention),2);
+
+parfor (i=1:numel(percent_field_retention),8)
+    percent_retention = percent_field_retention(i);
+    disp(percent_retention);
+    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,200,40,0.5,percent_retention);
+    training_accuracies(i,:) = [percent_retention,training_accuracy(end,2)];
+    testing_accuracies(i,:) = [percent_retention,testing_accuracy];
+end
+
+figure();
+hold on;
+plot(training_accuracies(:,1), training_accuracies(:,2),'xb');
+[xPts,yPts] = get_trendline(training_accuracies,start_pt,end_pt,3);
+plot(xPts,yPts,'b');
+
+plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
+[xPts,yPts] = get_trendline(testing_accuracies,start_pt,end_pt,3);
+plot(xPts,yPts,'r');
+
+legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
+xlabel('Percent Field Retention');
+ylabel('Accuracy');
+hold off;
+
+
