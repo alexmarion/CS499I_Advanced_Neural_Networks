@@ -59,7 +59,7 @@ rng(0);
 % xlabel('Number of Hidden Nodes');
 % ylabel('Accuracy');
 % hold off;
-% 
+
 
 %% Size of Image Testing
 % start_pt = 10;
