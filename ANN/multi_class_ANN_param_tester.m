@@ -91,14 +91,15 @@ toc
 
 figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'x');
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'o');
-training_coeffs = polyfit(training_accuracies(:,1), training_accuracies(:,2),3);
-testing_coeffs = polyfit(testing_accuracies(:,1), testing_accuracies(:,2),3);
-xPts = 0.05:0.01:20;
-plot(xPts,polyval(training_coeffs, xPts),'k');
-plot(xPts,polyval(testing_coeffs, xPts), 'k');
-legend('Training Accuracy','Testing Accuracy');
-xlabel('Learning Rate');
+plot(training_accuracies(:,1), training_accuracies(:,2),'bx');
+[xPts,yPts] = get_trendline(training_accuracies,10,100,3);
+plot(xPts,yPts,'b');
+
+plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
+[xPts,yPts] = get_trendline(testing_accuracies,10,100,3);
+plot(xPts,yPts,'r');
+
+legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
+xlabel('Image Size');
 ylabel('Accuracy');
 hold off;
