@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  23 APR 2017 23:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 APR 2017 11:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -359,53 +359,61 @@ File: ./accuracy_imgs/YYYY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YYYY_training_accuracy.png>
 Package pdftex.def Info: ./accuracy_imgs/YYYY_training_accuracy.png used on input line 208.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
+ [9 <./accuracy_imgs/NYYY_training_accuracy.png (PNG copy)> <./accuracy_imgs/YYYY_training_accuracy.png (PNG copy)>]
 File: ./accuracy_imgs/YNYY_training_accuracy.png Graphic file (type png)
- <use ./accuracy_imgs/YNYY_training_accuracy.png>
+
+<use ./accuracy_imgs/YNYY_training_accuracy.png>
 Package pdftex.def Info: ./accuracy_imgs/YNYY_training_accuracy.png used on input line 213.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- [9 <./accuracy_imgs/NYYY_training_accuracy.png (PNG copy)> <./accuracy_imgs/YYYY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/num_iterations_empirical.png, id=54, 833.1125pt x 670.505pt>
+ <./accuracy_imgs/num_iterations_empirical.png, id=54, 833.1125pt x 670.505pt>
 File: ./accuracy_imgs/num_iterations_empirical.png Graphic file (type png)
  <use ./accuracy_imgs/num_iterations_empirical.png>
 Package pdftex.def Info: ./accuracy_imgs/num_iterations_empirical.png used on input line 219.
-(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+(pdftex.def)             Requested size: 327.20668pt x 263.3375pt.
  [10 <./accuracy_imgs/num_iterations_empirical.png (PNG copy)>] <./accuracy_imgs/hidden_node_empirical_10_iters.png, id=58, 833.1125pt x 670.505pt>
 File: ./accuracy_imgs/hidden_node_empirical_10_iters.png Graphic file (type png)
  <use ./accuracy_imgs/hidden_node_empirical_10_iters.png>
 Package pdftex.def Info: ./accuracy_imgs/hidden_node_empirical_10_iters.png used on input line 226.
-(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+(pdftex.def)             Requested size: 327.20668pt x 263.3375pt.
  <./accuracy_imgs/img_size_empirical_500_iters.png, id=59, 805.0075pt x 645.41125pt>
 File: ./accuracy_imgs/img_size_empirical_500_iters.png Graphic file (type png)
  <use ./accuracy_imgs/img_size_empirical_500_iters.png>
 Package pdftex.def Info: ./accuracy_imgs/img_size_empirical_500_iters.png used on input line 233.
-(pdftex.def)             Requested size: 355.65944pt x 285.1439pt.
+(pdftex.def)             Requested size: 327.20668pt x 262.33556pt.
  [11 <./accuracy_imgs/hidden_node_empirical_10_iters.png (PNG copy)>] <./accuracy_imgs/learning_rate_empirical_500_iters.png, id=63, 833.1125pt x 670.505pt>
 File: ./accuracy_imgs/learning_rate_empirical_500_iters.png Graphic file (type png)
  <use ./accuracy_imgs/learning_rate_empirical_500_iters.png>
 Package pdftex.def Info: ./accuracy_imgs/learning_rate_empirical_500_iters.png used on input line 240.
-(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+(pdftex.def)             Requested size: 327.20668pt x 263.3375pt.
  [12 <./accuracy_imgs/img_size_empirical_500_iters.png (PNG copy)> <./accuracy_imgs/learning_rate_empirical_500_iters.png (PNG copy)>] <./accuracy_imgs/pca_retention_empirical_200.png, id=68, 833.1125pt x 670.505pt>
 File: ./accuracy_imgs/pca_retention_empirical_200.png Graphic file (type png)
- <use ./accuracy_imgs/pca_retention_empirical_200.png>
+
+<use ./accuracy_imgs/pca_retention_empirical_200.png>
 Package pdftex.def Info: ./accuracy_imgs/pca_retention_empirical_200.png used on input line 247.
-(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
- [13 <./accuracy_imgs/pca_retention_empirical_200.png (PNG copy)>] (./ANN.aux)
+(pdftex.def)             Requested size: 327.20668pt x 263.3375pt.
+ [13 <./accuracy_imgs/pca_retention_empirical_200.png (PNG copy)>] <./accuracy_imgs/optimal_network.png, id=72, 833.1125pt x 670.505pt>
+File: ./accuracy_imgs/optimal_network.png Graphic file (type png)
+ <use ./accuracy_imgs/optimal_network.png>
+Package pdftex.def Info: ./accuracy_imgs/optimal_network.png used on input line 283.
+(pdftex.def)             Requested size: 284.52756pt x 228.99179pt.
+ [14 <./accuracy_imgs/optimal_network.png (PNG copy)>] (./ANN.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2903 strings out of 493014
- 43275 string characters out of 6133351
- 110583 words of memory out of 5000000
- 6386 multiletter control sequences out of 15000+600000
+ 2910 strings out of 493014
+ 43492 string characters out of 6133351
+ 110603 words of memory out of 5000000
+ 6392 multiletter control sequences out of 15000+600000
  10418 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,32p,409b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ANN.pdf (14 pages, 471125 bytes).
+Output written on ANN.pdf (15 pages, 485063 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 91 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1493004802 "ANN.tex" "ANN.pdf" "ANN" 1493004802
+["pdflatex"] 1493048916 "ANN.tex" "ANN.pdf" "ANN" 1493048923
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -58,8 +58,8 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1486254116 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "ANN.aux" 1493004802 5625 3e96e1d53d2e7ac75f0c4702ac6bb814 ""
-  "ANN.tex" 1493004799 9822 4d3dfd39422ba3a0ff9c2070bd775e39 ""
+  "ANN.aux" 1493048916 5990 eb3b6de938e6708929c7201cf13fe0e3 ""
+  "ANN.tex" 1493048922 11098 5d3542d7f0fc51f64c974723f46ba960 ""
   "accuracy_imgs/NNNN_training_accuracy.png" 1492732899 9836 c17a44ac70571544644ef429a3468e41 ""
   "accuracy_imgs/NNNY_training_accuracy.png" 1492734311 9226 467d10bf32127f038cbf956effe0ab84 ""
   "accuracy_imgs/NNYY_training_accuracy.png" 1492735736 26718 fd3a28cb66381fd49e15e6f59ac0ac39 ""
@@ -80,8 +80,9 @@
   "accuracy_imgs/img_size_empirical_500_iters.png" 1492981591 21418 85d95227cdf50ee7a98cf38ce646923f ""
   "accuracy_imgs/learning_rate_empirical_500_iters.png" 1492984896 34635 36ef990c3732e52f8a60ade797f679de ""
   "accuracy_imgs/num_iterations_empirical.png" 1492981996 21269 845c9b811e18f0916edc78b71ef55257 ""
+  "accuracy_imgs/optimal_network.png" 1493046514 11848 63d9f91a02c5a4cc09146efdb51f599c ""
   "accuracy_imgs/pca_retention_empirical_200.png" 1492982144 26664 68bea10aef454cdcaff73f940c0c0e95 ""
   (generated)
-  "ANN.aux"
   "ANN.pdf"
+  "ANN.aux"
   "ANN.log"

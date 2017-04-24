@@ -164,6 +164,9 @@ INPUT ./accuracy_imgs/learning_rate_empirical_500_iters.png
 INPUT ./accuracy_imgs/pca_retention_empirical_200.png
 INPUT ./accuracy_imgs/pca_retention_empirical_200.png
 INPUT ./accuracy_imgs/pca_retention_empirical_200.png
+INPUT ./accuracy_imgs/optimal_network.png
+INPUT ./accuracy_imgs/optimal_network.png
+INPUT ./accuracy_imgs/optimal_network.png
 INPUT ANN.aux
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
