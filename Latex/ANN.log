@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  20 APR 2017 21:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  23 APR 2017 23:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -164,6 +164,12 @@ LaTeX Warning: Label `table:YNYY' multiply defined.
 
 LaTeX Warning: Label `fig:YNYY' multiply defined.
 
+
+LaTeX Warning: Label `fig:img_size' multiply defined.
+
+
+LaTeX Warning: Label `fig:img_size' multiply defined.
+
 )
 \openout1 = `ANN.aux'.
 
@@ -262,153 +268,144 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (2.25012pt too wide) in paragraph at lines 147--147
+Overfull \hbox (2.25012pt too wide) in paragraph at lines 149--149
  [][] 
  []
 
 
-Overfull \hbox (2.25012pt too wide) detected at line 149
+Overfull \hbox (2.25012pt too wide) detected at line 151
  [][] 
  []
 
 <accuracy_imgs/baseline_training_accuracy.png, id=10, 513.92pt x 385.44pt>
 File: accuracy_imgs/baseline_training_accuracy.png Graphic file (type png)
  <use accuracy_imgs/baseline_training_accuracy.png>
-Package pdftex.def Info: accuracy_imgs/baseline_training_accuracy.png used on input line 153.
+Package pdftex.def Info: accuracy_imgs/baseline_training_accuracy.png used on input line 155.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [1 <./accuracy_imgs/baseline_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NNNN_training_accuracy.png, id=14, 513.92pt x 385.44pt>
+ [1] <./accuracy_imgs/NNNN_training_accuracy.png, id=14, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/NNNN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NNNN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NNNN_training_accuracy.png used on input line 164.
+Package pdftex.def Info: ./accuracy_imgs/NNNN_training_accuracy.png used on input line 166.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
  <./accuracy_imgs/YNNN_training_accuracy.png, id=15, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/YNNN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YNNN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YNNN_training_accuracy.png used on input line 167.
+Package pdftex.def Info: ./accuracy_imgs/YNNN_training_accuracy.png used on input line 169.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- <./accuracy_imgs/NYNN_training_accuracy.png, id=16, 513.92pt x 385.44pt>
+ [2 <./accuracy_imgs/baseline_training_accuracy.png (PNG copy)> <./accuracy_imgs/NNNN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NYNN_training_accuracy.png, id=19, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/NYNN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NYNN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NYNN_training_accuracy.png used on input line 170.
+Package pdftex.def Info: ./accuracy_imgs/NYNN_training_accuracy.png used on input line 172.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [2 <./accuracy_imgs/NNNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNNN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NNNY_training_accuracy.png, id=20, 513.92pt x 385.44pt>
+ <./accuracy_imgs/NNNY_training_accuracy.png, id=20, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/NNNY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NNNY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NNNY_training_accuracy.png used on input line 173.
+Package pdftex.def Info: ./accuracy_imgs/NNNY_training_accuracy.png used on input line 175.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- <./accuracy_imgs/YYNN_training_accuracy.png, id=21, 513.92pt x 385.44pt>
+ [3 <./accuracy_imgs/YNNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYNN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/YYNN_training_accuracy.png, id=24, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/YYNN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YYNN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YYNN_training_accuracy.png used on input line 176.
+Package pdftex.def Info: ./accuracy_imgs/YYNN_training_accuracy.png used on input line 178.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [3 <./accuracy_imgs/NYNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/NNNY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/YNYN_training_accuracy.png, id=25, 513.92pt x 385.44pt>
+
+<./accuracy_imgs/YNYN_training_accuracy.png, id=25, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/YNYN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YNYN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YNYN_training_accuracy.png used on input line 179.
+Package pdftex.def Info: ./accuracy_imgs/YNYN_training_accuracy.png used on input line 181.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- <./accuracy_imgs/YNNY_training_accuracy.png, id=26, 513.92pt x 385.44pt>
+ [4 <./accuracy_imgs/NNNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/YYNN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/YNNY_training_accuracy.png, id=29, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/YNNY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YNNY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YNNY_training_accuracy.png used on input line 182.
+Package pdftex.def Info: ./accuracy_imgs/YNNY_training_accuracy.png used on input line 184.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- [4 <./accuracy_imgs/YYNN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNYN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NYYN_training_accuracy.png, id=30, 513.92pt x 385.44pt>
+ <./accuracy_imgs/NYYN_training_accuracy.png, id=30, 513.92pt x 385.44pt>
 File: ./accuracy_imgs/NYYN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NYYN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NYYN_training_accuracy.png used on input line 185.
+Package pdftex.def Info: ./accuracy_imgs/NYYN_training_accuracy.png used on input line 187.
 (pdftex.def)             Requested size: 284.52756pt x 213.39828pt.
- <./accuracy_imgs/NYNY_training_accuracy.png, id=31, 1124.2pt x 843.15pt>
+ [5 <./accuracy_imgs/YNYN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNNY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NYNY_training_accuracy.png, id=34, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/NYNY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NYNY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NYNY_training_accuracy.png used on input line 188.
+Package pdftex.def Info: ./accuracy_imgs/NYNY_training_accuracy.png used on input line 190.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- [5 <./accuracy_imgs/YNNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYYN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NNYY_training_accuracy.png, id=35, 1124.2pt x 843.15pt>
+ <./accuracy_imgs/NNYY_training_accuracy.png, id=35, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/NNYY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NNYY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NNYY_training_accuracy.png used on input line 191.
+Package pdftex.def Info: ./accuracy_imgs/NNYY_training_accuracy.png used on input line 193.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- <./accuracy_imgs/YYYN_training_accuracy.png, id=36, 1124.2pt x 843.15pt>
+ [6 <./accuracy_imgs/NYYN_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYNY_training_accuracy.png (PNG copy)>]
+<./accuracy_imgs/YYYN_training_accuracy.png, id=40, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/YYYN_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YYYN_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YYYN_training_accuracy.png used on input line 194.
+Package pdftex.def Info: ./accuracy_imgs/YYYN_training_accuracy.png used on input line 196.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
-
-[6 <./accuracy_imgs/NYNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/NNYY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/YYNY_training_accuracy.png, id=41, 1124.2pt x 843.15pt>
+ <./accuracy_imgs/YYNY_training_accuracy.png, id=41, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/YYNY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YYNY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YYNY_training_accuracy.png used on input line 197.
+Package pdftex.def Info: ./accuracy_imgs/YYNY_training_accuracy.png used on input line 199.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- <./accuracy_imgs/YNYY_training_accuracy.png, id=42, 1124.2pt x 843.15pt>
+ [7 <./accuracy_imgs/NNYY_training_accuracy.png (PNG copy)> <./accuracy_imgs/YYYN_training_accuracy.png (PNG copy)>] <./accuracy_imgs/YNYY_training_accuracy.png, id=45, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/YNYY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YNYY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YNYY_training_accuracy.png used on input line 200.
+Package pdftex.def Info: ./accuracy_imgs/YNYY_training_accuracy.png used on input line 202.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- [7 <./accuracy_imgs/YYYN_training_accuracy.png (PNG copy)> <./accuracy_imgs/YYNY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/NYYY_training_accuracy.png, id=46, 1124.2pt x 843.15pt>
+ <./accuracy_imgs/NYYY_training_accuracy.png, id=46, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/NYYY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/NYYY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/NYYY_training_accuracy.png used on input line 203.
+Package pdftex.def Info: ./accuracy_imgs/NYYY_training_accuracy.png used on input line 205.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- <./accuracy_imgs/YYYY_training_accuracy.png, id=47, 1124.2pt x 843.15pt>
+ [8 <./accuracy_imgs/YYNY_training_accuracy.png (PNG copy)> <./accuracy_imgs/YNYY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/YYYY_training_accuracy.png, id=50, 1124.2pt x 843.15pt>
 File: ./accuracy_imgs/YYYY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YYYY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YYYY_training_accuracy.png used on input line 206.
+Package pdftex.def Info: ./accuracy_imgs/YYYY_training_accuracy.png used on input line 208.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
- [8 <./accuracy_imgs/YNYY_training_accuracy.png (PNG copy)> <./accuracy_imgs/NYYY_training_accuracy.png (PNG copy)>]
 File: ./accuracy_imgs/YNYY_training_accuracy.png Graphic file (type png)
  <use ./accuracy_imgs/YNYY_training_accuracy.png>
-Package pdftex.def Info: ./accuracy_imgs/YNYY_training_accuracy.png used on input line 211.
+Package pdftex.def Info: ./accuracy_imgs/YNYY_training_accuracy.png used on input line 213.
 (pdftex.def)             Requested size: 284.52756pt x 213.38579pt.
-
-
-LaTeX Warning: File `num_iterations_empirical.png' not found on input line 217.
-
-
-./ANN.tex:217: Package pdftex.def Error: File `num_iterations_empirical.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.217 ...idth=125mm]{num_iterations_empirical.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[9 <./accuracy_imgs/YYYY_training_accuracy.png (PNG copy)>]
-
-LaTeX Warning: File `hidden_node_empirical.png' not found on input line 224.
-
-
-./ANN.tex:224: Package pdftex.def Error: File `hidden_node_empirical.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.224 ...s[width=125mm]{hidden_node_empirical.png}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-[10] [11] (./ANN.aux)
+ [9 <./accuracy_imgs/NYYY_training_accuracy.png (PNG copy)> <./accuracy_imgs/YYYY_training_accuracy.png (PNG copy)>] <./accuracy_imgs/num_iterations_empirical.png, id=54, 833.1125pt x 670.505pt>
+File: ./accuracy_imgs/num_iterations_empirical.png Graphic file (type png)
+ <use ./accuracy_imgs/num_iterations_empirical.png>
+Package pdftex.def Info: ./accuracy_imgs/num_iterations_empirical.png used on input line 219.
+(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+ [10 <./accuracy_imgs/num_iterations_empirical.png (PNG copy)>] <./accuracy_imgs/hidden_node_empirical_10_iters.png, id=58, 833.1125pt x 670.505pt>
+File: ./accuracy_imgs/hidden_node_empirical_10_iters.png Graphic file (type png)
+ <use ./accuracy_imgs/hidden_node_empirical_10_iters.png>
+Package pdftex.def Info: ./accuracy_imgs/hidden_node_empirical_10_iters.png used on input line 226.
+(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+ <./accuracy_imgs/img_size_empirical_500_iters.png, id=59, 805.0075pt x 645.41125pt>
+File: ./accuracy_imgs/img_size_empirical_500_iters.png Graphic file (type png)
+ <use ./accuracy_imgs/img_size_empirical_500_iters.png>
+Package pdftex.def Info: ./accuracy_imgs/img_size_empirical_500_iters.png used on input line 233.
+(pdftex.def)             Requested size: 355.65944pt x 285.1439pt.
+ [11 <./accuracy_imgs/hidden_node_empirical_10_iters.png (PNG copy)>] <./accuracy_imgs/learning_rate_empirical_500_iters.png, id=63, 833.1125pt x 670.505pt>
+File: ./accuracy_imgs/learning_rate_empirical_500_iters.png Graphic file (type png)
+ <use ./accuracy_imgs/learning_rate_empirical_500_iters.png>
+Package pdftex.def Info: ./accuracy_imgs/learning_rate_empirical_500_iters.png used on input line 240.
+(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+ [12 <./accuracy_imgs/img_size_empirical_500_iters.png (PNG copy)> <./accuracy_imgs/learning_rate_empirical_500_iters.png (PNG copy)>] <./accuracy_imgs/pca_retention_empirical_200.png, id=68, 833.1125pt x 670.505pt>
+File: ./accuracy_imgs/pca_retention_empirical_200.png Graphic file (type png)
+ <use ./accuracy_imgs/pca_retention_empirical_200.png>
+Package pdftex.def Info: ./accuracy_imgs/pca_retention_empirical_200.png used on input line 247.
+(pdftex.def)             Requested size: 355.65944pt x 286.24486pt.
+ [13 <./accuracy_imgs/pca_retention_empirical_200.png (PNG copy)>] (./ANN.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2881 strings out of 493014
- 42102 string characters out of 6133351
- 110571 words of memory out of 5000000
- 6366 multiletter control sequences out of 15000+600000
- 10587 words of font info for 38 fonts, out of 8000000 for 9000
+ 2903 strings out of 493014
+ 43275 string characters out of 6133351
+ 110583 words of memory out of 5000000
+ 6386 multiletter control sequences out of 15000+600000
+ 10418 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,32p,336b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on ANN.pdf (12 pages, 348555 bytes).
+ 38i,10n,32p,409b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on ANN.pdf (14 pages, 471125 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 87 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

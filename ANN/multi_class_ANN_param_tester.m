@@ -108,7 +108,7 @@ rng(0);
 % for i=1:numel(learning_rates)
 %     learning_rate = learning_rates(i);
 %     disp(learning_rate);
-%     [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,50,30,learning_rate);
+%     [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,50,40,learning_rate,0.95);
 %     training_accuracies(i,:) = [learning_rate,training_accuracy(end,2)];
 %     testing_accuracies(i,:) = [learning_rate,testing_accuracy];
 % end
@@ -131,33 +131,52 @@ rng(0);
 % hold off;
 
 %% Percent Field Retention
-start_pt = 0.01;
-end_pt = 1;
-percent_field_retention = start_pt:0.01:end_pt;
-training_accuracies = zeros(numel(percent_field_retention),2);
-testing_accuracies = zeros(numel(percent_field_retention),2);
+% start_pt = 0.01;
+% end_pt = 1;
+% percent_field_retention = start_pt:0.01:end_pt;
+% training_accuracies = zeros(numel(percent_field_retention),2);
+% testing_accuracies = zeros(numel(percent_field_retention),2);
+% 
+% parfor (i=1:numel(percent_field_retention),8)
+%     percent_retention = percent_field_retention(i);
+%     disp(percent_retention);
+%     [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,200,40,0.5,percent_retention);
+%     training_accuracies(i,:) = [percent_retention,training_accuracy(end,2)];
+%     testing_accuracies(i,:) = [percent_retention,testing_accuracy];
+% end
+% 
+% figure();
+% hold on;
+% plot(training_accuracies(:,1), training_accuracies(:,2),'xb');
+% [xPts,yPts] = get_trendline(training_accuracies,start_pt,end_pt,3);
+% plot(xPts,yPts,'b');
+% 
+% plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
+% [xPts,yPts] = get_trendline(testing_accuracies,start_pt,end_pt,3);
+% plot(xPts,yPts,'r');
+% 
+% legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
+% xlabel('Percent Field Retention');
+% ylabel('Accuracy');
+% hold off;
 
-parfor (i=1:numel(percent_field_retention),8)
-    percent_retention = percent_field_retention(i);
-    disp(percent_retention);
-    [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true,20,200,40,0.5,percent_retention);
-    training_accuracies(i,:) = [percent_retention,training_accuracy(end,2)];
-    testing_accuracies(i,:) = [percent_retention,testing_accuracy];
-end
+%% Best Value Test
+% testing_accuracies(testing_accuracies(:,2)==max(testing_accuracies(:,2)))
+img_size = 30;
+learning_rate = 0.75;
+num_hidden = 1200;
+iterations = 1000;
+retention = 0.97;
 
+[testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true, ...
+                                                                num_hidden,        ...
+                                                                iterations,        ...
+                                                                img_size,          ...
+                                                                learning_rate,     ...
+                                                                retention);
+disp(testing_accuracy);
 figure();
-hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'xb');
-[xPts,yPts] = get_trendline(training_accuracies,start_pt,end_pt,3);
-plot(xPts,yPts,'b');
-
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
-[xPts,yPts] = get_trendline(testing_accuracies,start_pt,end_pt,3);
-plot(xPts,yPts,'r');
-
-legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Trendline');
-xlabel('Percent Field Retention');
+plot(training_accuracy(:,1), training_accuracy(:,2));
+legend('Training Error');
+xlabel('Iteration');
 ylabel('Accuracy');
-hold off;
-
-
