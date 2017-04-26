@@ -133,7 +133,7 @@ The following variants are tested for accuracy:
 \end{enumerate}
 Empirical data was generated to optimize the following parameters:
 \begin{enumerate}
-  \item Termination criteria (Number of Iterations)
+  \item Termination criteria (Number of Training Iterations)
   \item Hidden layer size
   \item Image size
   \item Learning Rate
@@ -141,7 +141,7 @@ Empirical data was generated to optimize the following parameters:
 \end{enumerate}
 
 \section{Baseline Accuracy}
-The baseline accuracy was created using the negative form of all variants with the exception of data standardization. The baseline parameters were as follows: 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, and a learning rate of 0.05.
+The baseline accuracy was created using the negative form of all variants with the exception of data standardization. The baseline parameters were as follows: 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, and a learning rate of 0.5.
 \begin{center}
   \begin{table}[H]
     \begin{varwidth}[b]{0.4\linewidth}
@@ -160,7 +160,7 @@ The baseline accuracy was created using the negative form of all variants with t
 \end{center}
 
 \section{Variant Accuracy Testing}
-All variants were tested using 40 by 40 sized images, a hidden layer size of 20, and 1000 training iterations.
+All variants were tested using 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, a learning rate of 0.5, and a PCA retention rate of 0.95.
 
 % NNNN
 \testingAccuracyTableAndPlot{N}{N}{N}{N}{0.1455}

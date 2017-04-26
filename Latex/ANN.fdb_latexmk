@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1493048916 "ANN.tex" "ANN.pdf" "ANN" 1493048923
+["pdflatex"] 1493052005 "ANN.tex" "ANN.pdf" "ANN" 1493052005
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -58,8 +58,8 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1486254116 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "ANN.aux" 1493048916 5990 eb3b6de938e6708929c7201cf13fe0e3 ""
-  "ANN.tex" 1493048922 11098 5d3542d7f0fc51f64c974723f46ba960 ""
+  "ANN.aux" 1493052005 5990 eb3b6de938e6708929c7201cf13fe0e3 ""
+  "ANN.tex" 1493052004 11160 f9916c3ab4e7f2e7a1c0a5d071569306 ""
   "accuracy_imgs/NNNN_training_accuracy.png" 1492732899 9836 c17a44ac70571544644ef429a3468e41 ""
   "accuracy_imgs/NNNY_training_accuracy.png" 1492734311 9226 467d10bf32127f038cbf956effe0ab84 ""
   "accuracy_imgs/NNYY_training_accuracy.png" 1492735736 26718 fd3a28cb66381fd49e15e6f59ac0ac39 ""
@@ -83,6 +83,6 @@
   "accuracy_imgs/optimal_network.png" 1493046514 11848 63d9f91a02c5a4cc09146efdb51f599c ""
   "accuracy_imgs/pca_retention_empirical_200.png" 1492982144 26664 68bea10aef454cdcaff73f940c0c0e95 ""
   (generated)
-  "ANN.pdf"
-  "ANN.aux"
   "ANN.log"
+  "ANN.aux"
+  "ANN.pdf"

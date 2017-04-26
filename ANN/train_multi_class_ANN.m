@@ -1,61 +1,55 @@
 function [ testing_accuracy,training_accuracy ] =   ...
     train_multi_class_ANN(                          ...
-        should_add_bias_to_input,                   ...
-        should_add_bias_to_hidden,                  ...
-        should_std_data,should_perform_PCA,         ...
+        num_classes,                                ...
+        training_fields,                            ...
+        training_classes,                           ...
+        testing_fields,                             ...
+        testing_classes,                            ... 
         num_hidden_nodes,                           ...
         training_iters,                             ...
-        image_size,                                 ...
         eta,                                        ...
         percent_field_retention                     ...
     )
     %% Control Flow Values
-    data_selection_type = 0;
-%     percent_field_retention = .95;
-
-    %% Load Data
-    % Load the data and randomly permutate
-    [num_classes, classes, fields] = load_image_data(image_size,image_size);
-
+    should_add_bias_to_input = true;
+    should_add_bias_to_hidden = false;
+    should_std_data = true;
+    should_perform_PCA = true;
 
     %% Set Initial Vals
     num_output_nodes = num_classes;
     activation_fxn = @(x) 1./(1 + exp(-x));
 
-    %% Select Training and Testing Sets
-    % Initialize vars
-    classifiers = unique(classes);
-    num_classes = numel(classifiers);
-    num_data_rows = length(fields(:,1));
-    num_data_cols = length(fields(1,:));
-
-    [training_fields,training_classes,testing_fields,testing_classes] = get_training_and_testing_sets(fields,classes,data_selection_type);
-
     % Get number of training rows and number of testing rows
     num_training_rows = length(training_fields(:,1));
     num_testing_rows = length(testing_fields(:,1));
-
-    %% Standardize Data
-    if should_std_data
-        % Standardize data via training mean and training std dev
-        [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
-        % std_training_data = [std_training_fields, training_classes];
-
-        std_testing_fields = testing_fields - repmat(training_fields_mean,size(testing_fields,1),1);
-        std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(std_testing_fields,1),1);
-        % std_testing_data = [std_testing_fields, testing_classes];
-    else
-        std_training_fields = training_fields;
-        std_testing_fields = testing_fields;
-    end
     
     %% Perform PCA
     if should_perform_PCA
+        projection_vectors = PCA(training_fields,percent_field_retention);
+        training_fields = training_fields * projection_vectors;
+        testing_fields = testing_fields * projection_vectors;
+        
+        num_data_cols = length(training_fields(1,:));
+        %{
         projection_vectors = PCA(std_training_fields,percent_field_retention);
         std_training_fields = std_training_fields * projection_vectors;
         std_testing_fields = std_testing_fields * projection_vectors;
         
         num_data_cols = length(std_training_fields(1,:));
+        %}
+    end
+    
+    %% Standardize Data
+    if should_std_data
+        % Standardize data via training mean and training std dev
+        [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
+
+        std_testing_fields = testing_fields - repmat(training_fields_mean,size(testing_fields,1),1);
+        std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(std_testing_fields,1),1);
+    else
+        std_training_fields = training_fields;
+        std_testing_fields = testing_fields;
     end
 
     %% Add bias nodes to input layer
@@ -135,11 +129,13 @@ function [ testing_accuracy,training_accuracy ] =   ...
     num_correct = numel(find(~(testing_classes - testing_o)));
     testing_accuracy = num_correct/num_testing_rows;
     
-    % Plot the training error
-    % figure();
-    % plot(training_accuracy(:,1), training_accuracy(:,2));
-    % legend('Training Error');
-    % xlabel('Iteration');
-    % ylabel('Accuracy');
+    %{
+    Plot the training error
+    figure();
+    plot(training_accuracy(:,1), training_accuracy(:,2));
+    legend('Training Error');
+    xlabel('Iteration');
+    ylabel('Accuracy');
+    %}
 end
 
