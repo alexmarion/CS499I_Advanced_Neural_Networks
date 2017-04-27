@@ -5,10 +5,10 @@ image_size = 40;
 [num_classes,training_fields,training_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size,data_selection_type);
 
 %% Iteration Testing
-%{
+
 start_pt = 1;
-end_pt = 1000;
-training_iters = start_pt:100:end_pt;
+end_pt = 2000;
+training_iters = start_pt:10:end_pt;
 training_accuracies = zeros(numel(training_iters),2);
 testing_accuracies = zeros(numel(training_iters),2);
 
@@ -33,11 +33,11 @@ end
 figure();
 hold on;
 fit_deg = 2;
-plot(training_accuracies(:,1), training_accuracies(:,2),'bx');
+plot(training_accuracies(:,1), training_accuracies(:,2),'b');
 [xPts,yPts] = get_trendline(training_accuracies,start_pt,end_pt,fit_deg);
 plot(xPts,yPts,'b');
 
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'or');
+plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
 [xPts,yPts] = get_trendline(testing_accuracies,start_pt,end_pt,fit_deg);
 plot(xPts,yPts,'r');
 
@@ -45,7 +45,7 @@ legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Tren
 xlabel('Number of Iterations');
 ylabel('Accuracy');
 hold off;
-%}
+
 %% Number of Hidden Nodes Testing
 %{
 start_pt = 20;
@@ -184,7 +184,7 @@ hold off;
 %}
 
 %% Percent Field Retention
-
+%{
 start_pt = 0.01;
 end_pt = 1;
 percent_field_retention = start_pt:0.01:end_pt;
@@ -224,7 +224,7 @@ legend('Training Accuracy','Training Trendline','Testing Accuracy','Testing Tren
 xlabel('Percent Field Retention');
 ylabel('Accuracy');
 hold off;
-
+%}
 
 %% Best Value Test
 % testing_accuracies(testing_accuracies(:,2)==max(testing_accuracies(:,2)))
