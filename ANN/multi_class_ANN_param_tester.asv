@@ -45,11 +45,11 @@ save('../Data/num_iterations_empirical','training_accuracies','testing_accuracie
 %% Number of Hidden Nodes Testing
 start_pt = 20;
 end_pt = 1600;
-num_hidden_nodes = start_pt:1:end_pt;
+num_hidden_nodes = start_pt:20:end_pt;
 training_accuracies = zeros(numel(num_hidden_nodes),2);
 testing_accuracies = zeros(numel(num_hidden_nodes),2);
 
-num_iters = 20;
+num_iters = 50;
 learning_rate = 0.5;
 field_retention = 0.95;
 
@@ -97,10 +97,10 @@ for i=1:numel(image_sizes)
     
     % Must re-seed every time
     rng(0);
-    [img_size_num_classes,img_size_training_fields,img_size_training_classes,img_size_testing_fields,img_size_testing_classes] = load_and_shuffle_data(image_size,data_selection_type);
+    [num_classes,training_fields,training_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size,data_selection_type);
 
     [testing_accuracy,training_accuracy] = train_multi_class_ANN( ...
-        img_size_num_classes,img_size_training_fields,img_size_training_classes,img_size_testing_fields,img_size_testing_classes, ... 
+        num_classes,training_fields,training_classes,testing_fields,testing_classes, ... 
         num_hidden,                                 ...
         num_iters,                                  ...
         learning_rate,                              ...
@@ -190,12 +190,12 @@ hold on;
 plot(training_accuracies(:,1), training_accuracies(:,2),'b');
 plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
 legend('Training Accuracy','Testing Accuracy','Location','southwest')
-xlabel('Percent Field Retention');
+xlabel('Number of Hidden Nodes');
 ylabel('Accuracy');
 hold off;
 % Save image and data
-saveas(fig,'../Latex/figs/percent_field_retention_empirical.png');
-save('../Data/percent_field_retention_empirical','training_accuracies','testing_accuracies');
+saveas(fig,'../Latex/figs/percent_field_reten_empirical.png');
+save('../Data/num_hidden_nodes_empirical','training_accuracies','testing_accuracies');
 
 %% Best Value Test
 % testing_accuracies(testing_accuracies(:,2)==max(testing_accuracies(:,2)))
