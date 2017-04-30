@@ -8,7 +8,7 @@ image_size = 40;
 rng(0);
 [num_classes,classes,fields] = load_image_data(image_size,image_size);
 num_data_rows = size(fields,1);
-S = 10;
+S = 3;
 s_folds = cvpartition(num_data_rows,'k',S);
 
 shuffled_idxs = randperm(num_data_rows);
