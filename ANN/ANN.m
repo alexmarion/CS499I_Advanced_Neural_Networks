@@ -1,17 +1,13 @@
 classdef ANN
     properties  
-        num_classes
-        training_fields
-        training_classes
-        testing_fields
-        testing_classes
-        num_hidden_nodes
-        training_iters
-        eta
-        percent_field_retention
+        num_classes = 15
+        num_hidden_nodes = 20
+        training_iters = 1000
+        eta = 0.5
+        percent_field_retention = 0.95
     end
     methods
-        function [ testing_accuracy,training_accuracy ] = train_ANN( ann )
+        function [ testing_accuracy,training_accuracy ] = train_ANN( ann,training_fields,training_classes,testing_fields,testing_classes )
                 %% Control Flow Values
                 should_add_bias_to_input = true;
                 should_add_bias_to_hidden = false;
@@ -23,12 +19,14 @@ classdef ANN
                 activation_fxn = @(x) 1./(1 + exp(-x));
 
                 % Get number of training rows and number of testing rows
-                num_training_rows = length(ann.training_fields(:,1));
-                num_testing_rows = length(ann.testing_fields(:,1));
+                num_training_rows = length(training_fields(:,1));
+                num_testing_rows = length(testing_fields(:,1));
 
+                num_data_cols = length(training_fields(1,:));
+                
                 %% Perform PCA
                 if should_perform_PCA
-                    projection_vectors = PCA(ann.training_fields,ann.percent_field_retention);
+                    projection_vectors = PCA(training_fields,ann.percent_field_retention);
                     training_fields = training_fields * projection_vectors;
                     testing_fields = testing_fields * projection_vectors;
 
@@ -66,8 +64,8 @@ classdef ANN
 
                 % Initialize weights as random 
                 range = [-1,1];
-                beta = (range(2)-range(1)).*rand(num_data_cols, num_hidden_nodes) + range(1);
-                theta = (range(2)-range(1)).*rand(num_hidden_nodes, num_output_nodes) + range(1);
+                beta = (range(2)-range(1)).*rand(num_data_cols, ann.num_hidden_nodes) + range(1);
+                theta = (range(2)-range(1)).*rand(ann.num_hidden_nodes, num_output_nodes) + range(1);
 
                 if should_add_bias_to_hidden
                     % theta = [ones(num_hidden_nodes,1) theta];
@@ -133,5 +131,48 @@ classdef ANN
                 ylabel('Accuracy');
                 %}
         end
+        function [ s_training_accuracies,s_testing_accuracies ] = cross_validate_ANN( ann,S,classes,fields )
+            %rng(0);
+            %[num_classes,classes,fields] = load_image_data(image_size,image_size);
+            num_data_rows = size(fields,1);
+            s_folds = cvpartition(num_data_rows,'k',S);
+
+            shuffled_idxs = randperm(num_data_rows);
+            shuffled_classes = classes(shuffled_idxs);
+            shuffled_fields = fields(shuffled_idxs,:);
+
+            s_training_accuracies = zeros(S,2);
+            s_testing_accuracies = zeros(S,2);
+
+            for i=1:S
+                idxs = training(s_folds,i);
+
+                training_idxs = find(idxs);
+                s_training_fields = shuffled_fields(training_idxs,:);
+                s_training_classes = shuffled_classes(training_idxs);
+
+                testing_idxs = find(~idxs);
+                s_testing_fields = shuffled_fields(testing_idxs,:);
+                s_testing_classes = shuffled_classes(testing_idxs);
+                
+                [testing_accuracy,training_accuracy] = train_ANN(ann,s_training_fields,s_training_classes,s_testing_fields,s_testing_classes);
+
+                s_training_accuracies(i,:) = [i,training_accuracy(end,2)];
+                s_testing_accuracies(i,:) = [i,testing_accuracy];
+            end
+            %{
+            figure();
+            hold on;
+            % plot(s_training_accuracies(:,1), s_training_accuracies(:,2),'b');
+            % plot(s_testing_accuracies(:,1), s_testing_accuracies(:,2),'r');
+            s_training_and_testing_accuracies = [s_training_accuracies(:,2) s_testing_accuracies(:,2)];
+            bar(s_training_and_testing_accuracies);
+            %bar(s_testing_accuracies(:,2),'r');
+            legend('Training Accuracy','Testing Accuracy','Location','southwest')
+            xlabel('Fold');
+            ylabel('Accuracy');
+            hold off;
+            %}
+        end    
     end
 end

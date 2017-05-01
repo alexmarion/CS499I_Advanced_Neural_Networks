@@ -2,7 +2,6 @@ function [ s_training_and_testing_accuracies ] = cross_validate_ANN( S,num_class
     %rng(0);
     %[num_classes,classes,fields] = load_image_data(image_size,image_size);
     num_data_rows = size(fields,1);
-    %S = 3;
     s_folds = cvpartition(num_data_rows,'k',S);
 
     shuffled_idxs = randperm(num_data_rows);
