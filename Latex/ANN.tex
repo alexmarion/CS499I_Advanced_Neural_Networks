@@ -6,6 +6,7 @@
 \usepackage{capt-of}
 \usepackage{varwidth}
 \usepackage{booktabs}
+\usepackage{comment}
 
 % Define a command to layout a table
 % Inpute values are #1 input layer bias node
@@ -162,55 +163,26 @@ The baseline accuracy was created using the negative form of all variants with t
 \section{Variant Accuracy Testing}
 All variants were tested using 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, a learning rate of 0.5, and a PCA retention rate of 0.95.
 
-% NNNN
-\testingAccuracyTableAndPlot{N}{N}{N}{N}{0.1455}
-
-% YNNN
-\testingAccuracyTableAndPlot{Y}{N}{N}{N}{0.2727}
-
-% NYNN
-\testingAccuracyTableAndPlot{N}{Y}{N}{N}{0.1818}
-
-% NNNY
-\testingAccuracyTableAndPlot{N}{N}{N}{Y}{0.1818}
-
-% YYNN
-\testingAccuracyTableAndPlot{Y}{Y}{N}{N}{0.4000}
-
-% YNYN
-\testingAccuracyTableAndPlot{Y}{N}{Y}{N}{0.8182}
-
-% YNNY
-\testingAccuracyTableAndPlot{Y}{N}{N}{Y}{0.2364}
-
-% NYYN
-\testingAccuracyTableAndPlot{N}{Y}{Y}{N}{0.8182}
-
-% NYNY
-\testingAccuracyTableAndPlot{N}{Y}{N}{Y}{0.2364}
-
-% NNYY
-\testingAccuracyTableAndPlot{N}{N}{Y}{Y}{0.8000}
-
-% YYYN
-\testingAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.8000}
-
-% YYNY
-\testingAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.2000}
-
-% YNYY
-\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.8182}
-
-% NYYY
-\testingAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.8000}
-
-% YYYY
-\testingAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.8182}
+\testingAccuracyTableAndPlot{N}{N}{N}{N}{0.163636}
+\testingAccuracyTableAndPlot{Y}{N}{N}{N}{0.272727}
+\testingAccuracyTableAndPlot{N}{Y}{N}{N}{0.218182}
+\testingAccuracyTableAndPlot{N}{N}{N}{Y}{0.254545}
+\testingAccuracyTableAndPlot{Y}{Y}{N}{N}{0.200000}
+\testingAccuracyTableAndPlot{Y}{N}{Y}{N}{0.818182}
+\testingAccuracyTableAndPlot{Y}{N}{N}{Y}{0.163636}
+\testingAccuracyTableAndPlot{N}{Y}{Y}{N}{0.836364}
+\testingAccuracyTableAndPlot{N}{Y}{N}{Y}{0.309091}
+\testingAccuracyTableAndPlot{N}{N}{Y}{Y}{0.945455}
+\testingAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.781818}
+\testingAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.327273}
+\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.963636}
+\testingAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.945455}
+\testingAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.945455}
 
 \newpage
 \section{Empirical Parameter Accuracy Testing}
 All empirical data was gathered using the following variant which had the highest accuracy from the variant testing:
-\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.8182}
+\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.963636}
 
 \begin{enumerate}
   \item Number of Training Iterations
@@ -221,30 +193,30 @@ All empirical data was gathered using the following variant which had the highes
     \label{fig:num_iterations}
   \end{center}
   \item Number of Hidden Nodes
-  The number of hidden nodes was varied from 0 to 1600 (the number of features) by 20. The number of training iterations was 10, the image size was 40 by 40, and the learning rate was 0.5. The following is a plot of the accuracy as number of hidden nodes increases. The number of training iterations was reduced to 10 in order to more clearly show the trend of increasing the number of hidden nodes.
+  The number of hidden nodes was varied from 0 to 1600 (the number of features) by 20. The number of training iterations was 1000, the image size was 40 by 40, and the learning rate was 0.5. The following is a plot of the accuracy as number of hidden nodes increases. \begin{comment}The number of training iterations was reduced to 10 in order to more clearly show the trend of increasing the number of hidden nodes.\end{comment}
   \begin{center}
-    \includegraphics[width=115mm]{./accuracy_imgs/hidden_node_empirical_10_iters.png}
+    \includegraphics[width=115mm]{./accuracy_imgs/num_hidden_nodes_empirical.png}
     \captionof{figure}{Plot of accuracy as number of hidden nodes increases}
     \label{fig:num_hidden_nodes}
   \end{center}
   \item Image Size
-  The image size was varied from 10 to 100 by 1, thus increasing the number of features quadratically. The number of training iterations was 500, the number of hidden nodes was 20, and the learning rate was 0.5. The number of training iterations was reduced to 500 in order to more clearly show the trend of increasing the number of hidden nodes.
+  The image size was varied from 10 to 100 by 1, thus increasing the number of features quadratically. The number of training iterations was 1000, the number of hidden nodes was 20, and the learning rate was 0.5. \begin{comment}The number of training iterations was reduced to 500 in order to more clearly show the trend of increasing the number of hidden nodes.\end{comment}
   \begin{center}
-    \includegraphics[width=115mm]{./accuracy_imgs/img_size_empirical_500_iters.png}
+    \includegraphics[width=115mm]{./accuracy_imgs/image_size_empirical.png}
     \captionof{figure}{Plot of accuracy as the image size increases}
     \label{fig:img_size}
   \end{center}
   \item Learning Rate
-  The learning rate was varied from 0.05 to 20 by 0.05. The number of training iterations was 50, the number of hidden nodes was 20, and the image size was 40 by 40. The number of iterations was reduced to 50 in order to more clearly show the trend of increasing the learning rate.
+  The learning rate was varied from 0.05 to 20 by 0.05. The number of training iterations was 1000, the number of hidden nodes was 20, and the image size was 40 by 40. \begin{comment}The number of iterations was reduced to 50 in order to more clearly show the trend of increasing the learning rate.\end{comment}
   \begin{center}
-    \includegraphics[width=115mm]{./accuracy_imgs/learning_rate_empirical_500_iters.png}
+    \includegraphics[width=115mm]{./accuracy_imgs/learning_rate_empirical.png}
     \captionof{figure}{Plot of accuracy as the learning rate increases}
     \label{fig:img_size}
   \end{center}
   \item PCA Field Retention
-  The PCA field retention rate was varied from 0.01 to 1 by 0.01. The number of training iterations was 200, the number of hidden nodes was 20, and the image size was 40 by 40. The number of iterations was reduced to 200 in order to more clearly show the trend of increasing the PCA field retention.
+  The PCA field retention rate was varied from 0.01 to 1 by 0.01. The number of training iterations was 1000, the number of hidden nodes was 20, and the image size was 40 by 40. \begin{comment}The number of iterations was reduced to 200 in order to more clearly show the trend of increasing the PCA field retention.\end{comment}
   \begin{center}
-    \includegraphics[width=115mm]{./accuracy_imgs/pca_retention_empirical_200.png}
+    \includegraphics[width=115mm]{./accuracy_imgs/percent_field_retention_empirical.png}
     \captionof{figure}{Plot of accuracy as the field retention increases}
     \label{fig:img_size}
   \end{center}
