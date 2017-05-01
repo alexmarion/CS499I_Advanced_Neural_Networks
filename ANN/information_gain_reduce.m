@@ -1,4 +1,4 @@
-function ig = information_gain(num_classes, classes, fields, thresh)
+function ig_reduced = information_gain_reduce(num_classes, classes, fields, thresh)
 
     % [num_classes, classes, fields] = load_image_data(40,40);
     ig = zeros(1,1600);
@@ -32,7 +32,7 @@ function ig = information_gain(num_classes, classes, fields, thresh)
         ent_bar = 0;
     end
     
-    ig = ig( ig > thresh);
+    ig_reduced = fields(:,ig > thresh);
 
 
 
