@@ -1,5 +1,12 @@
 classdef ANN
-    properties  
+    properties
+        % Control Flow Values
+        should_add_bias_to_input = true
+        should_add_bias_to_hidden = false
+        should_std_data = true
+        should_perform_PCA = true
+        
+        % Parameters
         num_classes = 15
         num_hidden_nodes = 20
         training_iters = 1000
@@ -7,12 +14,18 @@ classdef ANN
         percent_field_retention = 0.95
     end
     methods
+        function ann = set_control_flow_vals(ann, vals)
+            ann.should_add_bias_to_input = vals(1);
+            ann.should_add_bias_to_hidden = vals(2);
+            ann.should_std_data = vals(3);
+            ann.should_perform_PCA = vals(4);
+        end
         function [ testing_accuracy,training_accuracy ] = train_ANN( ann,training_fields,training_classes,testing_fields,testing_classes )
                 %% Control Flow Values
-                should_add_bias_to_input = true;
-                should_add_bias_to_hidden = false;
-                should_std_data = true;
-                should_perform_PCA = true;
+                % ann.should_add_bias_to_input = true;
+                % ann.should_add_bias_to_hidden = false;
+                % ann.should_std_data = true;
+                % ann.should_perform_PCA = true;
 
                 %% Set Initial Vals
                 num_output_nodes = ann.num_classes;
@@ -25,7 +38,7 @@ classdef ANN
                 num_data_cols = length(training_fields(1,:));
                 
                 %% Perform PCA
-                if should_perform_PCA
+                if ann.should_perform_PCA
                     projection_vectors = PCA(training_fields,ann.percent_field_retention);
                     training_fields = training_fields * projection_vectors;
                     testing_fields = testing_fields * projection_vectors;
@@ -34,7 +47,7 @@ classdef ANN
                 end
 
                 %% Standardize Data
-                if should_std_data
+                if ann.should_std_data
                     % Standardize data via training mean and training std dev
                     [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
 
@@ -46,7 +59,7 @@ classdef ANN
                 end
 
                 %% Add bias nodes to input layer
-                if should_add_bias_to_input
+                if ann.should_add_bias_to_input
                     % Add bias node and increase number of columns by 1
                     std_training_fields = [ones(num_training_rows, 1), std_training_fields];
                     std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
@@ -67,7 +80,7 @@ classdef ANN
                 beta = (range(2)-range(1)).*rand(num_data_cols, ann.num_hidden_nodes) + range(1);
                 theta = (range(2)-range(1)).*rand(ann.num_hidden_nodes, num_output_nodes) + range(1);
 
-                if should_add_bias_to_hidden
+                if ann.should_add_bias_to_hidden
                     % theta = [ones(num_hidden_nodes,1) theta];
                     % beta = [ones(1,num_hidden_nodes);beta];
                     beta = [ones(num_data_cols,1) beta];
@@ -123,13 +136,31 @@ classdef ANN
                 testing_accuracy = num_correct/num_testing_rows;
 
                 %{
-                Plot the training error
+                % Plot the training error
                 figure();
                 plot(training_accuracy(:,1), training_accuracy(:,2));
                 legend('Training Error');
                 xlabel('Iteration');
                 ylabel('Accuracy');
                 %}
+        end
+        function [] = plot_training_accuracy( ann,testing_accuracy,training_accuracy )
+            fig = figure();
+            plot(training_accuracy(:,1), training_accuracy(:,2));
+            legend('Training Error');
+            xlabel('Iteration');
+            ylabel('Accuracy');
+            c_flow_str = control_flow_str(ann);
+            title(c_flow_str);
+            saveas(fig,sprintf('../Latex/accuracy_imgs/%s_training_accuracy.png',c_flow_str));
+            
+            % The following print is for the latex file
+            fprintf('\\testingAccuracyTableAndPlot{%s}{%s}{%s}{%s}{%f}\n',...
+                 ANN.binary_to_str(ann.should_add_bias_to_input),...
+                 ANN.binary_to_str(ann.should_add_bias_to_hidden),...
+                 ANN.binary_to_str(ann.should_std_data),...
+                 ANN.binary_to_str(ann.should_perform_PCA),...
+                 testing_accuracy);
         end
         function [ s_training_accuracies,s_testing_accuracies ] = cross_validate_ANN( ann,S,classes,fields )
             %rng(0);
@@ -173,6 +204,22 @@ classdef ANN
             ylabel('Accuracy');
             hold off;
             %}
-        end    
+        end
+        function s = control_flow_str( ann )
+            s1 = ANN.binary_to_str(ann.should_add_bias_to_input);
+            s2 = ANN.binary_to_str(ann.should_add_bias_to_hidden);
+            s3 = ANN.binary_to_str(ann.should_std_data);
+            s4 = ANN.binary_to_str(ann.should_perform_PCA);
+            s = strcat(s1,s2,s3,s4);
+        end
+    end
+    methods(Static)        
+        function s = binary_to_str( val )
+            if val == 0
+                s = 'N';
+            else
+                s = 'Y';
+            end
+        end
     end
 end

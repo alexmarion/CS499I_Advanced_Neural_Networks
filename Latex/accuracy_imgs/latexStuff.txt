@@ -1,0 +1,16 @@
+\testingAccuracyTableAndPlot{N}{N}{Y}{N}{0.800000}
+\testingAccuracyTableAndPlot{N}{N}{N}{N}{0.163636}
+\testingAccuracyTableAndPlot{Y}{N}{N}{N}{0.272727}
+\testingAccuracyTableAndPlot{N}{Y}{N}{N}{0.218182}
+\testingAccuracyTableAndPlot{N}{N}{N}{Y}{0.254545}
+\testingAccuracyTableAndPlot{Y}{Y}{N}{N}{0.200000}
+\testingAccuracyTableAndPlot{Y}{N}{Y}{N}{0.818182}
+\testingAccuracyTableAndPlot{Y}{N}{N}{Y}{0.163636}
+\testingAccuracyTableAndPlot{N}{Y}{Y}{N}{0.836364}
+\testingAccuracyTableAndPlot{N}{Y}{N}{Y}{0.309091}
+\testingAccuracyTableAndPlot{N}{N}{Y}{Y}{0.945455}
+\testingAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.781818}
+\testingAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.327273}
+\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.963636}
+\testingAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.945455}
+\testingAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.945455}
