@@ -163,8 +163,6 @@ classdef ANN
                  testing_accuracy);
         end
         function [ s_training_accuracies,s_testing_accuracies ] = cross_validate_ANN( ann,S,classes,fields )
-            %rng(0);
-            %[num_classes,classes,fields] = load_image_data(image_size,image_size);
             num_data_rows = size(fields,1);
             s_folds = cvpartition(num_data_rows,'k',S);
 
