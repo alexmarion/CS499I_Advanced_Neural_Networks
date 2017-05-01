@@ -187,13 +187,31 @@ saveas(fig,'../Latex/figs/percent_field_retention_empirical.png');
 save('../Data/percent_field_retention_empirical','training_accuracies','testing_accuracies');
 
 %% Best Value Test
+best = ANN;
+best.num_hidden_nodes = 291;
+best.training_iters = 1000;
+best.eta = 0.15;
+best.percent_field_retention = 0.94;
+
+image_size = 7;
+S = 2;
+[~,classes,fields] = load_image_data(image_size,image_size);
+
+[training_accuracy,testing_accuracy] = cross_validate_ANN(best,S,classes,fields);
+disp(testing_accuracy);
+figure();
+plot(training_accuracy(:,1), training_accuracy(:,2));
+legend('Training Error');
+xlabel('Iteration');
+ylabel('Accuracy');
+
 % testing_accuracies(testing_accuracies(:,2)==max(testing_accuracies(:,2)))
 %{
-img_size = 30;
-learning_rate = 0.75;
-num_hidden = 1200;
+img_size = 7;
+learning_rate = 0.15;
+num_hidden = 291;
 iterations = 1000;
-retention = 0.97;
+retention = 0.94;
 
 [testing_accuracy,training_accuracy] = train_multi_class_ANN(true,false,true,true, ...
                                                                 num_hidden,        ...

@@ -147,7 +147,7 @@ classdef ANN
         function [] = plot_training_accuracy( ann,testing_accuracy,training_accuracy )
             fig = figure();
             plot(training_accuracy(:,1), training_accuracy(:,2));
-            legend('Training Error');
+            legend('Training Accuracy');
             xlabel('Iteration');
             ylabel('Accuracy');
             c_flow_str = control_flow_str(ann);
