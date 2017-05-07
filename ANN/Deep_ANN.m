@@ -1,4 +1,4 @@
-classdef ANN
+classdef Deep_ANN
     properties
         % Control Flow Values
         should_add_bias_to_input = true
@@ -8,27 +8,29 @@ classdef ANN
         
         % Parameters
         num_classes = 15
-        num_hidden_nodes = 20
+        num_hidden_node_layers = 2
+        num_hidden_nodes = [20,20]
         training_iters = 1000
         eta = 0.5
         percent_field_retention = 0.95
     end
     methods
-        function ann = set_control_flow_vals(ann, vals)
-            ann.should_add_bias_to_input = vals(1);
-            ann.should_add_bias_to_hidden = vals(2);
-            ann.should_std_data = vals(3);
-            ann.should_perform_PCA = vals(4);
+        function deep_ann = set_control_flow_vals(deep_ann, vals)
+            deep_ann.should_add_bias_to_input = vals(1);
+            deep_ann.should_add_bias_to_hidden = vals(2);
+            deep_ann.should_std_data = vals(3);
+            deep_ann.should_perform_PCA = vals(4);
         end
-        function [ testing_accuracy,training_accuracy ] = train_ANN( ann,training_fields,training_classes,testing_fields,testing_classes )
+        function [ testing_accuracy,training_accuracy ] = train_deep_ANN( deep_ann,training_fields,training_classes,testing_fields,testing_classes )
+            
             %% Control Flow Values
-            % ann.should_add_bias_to_input = true;
-            % ann.should_add_bias_to_hidden = false;
-            % ann.should_std_data = true;
-            % ann.should_perform_PCA = true;
+            % deep_ann.should_add_bias_to_input = true;
+            % deep_ann.should_add_bias_to_hidden = false;
+            % deep_ann.should_std_data = true;
+            % deep_ann.should_perform_PCA = true;
 
             %% Set Initial Vals
-            num_output_nodes = ann.num_classes;
+            num_output_nodes = deep_ann.num_classes;
             activation_fxn = @(x) 1./(1 + exp(-x));
 
             % Get number of training rows and number of testing rows
@@ -38,8 +40,8 @@ classdef ANN
             num_data_cols = length(training_fields(1,:));
 
             %% Perform PCA
-            if ann.should_perform_PCA
-                projection_vectors = PCA(training_fields,ann.percent_field_retention);
+            if deep_ann.should_perform_PCA
+                projection_vectors = PCA(training_fields,deep_ann.percent_field_retention);
                 training_fields = training_fields * projection_vectors;
                 testing_fields = testing_fields * projection_vectors;
 
@@ -47,7 +49,7 @@ classdef ANN
             end
 
             %% Standardize Data
-            if ann.should_std_data
+            if deep_ann.should_std_data
                 % Standardize data via training mean and training std dev
                 [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
 
@@ -59,7 +61,7 @@ classdef ANN
             end
 
             %% Add bias nodes to input layer
-            if ann.should_add_bias_to_input
+            if deep_ann.should_add_bias_to_input
                 % Add bias node and increase number of columns by 1
                 std_training_fields = [ones(num_training_rows, 1), std_training_fields];
                 std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
@@ -67,7 +69,7 @@ classdef ANN
             end
 
             % Reformat training classes
-            new_training_classes = zeros(num_training_rows,ann.num_classes);
+            new_training_classes = zeros(num_training_rows,deep_ann.num_classes);
             for i = 1:num_training_rows
                 new_training_classes(i,training_classes(i)) = 1;
             end
@@ -75,12 +77,21 @@ classdef ANN
             %% Perform Forward/Backward Propagation with Batch Gradient Descent
             iter = 0;
 
-            % Initialize weights as random 
+            % Initialize weights as random    
             range = [-1,1];
-            beta = (range(2)-range(1)).*rand(num_data_cols, ann.num_hidden_nodes) + range(1);
-            theta = (range(2)-range(1)).*rand(ann.num_hidden_nodes, num_output_nodes) + range(1);
+            weights = cell(deep_ann.num_hidden_node_layers,1);
+            weights{1} = (range(2)-range(1)).*rand(num_data_cols, deep_ann.num_hidden_nodes)+range(1);
+            for layer = 2:deep_ann.num_hidden_node_layers - 1
+                w = size(weights{layer},1);
+                h = size(weights{layer},2);
+                weights{layer} = (range(2)-range(1)).*rand(h,w)+range(1);
+            end
+            weights{deep_ann.num_hidden_node_layers} = (range(2)-range(1)).*rand(deep_ann.num_hidden_nodes, num_output_nodes)+range(1);
+            
+            beta = (range(2)-range(1)).*rand(num_data_cols, deep_ann.num_hidden_nodes) + range(1);
+            theta = (range(2)-range(1)).*rand(deep_ann.num_hidden_nodes, num_output_nodes) + range(1);
 
-            if ann.should_add_bias_to_hidden
+            if deep_ann.should_add_bias_to_hidden
                 % theta = [ones(num_hidden_nodes,1) theta];
                 % beta = [ones(1,num_hidden_nodes);beta];
                 beta = [ones(num_data_cols,1) beta];
@@ -88,9 +99,9 @@ classdef ANN
             end
 
             % Matrix to track training error for plotting
-            training_accuracy = zeros(ann.training_iters, 2);
+            training_accuracy = zeros(deep_ann.training_iters, 2);
 
-            while iter < ann.training_iters
+            while iter < deep_ann.training_iters
                 iter = iter + 1;    
                 %% Forward Propagation
                 % Compute hidden layer
@@ -104,13 +115,13 @@ classdef ANN
                 delta_output = new_training_classes - training_o;
 
                 % Update theta
-                theta = theta + ((ann.eta/num_training_rows) * delta_output' * training_h)';
+                theta = theta + ((deep_ann.eta/num_training_rows) * delta_output' * training_h)';
 
                 % Compute hidden error
                 delta_hidden = (theta * delta_output')' .* (training_h .* (1 - training_h));
 
                 % Update beta
-                beta = beta + (ann.eta/num_training_rows) * (delta_hidden' * std_training_fields)';
+                beta = beta + (deep_ann.eta/num_training_rows) * (delta_hidden' * std_training_fields)';
 
                 % Choose maximum output node as value
                 [~,training_o] = max(training_o,[],2);
@@ -139,7 +150,7 @@ classdef ANN
             % Plot the training error
             figure();
             plot(training_accuracy(:,1), training_accuracy(:,2));
-            legend('Training Accuracy');
+            legend('Training Error');
             xlabel('Iteration');
             ylabel('Accuracy');
             %}
@@ -156,13 +167,15 @@ classdef ANN
             
             % The following print is for the latex file
             fprintf('\\testingAccuracyTableAndPlot{%s}{%s}{%s}{%s}{%f}\n',...
-                 ANN.binary_to_str(ann.should_add_bias_to_input),...
-                 ANN.binary_to_str(ann.should_add_bias_to_hidden),...
-                 ANN.binary_to_str(ann.should_std_data),...
-                 ANN.binary_to_str(ann.should_perform_PCA),...
+                 ANN.binary_to_str(deep_ann.should_add_bias_to_input),...
+                 ANN.binary_to_str(deep_ann.should_add_bias_to_hidden),...
+                 ANN.binary_to_str(deep_ann.should_std_data),...
+                 ANN.binary_to_str(deep_ann.should_perform_PCA),...
                  testing_accuracy);
         end
         function [ s_training_accuracies,s_testing_accuracies ] = cross_validate_ANN( ann,S,classes,fields )
+            %rng(0);
+            %[num_classes,classes,fields] = load_image_data(image_size,image_size);
             num_data_rows = size(fields,1);
             s_folds = cvpartition(num_data_rows,'k',S);
 
@@ -203,11 +216,11 @@ classdef ANN
             hold off;
             %}
         end
-        function s = control_flow_str( ann )
-            s1 = ANN.binary_to_str(ann.should_add_bias_to_input);
-            s2 = ANN.binary_to_str(ann.should_add_bias_to_hidden);
-            s3 = ANN.binary_to_str(ann.should_std_data);
-            s4 = ANN.binary_to_str(ann.should_perform_PCA);
+        function s = control_flow_str( deep_ann )
+            s1 = ANN.binary_to_str(deep_ann.should_add_bias_to_input);
+            s2 = ANN.binary_to_str(deep_ann.should_add_bias_to_hidden);
+            s3 = ANN.binary_to_str(deep_ann.should_std_data);
+            s4 = ANN.binary_to_str(deep_ann.should_perform_PCA);
             s = strcat(s1,s2,s3,s4);
         end
     end
