@@ -203,6 +203,58 @@ classdef ANN
             hold off;
             %}
         end
+        function [ s_training_accuracies,s_testing_accuracies ] = dual_validate_ANN(ann,S,classes,fields )
+            [ folding_fields, ...
+              folding_classes, ...
+              validation_fields, ...
+              validation_classes ] = get_training_and_testing_sets(classes,fields);
+            
+            num_data_rows = size(folding_fields,1);
+            s_folds = cvpartition(num_data_rows,'k',S);
+
+            shuffled_idxs = randperm(num_data_rows);
+            shuffled_classes = folding_classes(shuffled_idxs);
+            shuffled_fields = folding_fields(shuffled_idxs,:);
+
+            s_training_accuracies = zeros(S,2);
+            s_testing_accuracies = zeros(S,2);
+
+            for i=1:S
+                idxs = training(s_folds,i);
+
+                training_idxs = find(idxs);
+                s_training_fields = shuffled_fields(training_idxs,:);
+                s_training_classes = shuffled_classes(training_idxs);
+
+                testing_idxs = find(~idxs);
+                s_testing_fields = shuffled_fields(testing_idxs,:);
+                s_testing_classes = shuffled_classes(testing_idxs);
+                
+                accuracy_chg = 100;
+                iter_count = 0;
+                val_learning_rates = 0.05:0.05:20;
+                val_hidden_nodes = 20:1:1600;
+
+                val_accuracies = zeros(numel(learning_rates) * numel(val_hidden_nodes) , 3)
+                
+                % Train up on the validation
+                while iter_count < 1000 && accuracy_change > .01
+                    for lr=1:numel(learning_rates)
+                        for hn=1:numel(val_hidden_nodes)
+                            val_accuracies
+                        end
+                    end
+
+                    iter_count = iter_count + 1;
+                end
+                
+                [testing_accuracy,training_accuracy] = train_ANN(ann,s_training_fields,s_training_classes,s_testing_fields,s_testing_classes);
+
+                s_training_accuracies(i,:) = [i,training_accuracy(end,2)];
+                s_testing_accuracies(i,:) = [i,testing_accuracy];
+            end
+        end
+        
         function s = control_flow_str( ann )
             s1 = ANN.binary_to_str(ann.should_add_bias_to_input);
             s2 = ANN.binary_to_str(ann.should_add_bias_to_hidden);
