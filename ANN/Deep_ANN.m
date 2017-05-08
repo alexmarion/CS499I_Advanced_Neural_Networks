@@ -1,18 +1,17 @@
 classdef Deep_ANN
     properties
-        % Control Flow Values
-        should_add_bias_to_input = true
-        should_add_bias_to_hidden = false
-        should_std_data = true
-        should_perform_PCA = true
-        
         % Parameters
-        num_classes = 15
-        num_hidden_node_layers = 2
-        num_hidden_nodes = [20,20]
-        training_iters = 1000
-        eta = 0.5
-        percent_field_retention = 0.95
+        num_classes = 15;
+        hidden_layer_division = 3;
+        training_iters = 1000;
+        eta = 0.5;
+        percent_field_retention = 0.95;
+
+        % Control Flow Values
+        should_add_bias_to_input = false;
+        should_add_bias_to_hidden = true;
+        should_std_data = true;
+        should_perform_PCA = false;
     end
     methods
         function deep_ann = set_control_flow_vals(deep_ann, vals)
@@ -22,13 +21,6 @@ classdef Deep_ANN
             deep_ann.should_perform_PCA = vals(4);
         end
         function [ testing_accuracy,training_accuracy ] = train_deep_ANN( deep_ann,training_fields,training_classes,testing_fields,testing_classes )
-            
-            %% Control Flow Values
-            % deep_ann.should_add_bias_to_input = true;
-            % deep_ann.should_add_bias_to_hidden = false;
-            % deep_ann.should_std_data = true;
-            % deep_ann.should_perform_PCA = true;
-
             %% Set Initial Vals
             num_output_nodes = deep_ann.num_classes;
             activation_fxn = @(x) 1./(1 + exp(-x));
@@ -38,6 +30,17 @@ classdef Deep_ANN
             num_testing_rows = length(testing_fields(:,1));
 
             num_data_cols = length(training_fields(1,:));
+
+            %% Compute number of hidden layers based on input size and division ratio
+            num_hidden_node_layers = 0;
+            num_nodes_in_layer = num_data_cols;
+            for i = 1:num_testing_rows
+                num_hidden_node_layers = num_hidden_node_layers + 1;
+                num_nodes_in_layer = ceil(num_nodes_in_layer/deep_ann.hidden_layer_division);
+                if num_nodes_in_layer <= num_output_nodes
+                    break
+                end
+            end
 
             %% Perform PCA
             if deep_ann.should_perform_PCA
@@ -75,53 +78,70 @@ classdef Deep_ANN
             end
 
             %% Perform Forward/Backward Propagation with Batch Gradient Descent
-            iter = 0;
-
             % Initialize weights as random    
             range = [-1,1];
-            weights = cell(deep_ann.num_hidden_node_layers,1);
-            weights{1} = (range(2)-range(1)).*rand(num_data_cols, deep_ann.num_hidden_nodes)+range(1);
-            for layer = 2:deep_ann.num_hidden_node_layers - 1
-                w = size(weights{layer},1);
-                h = size(weights{layer},2);
+            weights = cell(num_hidden_node_layers,1);
+            new_layer_size = ceil(num_data_cols/deep_ann.hidden_layer_division);
+            weights{1} = (range(2)-range(1)).*rand(num_data_cols, new_layer_size)+range(1);
+
+            for layer = 2:num_hidden_node_layers - 1 
+                new_layer_size = ceil(new_layer_size/deep_ann.hidden_layer_division);
+                h = size(weights{layer-1},2);
+                w = new_layer_size;
                 weights{layer} = (range(2)-range(1)).*rand(h,w)+range(1);
             end
-            weights{deep_ann.num_hidden_node_layers} = (range(2)-range(1)).*rand(deep_ann.num_hidden_nodes, num_output_nodes)+range(1);
-            
-            beta = (range(2)-range(1)).*rand(num_data_cols, deep_ann.num_hidden_nodes) + range(1);
-            theta = (range(2)-range(1)).*rand(deep_ann.num_hidden_nodes, num_output_nodes) + range(1);
 
+            h = size(weights{num_hidden_node_layers - 1},2);
+            w = num_output_nodes;
+            weights{num_hidden_node_layers} = (range(2)-range(1)).*rand(h, w)+range(1);
+
+            %{
             if deep_ann.should_add_bias_to_hidden
-                % theta = [ones(num_hidden_nodes,1) theta];
-                % beta = [ones(1,num_hidden_nodes);beta];
-                beta = [ones(num_data_cols,1) beta];
-                theta = [ones(1,num_output_nodes);theta];
+                for layer=1:num_hidden_node_layers
+                    if mod(layer,2) == 0
+                        weights{layer} = [ones(1,size(weights{layer},2));weights{layer}];
+                    else
+                        weights{layer} = [ones(size(weights{layer},1),1) weights{layer}];
+                    end
+                end
             end
-
+            %}
             % Matrix to track training error for plotting
             training_accuracy = zeros(deep_ann.training_iters, 2);
 
+            % Track training h values
+            training_h = cell(num_hidden_node_layers - 1,1);
+
+            iter = 0;
             while iter < deep_ann.training_iters
                 iter = iter + 1;    
                 %% Forward Propagation
-                % Compute hidden layer
-                training_h = activation_fxn(std_training_fields * beta);
+                % Compute first hidden layer
+                training_h{1} = activation_fxn(std_training_fields * weights{1});
 
-                % Compute output layer    
-                training_o = activation_fxn(training_h * theta);
+                % Compute internal hidden layers
+                for layer=2:num_hidden_node_layers - 1
+                    training_h{layer} = activation_fxn(training_h{layer-1} * weights{layer});
+                end
+
+                % Compute output layer
+                training_o = activation_fxn(training_h{num_hidden_node_layers - 1} * weights{num_hidden_node_layers});
 
                 %% Backward Propagation
-                % Compute output error
-                delta_output = new_training_classes - training_o;
+                deltas = cell(num_hidden_node_layers,1);
 
-                % Update theta
-                theta = theta + ((deep_ann.eta/num_training_rows) * delta_output' * training_h)';
+                % Output layer delta
+                deltas{num_hidden_node_layers} = new_training_classes - training_o;
 
-                % Compute hidden error
-                delta_hidden = (theta * delta_output')' .* (training_h .* (1 - training_h));
+                % Internal hidden layer deltas
+                for layer=num_hidden_node_layers-1:-1:1
+                    deltas{layer} = (weights{layer + 1} * deltas{layer + 1}')' .* (training_h{layer} .* (1 - training_h{layer}));
+                end
 
-                % Update beta
-                beta = beta + (deep_ann.eta/num_training_rows) * (delta_hidden' * std_training_fields)';
+                % Update weights
+                for layer=num_hidden_node_layers-1:-1:1
+                    weights{layer+1} = weights{layer+1} + ((deep_ann.eta/num_training_rows) * deltas{layer+1}' * training_h{layer})';
+                end
 
                 % Choose maximum output node as value
                 [~,training_o] = max(training_o,[],2);
@@ -133,11 +153,16 @@ classdef Deep_ANN
             end
 
             %% Testing
-            % Compute hidden layer
-            testing_h = activation_fxn(std_testing_fields * beta);
+            % Compute first hidden layer
+            testing_h = activation_fxn(std_testing_fields * weights{1});
+
+            % Compute internal hidden layers
+            for layer=2:num_hidden_node_layers - 1
+                testing_h = activation_fxn(testing_h * weights{layer});
+            end
 
             % Compute output layer
-            testing_o = activation_fxn(testing_h * theta);
+            testing_o = activation_fxn(testing_h * weights{num_hidden_node_layers});
 
             % Choose maximum output node as value
             [~,testing_o] = max(testing_o,[],2);
@@ -146,11 +171,11 @@ classdef Deep_ANN
             num_correct = numel(find(~(testing_classes - testing_o)));
             testing_accuracy = num_correct/num_testing_rows;
 
-            %{
             % Plot the training error
+            %{
             figure();
             plot(training_accuracy(:,1), training_accuracy(:,2));
-            legend('Training Error');
+            legend('Training Accuracy');
             xlabel('Iteration');
             ylabel('Accuracy');
             %}
