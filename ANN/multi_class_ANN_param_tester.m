@@ -2,7 +2,7 @@
 rng(0);
 data_selection_type = 0;
 image_size = 40;
-S = 2;
+S = 9;
 [~,classes,fields] = load_image_data(image_size,image_size);
 [num_classes,training_fields,training_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size,data_selection_type);
 
@@ -31,8 +31,8 @@ end
 
 fig = figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'b');
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
+plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
 legend('Training Accuracy','Testing Accuracy','Location','southwest')
 xlabel('Number of Iterations');
 ylabel('Accuracy');
@@ -67,8 +67,8 @@ end
 
 fig = figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'b');
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
+plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
 legend('Training Accuracy','Testing Accuracy','Location','southwest')
 xlabel('Number of Hidden Nodes');
 ylabel('Accuracy');
@@ -106,8 +106,8 @@ end
 
 fig = figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'b');
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
+plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
 legend('Training Accuracy','Testing Accuracy','Location','southwest')
 xlabel('Image Size');
 ylabel('Accuracy');
@@ -141,8 +141,8 @@ end
 
 fig = figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'b');
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
+plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
 legend('Training Accuracy','Testing Accuracy','Location','southwest')
 xlabel('Learning Rate');
 ylabel('Accuracy');
@@ -176,8 +176,8 @@ end
 
 fig = figure();
 hold on;
-plot(training_accuracies(:,1), training_accuracies(:,2),'b');
-plot(testing_accuracies(:,1), testing_accuracies(:,2),'r');
+plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
 legend('Training Accuracy','Testing Accuracy','Location','southwest')
 xlabel('Percent Field Retention');
 ylabel('Accuracy');
