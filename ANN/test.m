@@ -5,16 +5,16 @@ image_size = 40;
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 3;
+deep_ann.hidden_layer_division = 1.61803399;%1.4;
 deep_ann.training_iters = 1000;
 deep_ann.eta = 0.5;
 deep_ann.percent_field_retention = 0.95;
 
 %% Control Flow Values
-deep_ann.should_add_bias_to_input = false;
-deep_ann.should_add_bias_to_hidden = true;
+deep_ann.should_add_bias_to_input = true;
+deep_ann.should_add_bias_to_hidden = false;
 deep_ann.should_std_data = true;
-deep_ann.should_perform_PCA = false;
+deep_ann.should_perform_PCA = true;
 
 %% Set Initial Vals
 num_output_nodes = deep_ann.num_classes;
@@ -25,6 +25,15 @@ num_training_rows = length(training_fields(:,1));
 num_testing_rows = length(testing_fields(:,1));
 
 num_data_cols = length(training_fields(1,:));
+
+%% Perform PCA
+if deep_ann.should_perform_PCA
+    projection_vectors = PCA(training_fields,deep_ann.percent_field_retention);
+    training_fields = training_fields * projection_vectors;
+    testing_fields = testing_fields * projection_vectors;
+
+    num_data_cols = length(training_fields(1,:));
+end
 
 %% Compute number of hidden layers based on input size and division ratio
 num_hidden_node_layers = 0;
@@ -37,13 +46,9 @@ for i = 1:num_testing_rows
     end
 end
 
-%% Perform PCA
-if deep_ann.should_perform_PCA
-    projection_vectors = PCA(training_fields,deep_ann.percent_field_retention);
-    training_fields = training_fields * projection_vectors;
-    testing_fields = testing_fields * projection_vectors;
-
-    num_data_cols = length(training_fields(1,:));
+% Must have at least 2 hidden layers to be a deep network
+if num_hidden_node_layers <= 1
+    num_hidden_node_layers = 2;
 end
 
 %% Standardize Data
@@ -164,7 +169,7 @@ testing_o = activation_fxn(testing_h * weights{num_hidden_node_layers});
 
 % Compute number of correct predictions
 num_correct = numel(find(~(testing_classes - testing_o)));
-testing_accuracy = num_correct/num_testing_rows;
+testing_accuracy = num_correct/num_testing_rows
 
 % Plot the training error
 figure();

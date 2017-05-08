@@ -24,7 +24,7 @@ for i=1:numel(training_iters)
 %     testing_accuracies(i,:) = [num_iters,testing_accuracy];
 
     rng(0);
-    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(iter_test_ANN,S,classes,fields);
+    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(iter_test_ANN,S,fields,classes);
     training_accuracies(i,:) = [num_iters,s_training_accuracies(:,2)'];
     testing_accuracies(i,:) = [num_iters,s_testing_accuracies(:,2)'];
 end
@@ -60,7 +60,7 @@ for i=1:numel(num_hidden_nodes)
 %     testing_accuracies(i,:) = [num_hidden,testing_accuracy];
 
     rng(0);
-    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(hidden_nodes_ANN_test,S,classes,fields);
+    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(hidden_nodes_ANN_test,S,fields,classes);
     training_accuracies(i,:) = [num_hidden,s_training_accuracies(:,2)'];
     testing_accuracies(i,:) = [num_hidden,s_testing_accuracies(:,2)'];
 end
@@ -134,7 +134,7 @@ for i=1:numel(learning_rates)
 %     testing_accuracies(i,:) = [learning_rate,testing_accuracy];
 
     rng(0);
-    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(eta_ANN_test,S,classes,fields);
+    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(eta_ANN_test,S,fields,classes);
     training_accuracies(i,:) = [learning_rate,s_training_accuracies(:,2)'];
     testing_accuracies(i,:) = [learning_rate,s_testing_accuracies(:,2)'];
 end
@@ -169,7 +169,7 @@ for i=1:numel(percent_field_retention)
 %     testing_accuracies(i,:) = [percent_retention,testing_accuracy];
 
     rng(0);
-    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(field_ret_ANN_test,S,classes,fields);
+    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(field_ret_ANN_test,S,fields,classes);
     training_accuracies(i,:) = [percent_retention,s_training_accuracies(:,2)'];
     testing_accuracies(i,:) = [percent_retention,s_testing_accuracies(:,2)'];
 end
@@ -197,7 +197,7 @@ image_size = 7;
 S = 2;
 [~,classes,fields] = load_image_data(image_size,image_size);
 
-[training_accuracy,testing_accuracy] = cross_validate_ANN(best,S,classes,fields);
+[training_accuracy,testing_accuracy] = cross_validate_ANN(best,S,fields,classes);
 disp(testing_accuracy);
 figure();
 plot(training_accuracy(:,1), training_accuracy(:,2));

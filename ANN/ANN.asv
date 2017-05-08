@@ -181,7 +181,7 @@ classdef ANN
                  ANN.binary_to_str(ann.should_perform_PCA),...
                  testing_accuracy);
         end
-        function [ s_training_accuracies,s_testing_accuracies,ann ] = cross_validate_ANN( ann,S,fields,classes )
+        function [ s_training_accuracies,s_testing_accuracies,ann ] = cross_validate_ANN( ann,S,classes,fields )
             num_data_rows = size(fields,1);
             s_folds = cvpartition(num_data_rows,'k',S);
 
@@ -222,11 +222,11 @@ classdef ANN
             hold off;
             %}
         end
-        function [ s_training_accuracies,s_testing_accuracies ] = dual_validate_ANN( ann,S,fields,classes )
+        function [ s_training_accuracies,s_testing_accuracies ] = dual_validate_ANN(ann,S,classes,fields )
             [ folding_fields, ...
               folding_classes, ...
               validation_fields, ...
-              validation_classes ] = get_training_and_testing_sets(fields,classes);
+              validation_classes ] = get_training_and_testing_sets(classes,fields);
             
             num_data_rows = size(folding_fields,1);
             s_folds = cvpartition(num_data_rows,'k',S);
@@ -249,37 +249,32 @@ classdef ANN
                 s_testing_fields = shuffled_fields(testing_idxs,:);
                 s_testing_classes = shuffled_classes(testing_idxs);
                 
-                % Compute initial ANN
-                [~,~,ann] = train_ANN(ann,s_training_fields,s_training_classes,s_testing_fields,s_testing_classes);
-                
-                % Validation set parameters
-                val_learning_rates = 0.25:0.25:10;
-                val_hidden_nodes = 20:1:400;
-
-                val_accuracies = zeros(numel(val_learning_rates) * numel(val_hidden_nodes) , 3);
-                
-                % Use validation set to fine tune learning rate (eta) and
-                % number of hidden nodes
-                idx = 1;
-                for lr=1:numel(val_learning_rates)
-                    ann.eta = val_learning_rates(lr);
-                    for hn=1:numel(val_hidden_nodes)
-                        ann.num_hidden_nodes = val_hidden_nodes(hn);
-                        [validation_accuracy,~,ann] = train_ANN(ann,s_training_fields,s_training_classes,validation_fields,validation_classes);
-                        val_accuracies(idx,:) = [ann.eta, ann.num_hidden_nodes, validation_accuracy];
-                        idx = idx + 1;
-                    end
-                end
-                
-                % Get optimal values
-                [~,optimal_idx] = max(val_accuracies(:,3));
-                ann.eta = val_accuracies(optimal_idx,1);
-                ann.num_hidden_nodes = val_learning_rates(optimal_idx,2);
-                
-                % Retrain with optimal values
                 [testing_accuracy,training_accuracy,ann] = train_ANN(ann,s_training_fields,s_training_classes,s_testing_fields,s_testing_classes);
+
                 s_training_accuracies(i,:) = [i,training_accuracy(end,2)];
                 s_testing_accuracies(i,:) = [i,testing_accuracy];
+                
+                % Validation set
+                                
+                accuracy_chg = 100;
+                iter_count = 0;
+                val_learning_rates = 0.05:0.05:20;
+                val_hidden_nodes = 20:1:1600;
+
+                val_accuracies = zeros(numel(learning_rates) * numel(val_hidden_nodes) , 3);
+                
+                % Train up on the validation
+                %while iter_count < 1000 && accuracy_change > .01
+                    for lr=1:numel(learning_rates)
+                        ann.eta = learning_rates(lr);
+                        for hn=1:numel(val_hidden_nodes)
+                            ann.num_hidden_nodes = val_hidden_nodes(hn);
+                            [validation_accuracy,~,ann] = train_ANN(ann,s_training_fields,s_training_classes,validation_fields,validation_classes);
+                            val_accuracies(idx,:) = [
+                        end
+                    end
+                    %iter_count = iter_count + 1;
+                %end
             end
         end
         
