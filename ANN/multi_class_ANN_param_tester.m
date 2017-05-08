@@ -98,7 +98,7 @@ for i=1:numel(image_sizes)
 %     testing_accuracies(i,:) = [image_size,testing_accuracy];
 
     rng(0);
-    [~,img_size_classes,img_size_fields] = load_image_data(image_size,image_size);
+    [~,img_size_fields,img_size_classes] = load_image_data(image_size,image_size);
     [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(image_size_ANN_test,S,img_size_classes,img_size_fields);
     training_accuracies(i,:) = [image_size,s_training_accuracies(:,2)'];
     testing_accuracies(i,:) = [image_size,s_testing_accuracies(:,2)'];
