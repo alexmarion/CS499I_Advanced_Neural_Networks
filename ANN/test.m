@@ -5,7 +5,7 @@ image_size = 40;
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 1.61803399;%1.4;
+deep_ann.hidden_layer_division = 1.1;%1.61803399;%1.4;
 deep_ann.training_iters = 1000;
 deep_ann.eta = 0.5;
 deep_ann.percent_field_retention = 0.95;
