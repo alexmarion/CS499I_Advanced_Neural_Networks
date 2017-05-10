@@ -5,6 +5,7 @@ classdef ANN
         should_add_bias_to_hidden = false
         should_std_data = true
         should_perform_PCA = true
+        should_plot = false
         
         % Parameters
         num_classes = 15
@@ -49,7 +50,7 @@ classdef ANN
 
                 num_data_cols = length(training_fields(1,:));
             end
-
+            
             %% Standardize Data
             if ann.should_std_data
                 % Standardize data via training mean and training std dev
@@ -85,8 +86,6 @@ classdef ANN
             ann.theta = (range(2)-range(1)).*rand(ann.num_hidden_nodes, num_output_nodes) + range(1);
 
             if ann.should_add_bias_to_hidden
-                % theta = [ones(num_hidden_nodes,1) theta];
-                % beta = [ones(1,num_hidden_nodes);beta];
                 ann.beta = [ones(num_data_cols,1) ann.beta];
                 ann.theta = [ones(1,num_output_nodes);ann.theta];
             end
@@ -123,6 +122,13 @@ classdef ANN
                 num_correct = numel(find(~(training_classes - training_o)));
                 acc = num_correct/num_training_rows;
                 training_accuracy(iter,:) = [iter,acc];
+                
+                % Decide learning rate dynamically                
+                if iter >= 3  && (acc - training_accuracy(iter - 1,2)) < (training_accuracy(iter - 1,2) - training_accuracy(iter - 2,2))
+                    ann.eta = ann.eta/2;
+                else
+                    ann.eta = ann.eta + 0.05;
+                end
             end
 
             %% Testing
@@ -139,14 +145,16 @@ classdef ANN
             num_correct = numel(find(~(testing_classes - testing_o)));
             testing_accuracy = num_correct/num_testing_rows;
 
-            %{
-            % Plot the training error
-            figure();
-            plot(training_accuracy(:,1), training_accuracy(:,2));
-            legend('Training Accuracy');
-            xlabel('Iteration');
-            ylabel('Accuracy');
-            %}
+            
+            if ann.should_plot
+                % Plot the training error
+                figure();
+                plot(training_accuracy(:,1), training_accuracy(:,2));
+                legend('Training Accuracy');
+                xlabel('Iteration');
+                ylabel('Accuracy');
+                fprintf('Testing Accuracy: %f%%\n',testing_accuracy * 100);
+            end  
         end
         function [ testing_accuracy ] = test_ANN( ann,testing_fields,testing_classes )
             %% Testing
