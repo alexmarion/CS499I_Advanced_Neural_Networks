@@ -24,9 +24,6 @@ function [ training_fields,training_classes,validation_fields,validation_classes
     training_percent = ceil(length(training_classes) * 0.80);
     
     validation_fields = training_fields(training_percent+1:end,:);
-    validation_classes = training_classes(training_percent+1:end,:);
-    
-    training_fields = training_fields(1:training_percent,:);
-    training_classes = training_classes(1:training_percent,:);
+    validation_
 end
 

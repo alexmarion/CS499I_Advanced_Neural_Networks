@@ -1,22 +1,25 @@
 %% Load Data
 rng(0);
-data_selection_type = 0;
 image_size = 40;
 S = 9;
 [~,classes,fields] = load_image_data(image_size,image_size);
-[num_classes,training_fields,training_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size,data_selection_type);
+[num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
 
 % Perform PCA
+%{
 percent_field_retention = 0.95;
 projection_vectors = PCA(training_fields,percent_field_retention);
 pca_training_fields = training_fields * projection_vectors;
 pca_testing_fields = testing_fields * projection_vectors;
+%}
 
 ann = ANN;
 ann.eta = 1.5;
-ann.should_plot = true;
-ann.should_perform_PCA = false;
-[~,~] = train_ANN(ann,pca_training_fields,training_classes,pca_testing_fields,testing_classes);
+ann.should_plot_train = true;
+%[~,training_accuracy,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes);
+ann.should_plot_train = false;
+ann.should_plot_s_folds = true;
+cross_validate_ANN(ann,S,fields,classes);
 
 %% Iteration Testing
 start_pt = 1;

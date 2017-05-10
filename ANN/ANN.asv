@@ -239,12 +239,12 @@ classdef ANN
             if ann.should_plot_s_folds
                 % Plot the training error
                 figure();
-                plot(1:ann.training_iters-1,mean(s_training_accuracies(:,2:ann.training_iters)));
+                plot(1:ann.training_iters - 1,mean(s_training_accuracies(:,2:ann.training_iters)));
                 legend('Mean Training Accuracy');
                 xlabel('Iteration');
                 ylabel('Accuracy');
-                fprintf('Mean Validation Accuracy: %f%%\n',mean(s_validation_accuracies(:,2)) * 100);
-                fprintf('Mean Testing Accuracy: %f%%\n',mean(s_testing_accuracies(:,2)) * 100);
+                fprintf('Mean Validation Accuracy: %f%%\n',mean(s_validation_accuracies(:,2:S+1),2) * 100);
+                fprintf('Mean Testing Accuracy: %f%%\n',mean(s_testing_accuracies(:,2:S+1),2) * 100);
             end  
         end
         
