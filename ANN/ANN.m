@@ -212,7 +212,7 @@ classdef ANN
                 training_idxs = training_idxs(randperm(length(training_idxs)));
                 
                 % Separate training data into training (80%) and validation (20%)
-                training_percent = ceil(length(training_idxs) * 0.80);
+                training_percent = ceil(length(training_idxs) * .80);
                 validation_idxs = training_idxs(training_percent + 1:end);
                 training_idxs = training_idxs(1:training_percent);
                 
@@ -227,7 +227,7 @@ classdef ANN
                 s_testing_fields = shuffled_fields(testing_idxs,:);
                 s_testing_classes = shuffled_classes(testing_idxs);
                 
-                [ann,training_accuracy,validation_accuracy,testing_accuracy] = train_ANN(ann,s_training_fields,s_training_classes, ...
+                [~,training_accuracy,validation_accuracy,testing_accuracy] = train_ANN(ann,s_training_fields,s_training_classes, ...
                                                                                             s_validation_fields,s_validation_classes, ...
                                                                                             s_testing_fields,s_testing_classes);
                 s_training_accuracies(i,:) = [i,training_accuracy(:,2)'];
@@ -246,67 +246,6 @@ classdef ANN
                 fprintf('Mean Validation Accuracy: %f%%\n',mean(s_validation_accuracies(:,2)) * 100);
                 fprintf('Mean Testing Accuracy: %f%%\n',mean(s_testing_accuracies(:,2)) * 100);
             end  
-        end
-        
-        function [ s_training_accuracies,s_testing_accuracies ] = dual_validate_ANN( ann,S,fields,classes )
-            [ folding_fields, ...
-              folding_classes, ...
-              validation_fields, ...
-              validation_classes ] = get_training_and_testing_sets(fields,classes);
-            
-            num_data_rows = size(folding_fields,1);
-            s_folds = cvpartition(num_data_rows,'k',S);
-
-            shuffled_idxs = randperm(num_data_rows);
-            shuffled_classes = folding_classes(shuffled_idxs);
-            shuffled_fields = folding_fields(shuffled_idxs,:);
-
-            s_training_accuracies = zeros(S,2);
-            s_testing_accuracies = zeros(S,2);
-
-            for i=1:S
-                idxs = training(s_folds,i);
-
-                training_idxs = find(idxs);
-                s_training_fields = shuffled_fields(training_idxs,:);
-                s_training_classes = shuffled_classes(training_idxs);
-
-                testing_idxs = find(~idxs);
-                s_testing_fields = shuffled_fields(testing_idxs,:);
-                s_testing_classes = shuffled_classes(testing_idxs);
-                
-                % Compute initial ANN
-                [~,~,ann] = train_ANN(ann,s_training_fields,s_training_classes,s_testing_fields,s_testing_classes);
-                
-                % Validation set parameters
-                val_learning_rates = 0.25:0.25:10;
-                val_hidden_nodes = 20:1:400;
-
-                val_accuracies = zeros(numel(val_learning_rates) * numel(val_hidden_nodes) , 3);
-                
-                % Use validation set to fine tune learning rate (eta) and
-                % number of hidden nodes
-                idx = 1;
-                for lr=1:numel(val_learning_rates)
-                    ann.eta = val_learning_rates(lr);
-                    for hn=1:numel(val_hidden_nodes)
-                        ann.num_hidden_nodes = val_hidden_nodes(hn);
-                        [validation_accuracy,~,ann] = train_ANN(ann,s_training_fields,s_training_classes,validation_fields,validation_classes);
-                        val_accuracies(idx,:) = [ann.eta, ann.num_hidden_nodes, validation_accuracy];
-                        idx = idx + 1;
-                    end
-                end
-                
-                % Get optimal values
-                [~,optimal_idx] = max(val_accuracies(:,3));
-                ann.eta = val_accuracies(optimal_idx,1);
-                ann.num_hidden_nodes = val_learning_rates(optimal_idx,2);
-                
-                % Retrain with optimal values
-                [testing_accuracy,training_accuracy,ann] = train_ANN(ann,s_training_fields,s_training_classes,s_testing_fields,s_testing_classes);
-                s_training_accuracies(i,:) = [i,training_accuracy(end,2)];
-                s_testing_accuracies(i,:) = [i,testing_accuracy];
-            end
         end
         
         function s = control_flow_str( ann )

@@ -19,14 +19,17 @@ ann.should_plot_train = true;
 %[~,training_accuracy,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes);
 ann.should_plot_train = false;
 ann.should_plot_s_folds = true;
-cross_validate_ANN(ann,S,fields,classes);
+[ann,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_ANN(ann,S,fields,classes);
+%% S Folds Testing
+
 
 %% Iteration Testing
 start_pt = 1;
 end_pt = 2000;
 training_iters = start_pt:10:end_pt;
-training_accuracies = zeros(numel(training_iters),S + 1);
-testing_accuracies = zeros(numel(training_iters),S + 1);
+training_accuracies = zeros(numel(training_iters),S+1);
+validation_accuracies = zeros(numel(training_iters),S+1);
+testing_accuracies = zeros(numel(training_iters),S+1);
 
 iter_test_ANN = ANN;
 
@@ -34,21 +37,20 @@ for i=1:numel(training_iters)
     num_iters = training_iters(i);
     disp(num_iters);
     iter_test_ANN.training_iters = num_iters;
-%     [testing_accuracy,training_accuracy] = train_ANN(iter_test_ANN,training_fields,training_classes,testing_fields,testing_classes);
-%     training_accuracies(i,:) = [num_iters,training_accuracy(end,2)];
-%     testing_accuracies(i,:) = [num_iters,testing_accuracy];
 
     rng(0);
-    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(iter_test_ANN,S,fields,classes);
-    training_accuracies(i,:) = [num_iters,s_training_accuracies(:,2)'];
+    [~,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_ANN(iter_test_ANN,S,fields,classes);
+    training_accuracies(i,:) = [num_iters,s_training_accuracies(:,end)'];
+    validation_accuracies(i,:) = [num_iters,s_validation_accuracies(:,2)'];
     testing_accuracies(i,:) = [num_iters,s_testing_accuracies(:,2)'];
 end
 
 fig = figure();
 hold on;
 plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(validation_accuracies(:,1), mean(validation_accuracies(:,2:S+1),2),'g');
 plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
-legend('Training Accuracy','Testing Accuracy','Location','southwest')
+legend('Avg. Training Accuracy', 'Avg. Validation Accuracy', 'Avg. Testing Accuracy','Location','southwest')
 xlabel('Number of Iterations');
 ylabel('Accuracy');
 hold off;
@@ -57,34 +59,33 @@ saveas(fig,'../Latex/figs/num_iterations_empirical.png');
 save('../Data/num_iterations_empirical','training_accuracies','testing_accuracies')
 
 %% Number of Hidden Nodes Testing
-start_pt = 20;
-end_pt = 1600;
+start_pt = 15;
+end_pt = 32;
 num_hidden_nodes = start_pt:1:end_pt;
 training_accuracies = zeros(numel(num_hidden_nodes),S + 1);
+validation_accuracies = zeros(numel(num_hidden_nodes),S+1);
 testing_accuracies = zeros(numel(num_hidden_nodes),S + 1);
 
 hidden_nodes_ANN_test = ANN;
-hidden_nodes_ANN_test.training_iters = 20;
 
 for i=1:numel(num_hidden_nodes)
     num_hidden = num_hidden_nodes(i);
     disp(num_hidden);
     hidden_nodes_ANN_test.num_hidden_nodes = num_hidden;
-%     [testing_accuracy,training_accuracy] = train_ANN(hidden_nodes_ANN_test,training_fields,training_classes,testing_fields,testing_classes);
-%     training_accuracies(i,:) = [num_hidden,training_accuracy(end,2)];
-%     testing_accuracies(i,:) = [num_hidden,testing_accuracy];
 
     rng(0);
-    [s_training_accuracies,s_testing_accuracies] = cross_validate_ANN(hidden_nodes_ANN_test,S,fields,classes);
-    training_accuracies(i,:) = [num_hidden,s_training_accuracies(:,2)'];
+    [~,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_ANN(hidden_nodes_ANN_test,S,fields,classes);
+    training_accuracies(i,:) = [num_hidden,s_training_accuracies(:,end)'];
+    validation_accuracies(i,:) = [num_hidden,s_validation_accuracies(:,2)'];
     testing_accuracies(i,:) = [num_hidden,s_testing_accuracies(:,2)'];
 end
 
 fig = figure();
 hold on;
 plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(validation_accuracies(:,1), mean(validation_accuracies(:,2:S+1),2),'g');
 plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
-legend('Training Accuracy','Testing Accuracy','Location','southwest')
+legend('Avg. Training Accuracy', 'Avg. Validation Accuracy', 'Avg. Testing Accuracy','Location','southwest')
 xlabel('Number of Hidden Nodes');
 ylabel('Accuracy');
 hold off;
