@@ -23,13 +23,22 @@ ann.should_plot_s_folds = true;
 [ann,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_ANN(ann,S,fields,classes);
 %}
 %% Image Size and PCA Retention Rate Testing
-image_size_start_pt = 10;
-image_size_end_pt = 100;
-image_sizes = image_size_start_pt:5:image_size_end_pt;
+image_size_start_pt = 20;
+image_size_end_pt = 80;
+image_sizes = image_size_start_pt:10:image_size_end_pt;
+
+% image_size_start_pt = 20;
+% image_size_end_pt = 30;
+% image_sizes = image_size_start_pt:2:image_size_end_pt;
 
 percent_ret_start_pt = 0.10;
 percent_ret_end_pt = 1;
-percent_field_retentions = percent_ret_start_pt:0.05:percent_ret_end_pt;
+percent_field_retentions = percent_ret_start_pt:0.10:percent_ret_end_pt;
+
+% percent_ret_start_pt = 0.40;
+% percent_ret_end_pt = 1;
+% percent_field_retentions = percent_ret_start_pt:0.20:percent_ret_end_pt;
+
 
 training_accuracies = zeros(numel(image_sizes) * numel(percent_field_retentions),S + 2);
 validation_accuracies = zeros(numel(image_sizes) * numel(percent_field_retentions),S + 2);
@@ -81,22 +90,26 @@ surf(xx,yy,validation_acc_matrix,'FaceAlpha',0.9);
 xlabel('Image Size');
 ylabel('Percent Field Retention');
 zlabel('Accuracy');
-title('Validation Set');
+title('Training Set');
 colorbar;
 
 testing_fig = figure();
 mean_testing_acc = mean(testing_accuracies(:,3:S+2),2);
 testing_acc_matrix = reshape(mean_testing_acc,numel(percent_field_retentions),numel(image_sizes));
 surf(xx,yy,testing_acc_matrix,'FaceAlpha',0.9);
-xlabel('Image Size');
-ylabel('Percent Field Retention');
-zlabel('Accuracy');
-title('Testing Set');
-colorbar;
-
+% fig = figure();
+% hold on;
+% plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+% plot(validation_accuracies(:,1), mean(validation_accuracies(:,2:S+1),2),'g');
+% plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
+% legend('Avg. Training Accuracy', 'Avg. Validation Accuracy', 'Avg. Testing Accuracy','Location','southwest')
+% xlabel('Image Size');
+% ylabel('Percent Field Retention');
+% zlabel('Accuracy');
+% hold off;
 % Save image and data
-saveas(fig,'../Latex/figs/num_fields_empirical.png');
-save('../Data/num_fields_empirical','training_accuracies','validation_accuracies','testing_accuracies')
+% saveas(fig,'../Latex/figs/num_iterations_empirical.png');
+% save('../Data/num_iterations_empirical','training_accuracies','testing_accuracies')
 
 %% Iteration Testing
 start_pt = 1;
@@ -131,7 +144,7 @@ ylabel('Accuracy');
 hold off;
 % Save image and data
 saveas(fig,'../Latex/figs/num_iterations_empirical.png');
-save('../Data/num_iterations_empirical','training_accuracies','validation_accuracies','testing_accuracies')
+save('../Data/num_iterations_empirical','training_accuracies','testing_accuracies')
 
 %% Number of Hidden Nodes Testing
 start_pt = 15;

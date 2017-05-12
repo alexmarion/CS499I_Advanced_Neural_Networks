@@ -5,6 +5,7 @@ classdef ANN
         should_add_bias_to_hidden = false
         should_std_data = true
         should_perform_PCA = true
+        
         should_plot_train = false
         should_plot_s_folds = false
         
@@ -12,7 +13,7 @@ classdef ANN
         num_classes = 15
         num_hidden_nodes = 20
         training_iters = 1000
-        eta = 0.5
+        eta = 1.5
         percent_field_retention = 0.95
         
         % Values
@@ -200,7 +201,6 @@ classdef ANN
             shuffled_fields = fields(shuffled_idxs,:);
             
             s_training_accuracies = zeros(S,ann.training_iters + 1);
-            %s_training_accuracies = zeros(S,2);
             s_validation_accuracies = zeros(S,2);
             s_testing_accuracies = zeros(S,2);
 
@@ -231,7 +231,6 @@ classdef ANN
                                                                                             s_validation_fields,s_validation_classes, ...
                                                                                             s_testing_fields,s_testing_classes);
                 s_training_accuracies(i,:) = [i,training_accuracy(:,2)'];
-                %s_training_accuracies(i,:) = [i,training_accuracy(end,2)];
                 s_validation_accuracies(i,:) = [i,validation_accuracy];
                 s_testing_accuracies(i,:) = [i,testing_accuracy];
             end
