@@ -95,8 +95,10 @@ title('Testing Set');
 colorbar;
 
 % Save image and data
-saveas(fig,'../Latex/figs/num_fields_empirical.png');
-save('../Data/num_fields_empirical','training_accuracies','validation_accuracies','testing_accuracies')
+saveas(training_fig,'../Latex/figs/num_fields_empirical_training.png');
+saveas(validation_fig,'../Latex/figs/num_fields_empirical_validation.png');
+saveas(testing_fig,'../Latex/figs/num_fields_empirical_testing.png');
+save('../Data/num_fields_empirical','training_accuracies','validation_accuracies','testing_accuracies');
 
 %% Iteration Testing
 start_pt = 1;
