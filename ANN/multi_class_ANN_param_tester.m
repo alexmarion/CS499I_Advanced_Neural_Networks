@@ -100,6 +100,85 @@ saveas(validation_fig,'../Latex/figs/num_fields_empirical_validation.png');
 saveas(testing_fig,'../Latex/figs/num_fields_empirical_testing.png');
 save('../Data/num_fields_empirical','training_accuracies','validation_accuracies','testing_accuracies');
 
+%% Hidden Node Testing
+% Using max mean values from the validation set above 
+% image size of 55px
+% PCA field retention rate of 0.95
+
+rng(0);
+image_size = 55;
+S = 9;
+[~,classes,fields] = load_image_data(image_size,image_size);
+%S[num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
+
+% Perform PCA
+percent_field_retention = 0.95;
+projection_vectors = PCA(fields,percent_field_retention);
+
+% Need this for number of hidden nodes testing
+num_pca_data_cols = size(projection_vectors,2);
+
+start_pt = 15;
+end_pt = num_pca_data_cols;
+num_hidden_nodes = start_pt:1:end_pt;
+
+training_accuracies = zeros(numel(num_hidden_nodes),S + 1);
+validation_accuracies = zeros(numel(num_hidden_nodes),S+1);
+testing_accuracies = zeros(numel(num_hidden_nodes),S + 1);
+
+hidden_nodes_test_ANN = ANN;
+hidden_nodes_test_ANN.percent_field_retention = 0.95;
+
+for i=1:numel(num_hidden_nodes)
+    num_hidden = num_hidden_nodes(i);
+    disp(num_hidden);
+    hidden_nodes_test_ANN.num_hidden_nodes = num_hidden;
+
+    rng(0);
+    [~,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_ANN(hidden_nodes_test_ANN,S,fields,classes);
+    training_accuracies(i,:) = [num_hidden,s_training_accuracies(:,end)'];
+    validation_accuracies(i,:) = [num_hidden,s_validation_accuracies(:,2)'];
+    testing_accuracies(i,:) = [num_hidden,s_testing_accuracies(:,2)'];
+end
+
+fig = figure();
+hold on;
+plot(training_accuracies(:,1), mean(training_accuracies(:,2:S+1),2),'b');
+plot(validation_accuracies(:,1), mean(validation_accuracies(:,2:S+1),2),'g');
+plot(testing_accuracies(:,1), mean(testing_accuracies(:,2:S+1),2),'r');
+legend('Avg. Training Accuracy', 'Avg. Validation Accuracy', 'Avg. Testing Accuracy','Location','southwest')
+xlabel('Number of Hidden Nodes');
+ylabel('Accuracy');
+hold off;
+% Save image and data
+saveas(fig,'../Latex/figs/num_hidden_nodes_empirical.png');
+save('../Data/num_hidden_nodes_empirical','training_accuracies','testing_accuracies')
+
+%% Optimally Trained Network
+% Using max validation values from number of fields and num hidden nodes
+% Image size: 55px
+% PCA retention: 0.95
+% Number of hidden nodes: 15
+
+rng(0);
+image_size = 55;
+S = 9;
+[~,classes,fields] = load_image_data(image_size,image_size);
+[num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
+
+optimal_ANN = ANN;
+optimal_ANN.percent_field_retention = 0.95;
+optimal_ANN.num_hidden_nodes = 15;
+
+optimal_ANN.should_plot_train = true;
+[~,training_accuracy,validation_accuracy,testing_accuracy] = train_ANN(optimal_ANN,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes);
+optimal_ANN.should_plot_train = false;
+optimal_ANN.should_plot_s_folds = true;
+[optimal_ANN,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_ANN(optimal_ANN,S,fields,classes);
+
+
+
+
 %% Iteration Testing
 start_pt = 1;
 end_pt = 2000;
