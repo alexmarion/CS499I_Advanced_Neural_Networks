@@ -55,6 +55,56 @@
   \end{center}
 }
 
+% Define a command to layout a table
+% Inpute values are #1 input layer bias node
+%                   #2 hidden layer bias node
+%                   #3 standardization of features
+%                   #4 PCA applied
+%                   #5 Mean Testing Accuracy
+%                   #6 Mean Validation Accuracy
+%                   #7 Table Caption
+\newcommand{\testingValidationAccuracyTable}[7] {
+  \begin{tabular}{l|l}
+    \hline
+    Input layer bias node & #1 \\
+    Hidden layer bias node & #2 \\
+    Standardization of features & #3 \\
+    PCA applied & #4 \\
+    \hline
+    Avg. Testing Accuracy & #5 \\
+    Avg. Validation Accuracy & #6 \\
+    \hline
+  \end{tabular}
+  ~\\[60pt]
+  \caption{#7}
+}
+
+% Define a command to layout a table and plot
+% Inpute values are #1 input layer bias node
+%                   #2 hidden layer bias node
+%                   #3 standardization of features
+%                   #4 PCA applied
+%                   #5 Mean Testing Accuracy
+%                   #6 Mean Validation Accuracy
+\newcommand{\testingValidationAccuracyTableAndPlot}[6] {
+  \begin{center}
+    \begin{table}[H]
+      \begin{varwidth}[b]{0.4\linewidth}
+        \centering
+        \testingValidationAccuracyTable{#1}{#2}{#3}{#4}{#5}{#6}{#1#2#3#4 Testing Accuracy}
+        \label{table:#1#2#3#4}
+      \end{varwidth}%
+      \hfill
+      \begin{minipage}[b]{0.6\linewidth}
+        \centering
+        \includegraphics[width=100mm]{./accuracy_imgs/#1#2#3#4_training_accuracy.png}
+        \captionof{figure}{#1#2#3#4 Training Accuracy}
+        \label{fig:#1#2#3#4}
+      \end{minipage}
+    \end{table}
+  \end{center}
+}
+
 \begin{document}
 
 \begin{titlepage}
@@ -124,6 +174,7 @@ Dr. Matthew \textsc{Burlick}
 \section{Datasets}
 \textbf{Yale Faces Database} \quad This dataset contains 165 grayscale images in GIF format of 15 individuals with 11 images per person. There is one image per each of the following configurations: center-light, w/glasses, happy, left-light, w/no glasses, normal, right-light, sad, sleepy, surprised, and wink.
 
+
 \section{Testing Parameters}
 The following variants are tested for accuracy:
 \begin{enumerate}
@@ -137,17 +188,16 @@ Empirical data was generated to optimize the following parameters:
   \item Termination criteria (Number of Training Iterations)
   \item Hidden layer size
   \item Image size
-  \item Learning Rate
   \item PCA Field Retention
 \end{enumerate}
 
 \section{Baseline Accuracy}
-The baseline accuracy was created using the negative form of all variants with the exception of data standardization. The baseline parameters were as follows: 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, and a learning rate of 0.5.
+The baseline accuracy was created using the negative form of all variants with the exception of data standardization. The baseline parameters were as follows: 40 by 40 sized images, a hidden layer size of 20, and 1000 training iterations.
 \begin{center}
   \begin{table}[H]
     \begin{varwidth}[b]{0.4\linewidth}
       \centering
-      \testingAccuracyTable{N}{N}{Y}{N}{0.800000}{Baseline Testing Accuracy}
+      \testingValidationAccuracyTable{N}{N}{Y}{N}{0.733918}{0.708812}{Baseline Testing Accuracy}
       \label{table:baseline}
     \end{varwidth}%
     \hfill
@@ -161,60 +211,64 @@ The baseline accuracy was created using the negative form of all variants with t
 \end{center}
 
 \section{Variant Accuracy Testing}
-All variants were tested using 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, a learning rate of 0.5, and a PCA retention rate of 0.95.
+All variants were tested using 40 by 40 sized images, a hidden layer size of 20, 1000 training iterations, and a PCA retention rate of 0.95 when PCA was applied.
 
-\testingAccuracyTableAndPlot{N}{N}{N}{N}{0.163636}
-\testingAccuracyTableAndPlot{Y}{N}{N}{N}{0.272727}
-\testingAccuracyTableAndPlot{N}{Y}{N}{N}{0.218182}
-\testingAccuracyTableAndPlot{N}{N}{N}{Y}{0.254545}
-\testingAccuracyTableAndPlot{Y}{Y}{N}{N}{0.200000}
-\testingAccuracyTableAndPlot{Y}{N}{Y}{N}{0.818182}
-\testingAccuracyTableAndPlot{Y}{N}{N}{Y}{0.163636}
-\testingAccuracyTableAndPlot{N}{Y}{Y}{N}{0.836364}
-\testingAccuracyTableAndPlot{N}{Y}{N}{Y}{0.309091}
-\testingAccuracyTableAndPlot{N}{N}{Y}{Y}{0.945455}
-\testingAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.781818}
-\testingAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.327273}
-\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.963636}
-\testingAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.945455}
-\testingAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.945455}
+\testingValidationAccuracyTableAndPlot{N}{N}{N}{N}{0.254061}{0.214559}
+\testingValidationAccuracyTableAndPlot{Y}{N}{N}{N}{0.162443}{0.157088}
+\testingValidationAccuracyTableAndPlot{N}{Y}{N}{N}{0.265757}{0.249042}
+\testingValidationAccuracyTableAndPlot{N}{N}{N}{Y}{0.339181}{0.302682}
+\testingValidationAccuracyTableAndPlot{Y}{Y}{N}{N}{0.192658}{0.187739}
+\testingValidationAccuracyTableAndPlot{Y}{N}{Y}{N}{0.721897}{0.724138}
+\testingValidationAccuracyTableAndPlot{Y}{N}{N}{Y}{0.282651}{0.302682}
+\testingValidationAccuracyTableAndPlot{N}{Y}{Y}{N}{0.709552}{0.697318}
+\testingValidationAccuracyTableAndPlot{N}{Y}{N}{Y}{0.405133}{0.318008}
+\testingValidationAccuracyTableAndPlot{N}{N}{Y}{Y}{0.946069}{0.950192}
+\testingValidationAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.692658}{0.724138}
+\testingValidationAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.318389}{0.314176}
+\testingValidationAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.951917}{0.954023}
+\testingValidationAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.940221}{0.919540}
+\testingValidationAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.940221}{0.923372}
 
 \newpage
 \section{Empirical Parameter Accuracy Testing}
 All empirical data was gathered using the following variant which had the highest accuracy from the variant testing:
-\testingAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.963636}
+\testingValidationAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.951917}{0.954023}
 
 \begin{enumerate}
   \item Number of Training Iterations
-  The number of training iterations was varied from 0 to 10,000 by 100. The number of hidden nodes was 20, the image size was 40 by 40, and the learning rate was 0.5. The following is a plot of the accuracy as number of training iterations increases.
+  The number of training iterations was varied from 1 to 10,000 by 100. The number of hidden nodes was 20 and the image size was 40 by 40. The following is a plot of the accuracy as number of training iterations increases.
   \begin{center}
     \includegraphics[width=115mm]{./accuracy_imgs/num_iterations_empirical.png}
     \captionof{figure}{Plot of accuracy as number of training iterations increases}
     \label{fig:num_iterations}
   \end{center}
+
+  \item Image Size and PCA Field Retention
+
+
   \item Number of Hidden Nodes
-  The number of hidden nodes was varied from 0 to 1600 (the number of features) by 20. The number of training iterations was 1000, the image size was 40 by 40, and the learning rate was 0.5. The following is a plot of the accuracy as number of hidden nodes increases. \begin{comment}The number of training iterations was reduced to 10 in order to more clearly show the trend of increasing the number of hidden nodes.\end{comment}
+  The number of hidden nodes was varied from 0 to 1600 (the number of features) by 20. The number of training iterations was 1000, the image size was 40 by 40, and the learning rate was 0.5. The following is a plot of the accuracy as number of hidden nodes increases.
   \begin{center}
     \includegraphics[width=115mm]{./accuracy_imgs/num_hidden_nodes_empirical.png}
     \captionof{figure}{Plot of accuracy as number of hidden nodes increases}
     \label{fig:num_hidden_nodes}
   \end{center}
   \item Image Size
-  The image size was varied from 10 to 100 by 1, thus increasing the number of features quadratically. The number of training iterations was 1000, the number of hidden nodes was 20, and the learning rate was 0.5. \begin{comment}The number of training iterations was reduced to 500 in order to more clearly show the trend of increasing the number of hidden nodes.\end{comment}
+  The image size was varied from 10 to 100 by 1, thus increasing the number of features quadratically. The number of training iterations was 1000, the number of hidden nodes was 20, and the learning rate was 0.5.
   \begin{center}
     \includegraphics[width=115mm]{./accuracy_imgs/image_size_empirical.png}
     \captionof{figure}{Plot of accuracy as the image size increases}
     \label{fig:img_size}
   \end{center}
   \item Learning Rate
-  The learning rate was varied from 0.05 to 20 by 0.05. The number of training iterations was 1000, the number of hidden nodes was 20, and the image size was 40 by 40. \begin{comment}The number of iterations was reduced to 50 in order to more clearly show the trend of increasing the learning rate.\end{comment}
+  The learning rate was varied from 0.05 to 20 by 0.05. The number of training iterations was 1000, the number of hidden nodes was 20, and the image size was 40 by 40.
   \begin{center}
     \includegraphics[width=115mm]{./accuracy_imgs/learning_rate_empirical.png}
     \captionof{figure}{Plot of accuracy as the learning rate increases}
     \label{fig:img_size}
   \end{center}
   \item PCA Field Retention
-  The PCA field retention rate was varied from 0.01 to 1 by 0.01. The number of training iterations was 1000, the number of hidden nodes was 20, and the image size was 40 by 40. \begin{comment}The number of iterations was reduced to 200 in order to more clearly show the trend of increasing the PCA field retention.\end{comment}
+  The PCA field retention rate was varied from 0.01 to 1 by 0.01. The number of training iterations was 1000, the number of hidden nodes was 20, and the image size was 40 by 40.
   \begin{center}
     \includegraphics[width=115mm]{./accuracy_imgs/percent_field_retention_empirical.png}
     \captionof{figure}{Plot of accuracy as the field retention increases}
