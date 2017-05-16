@@ -119,8 +119,9 @@ projection_vectors = PCA(fields,percent_field_retention);
 num_pca_data_cols = size(projection_vectors,2);
 
 start_pt = 15;
-end_pt = num_pca_data_cols;
-num_hidden_nodes = start_pt:1:end_pt;
+%end_pt = num_pca_data_cols;
+end_pt = image_size * image_size;
+num_hidden_nodes = start_pt:50:end_pt;
 
 training_accuracies = zeros(numel(num_hidden_nodes),S + 1);
 validation_accuracies = zeros(numel(num_hidden_nodes),S+1);
@@ -128,6 +129,8 @@ testing_accuracies = zeros(numel(num_hidden_nodes),S + 1);
 
 hidden_nodes_test_ANN = ANN;
 hidden_nodes_test_ANN.percent_field_retention = 0.95;
+
+hidden_nodes_test_ANN.should_perform_PCA = false;
 
 for i=1:numel(num_hidden_nodes)
     num_hidden = num_hidden_nodes(i);
@@ -181,8 +184,8 @@ optimal_ANN.should_plot_s_folds = true;
 
 %% Iteration Testing
 start_pt = 1;
-end_pt = 2000;
-training_iters = start_pt:10:end_pt;
+end_pt = 10000;
+training_iters = start_pt:100:end_pt;
 training_accuracies = zeros(numel(training_iters),S+1);
 validation_accuracies = zeros(numel(training_iters),S+1);
 testing_accuracies = zeros(numel(training_iters),S+1);
