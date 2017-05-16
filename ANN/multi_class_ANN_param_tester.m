@@ -4,7 +4,7 @@ image_size = 40;
 S = 9;
 [~,classes,fields] = load_image_data(image_size,image_size);
 [num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
-
+%{
 % Perform PCA
 percent_field_retention = 0.95;
 projection_vectors = PCA(training_fields,percent_field_retention);
@@ -14,7 +14,6 @@ pca_testing_fields = testing_fields * projection_vectors;
 % Need this for number of hidden nodes testing
 num_pca_data_cols = size(pca_training_fields,2);
 
-%{
 ann = ANN;
 ann.should_plot_train = true;
 %[~,training_accuracy,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes);
