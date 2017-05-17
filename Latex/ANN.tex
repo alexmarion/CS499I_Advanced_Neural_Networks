@@ -248,10 +248,23 @@ To create a baseline accuracy for the shallow artificial neural network on the Y
 \end{center}
 \bigskip
 
-The data was standardized before training, no bias nodes were added, and PCA was not performed. The following is the testing and validation accuracy for the baseline training parameters and a plot of training accuracy vs. the current training iteration.
-
-BASELINE PLOT AND TABLE HERE
-
+The data was standardized before training, no bias nodes were added, and PCA was not performed. The following is the testing and validation accuracy for the baseline training parameters and a plot of training accuracy vs. the current training iteration.\\
+\begin{center}
+  \begin{table}[H]
+    \begin{varwidth}[b]{0.4\linewidth}
+      \centering
+      \testingValidationAccuracyTable{N}{N}{Y}{N}{0.733918}{0.708812}{Baseline Testing Accuracy}
+      \label{table:baseline}
+    \end{varwidth}%
+    \hfill
+    \begin{minipage}[b]{0.6\linewidth}
+      \centering
+      \includegraphics[width=100mm]{accuracy_imgs/baseline_training_accuracy.png}
+      \captionof{figure}{Baseline Training Accuracy}
+      \label{fig:baseline_img}
+    \end{minipage}
+  \end{table}
+\end{center}
 Across nine folds the baseline training parameters trained an artificial neural network which achieved $73.3918\%$ average testing accuracy and an average validation accuracy of $70.8812\%$.
 
 \section{Variation Testing}

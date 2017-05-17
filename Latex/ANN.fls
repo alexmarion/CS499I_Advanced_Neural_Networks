@@ -101,6 +101,9 @@ INPUT /usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT accuracy_imgs/baseline_training_accuracy.png
+INPUT ./accuracy_imgs/baseline_training_accuracy.png
+INPUT ./accuracy_imgs/baseline_training_accuracy.png
 INPUT ./accuracy_imgs/NNNN_training_accuracy.png
 INPUT ./accuracy_imgs/NNNN_training_accuracy.png
 INPUT ./accuracy_imgs/NNNN_training_accuracy.png
