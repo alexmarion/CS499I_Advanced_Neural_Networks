@@ -172,7 +172,7 @@ Dr. Matthew \textsc{Burlick}
 \newpage
 
 \section{Abstract}
-Using a shallow artificial neural network and the Yale Faces Database we trained artificial neural networks in an attempt to find the optimal parameters to minimize error. Using data manipulation techniques such as standardization and principal component analysis (PCA) we were able to increase the accuracy of a shallow neural network while decreasing runtime and number of training iterations. We were able to provide reasonable bounds for the number of training iterations, hidden layer size, and image size using empirical data.
+Using a shallow artificial neural network and the Yale Faces Database we trained shallow artificial neural networks in an attempt to find the optimal parameters to minimize error. Using data manipulation techniques such as standardization and principal component analysis (PCA) we were able to increase the accuracy of a shallow neural network while decreasing runtime and number of training iterations. We were able to provide reasonable bounds for the number of training iterations, hidden layer size, and image size using empirical data.
 
 
 \section{Introduction}
@@ -308,7 +308,7 @@ A shallow artificial neural network was trained varying the input parameters to 
 For each test the highest performing variant of the variant testing set was used. Each artificial neural network was trained with a bias node at the input layer, standardized data, and PCA applied before training.\\
 \begin{enumerate}
   \item \textbf{Number of Training Iterations}\\
-  The number of training iterations was varied from 1 to 10,000 in increments of 100. The artificial neural network was trained using each number of training iterations in this set and was cross validated over nine folds. The accuracy plot show below reflects the average accuracies across the nine folds. The artificial neural network was trained with an image size of 40 by 40 and 20 hidden nodes.\\
+  The number of training iterations was varied from 1 to 10,000 in increments of 100. The artificial neural network was trained using each number of training iterations in this set and was cross validated over nine folds. The accuracy plot shown below reflects the average accuracies across the nine folds. The artificial neural network was trained with an image size of 40 by 40 and 20 hidden nodes.\\
   \begin{center}
     \includegraphics[width=115mm]{./figs/num_iterations_empirical.png}
     \captionof{figure}{Plot of accuracy as the number of training iterations increases}
@@ -363,9 +363,7 @@ For each test the highest performing variant of the variant testing set was used
 \section{Conclusions}
 A shallow neural network can be used for facial recognition and classification reasonably well given some data manipulation beforehand. The most important data manipulations to increase accuracy are data standardization and PCA. Every variation that included data standardization performed markedly better than those that did not. The highest valued variation that did not standardize data (NYNY) only reached a training accuracy of 40.5133\% and a validation accuracy of 31.8008\%. The parallel variation which did standardize the data (NYYY) reached a training accuracy of 94.0221\% and a validation accuracy of 91.9540\%. Similarly the highest valued variation that did not use PCA (YNYN) only reached a testing accuracy of 72.1897\% and a validation accuracy of 72.4138\%. The similar variation which used PCA (YNYY) was the highest performing variation and reached a testing accuracy of 95.1917\% and a validation accuracy of 95.4023\%.\\
 \\
-After the importance of PCA and data standardization was determined the number of training iterations was empirically tested. This had very little effect on the accuracy of the artificial neural network past 300 to 400 iterations. The percent field retention and image size had the largest effect on the accuracy. Depending on the image size and percent field retention the mean testing accuracy ranged from 95.81\% to 25.31\% while the mean validation accuracy ranged from 95.40\% to 23.37\%.\\
-\\
-The number of hidden nodes in the hidden node layer had very little effect on the accuracy of the artificial neural network. With PCA applied the range of the mean testing accuracies was between 96.43\% to 92.76\% and the mean validation accuracies varied between 96.17\% and 91.19\%.\\
+After the importance of PCA and data standardization was determined the number of training iterations was empirically tested. This had very little effect on the accuracy of the artificial neural network past 300 to 400 iterations. The percent field retention and image size had the largest effect on the accuracy. Depending on the image size and percent field retention the mean testing accuracy ranged from 95.81\% to 25.31\% while the mean validation accuracy ranged from 95.40\% to 23.37\%. The image size likely had less influence over the accuracy because by using PCA the number of fields was significantly reduced each time regardless of the initial image size and number of fields. The number of hidden nodes in the hidden node layer had very little effect on the accuracy of the artificial neural network. With PCA applied the range of the mean testing accuracies was between 96.43\% to 92.76\% and the mean validation accuracies varied between 96.17\% and 91.19\%.\\
 \\
 By combining data manipulation techniques such as data standardization and principal component analysis a shallow neural network can be trained efficiently and to a high degree of accuracy. It is important to reduce the number of features to lessen the computational complexity and exclude features which have little to no information gain.\\
 
