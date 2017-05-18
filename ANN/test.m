@@ -1,11 +1,17 @@
 rng(0);
-data_selection_type = 0;
 image_size = 40;
-[num_classes,training_fields,training_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size,data_selection_type);
+[num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
+
+rng(0);
+ann = ANN;
+[~,training_accuracy,validation_accuracy,~] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
+
+rng(0);
+
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 1.1;%1.61803399;%1.4;
+deep_ann.hidden_layer_division = 1.45;%1.61803399;%1.4;
 deep_ann.training_iters = 1000;
 deep_ann.eta = 0.5;
 deep_ann.percent_field_retention = 0.95;
@@ -39,16 +45,16 @@ end
 num_hidden_node_layers = 0;
 num_nodes_in_layer = num_data_cols;
 for i = 1:num_testing_rows
-    num_hidden_node_layers = num_hidden_node_layers + 1;
     num_nodes_in_layer = ceil(num_nodes_in_layer/deep_ann.hidden_layer_division);
-    if num_nodes_in_layer <= num_output_nodes
+    if num_nodes_in_layer < num_output_nodes
         break
     end
+    num_hidden_node_layers = num_hidden_node_layers + 1;
 end
 
 % Must have at least 2 hidden layers to be a deep network
-if num_hidden_node_layers <= 1
-    num_hidden_node_layers = 2;
+if num_hidden_node_layers < 1
+    num_hidden_node_layers = 1;
 end
 
 %% Standardize Data
@@ -80,20 +86,20 @@ end
 %% Perform Forward/Backward Propagation with Batch Gradient Descent
 % Initialize weights as random    
 range = [-1,1];
-weights = cell(num_hidden_node_layers,1);
+weights = cell(num_hidden_node_layers + 1,1);
 new_layer_size = ceil(num_data_cols/deep_ann.hidden_layer_division);
 weights{1} = (range(2)-range(1)).*rand(num_data_cols, new_layer_size)+range(1);
 
-for layer = 2:num_hidden_node_layers - 1 
+for layer = 2:num_hidden_node_layers 
     new_layer_size = ceil(new_layer_size/deep_ann.hidden_layer_division);
     h = size(weights{layer-1},2);
     w = new_layer_size;
     weights{layer} = (range(2)-range(1)).*rand(h,w)+range(1);
 end
 
-h = size(weights{num_hidden_node_layers - 1},2);
+h = size(weights{num_hidden_node_layers},2);
 w = num_output_nodes;
-weights{num_hidden_node_layers} = (range(2)-range(1)).*rand(h, w)+range(1);
+weights{num_hidden_node_layers + 1} = (range(2)-range(1)).*rand(h, w)+range(1);
 
 %{
 if deep_ann.should_add_bias_to_hidden
@@ -110,7 +116,7 @@ end
 training_accuracy = zeros(deep_ann.training_iters, 2);
 
 % Track training h values
-training_h = cell(num_hidden_node_layers - 1,1);
+training_h = cell(num_hidden_node_layers,1);
 
 iter = 0;
 while iter < deep_ann.training_iters
@@ -120,26 +126,26 @@ while iter < deep_ann.training_iters
     training_h{1} = activation_fxn(std_training_fields * weights{1});
     
     % Compute internal hidden layers
-    for layer=2:num_hidden_node_layers - 1
+    for layer=2:num_hidden_node_layers
         training_h{layer} = activation_fxn(training_h{layer-1} * weights{layer});
     end
     
     % Compute output layer
-    training_o = activation_fxn(training_h{num_hidden_node_layers - 1} * weights{num_hidden_node_layers});
+    training_o = activation_fxn(training_h{num_hidden_node_layers} * weights{num_hidden_node_layers + 1});
 
     %% Backward Propagation
-    deltas = cell(num_hidden_node_layers,1);
+    deltas = cell(num_hidden_node_layers + 1,1);
     
     % Output layer delta
-    deltas{num_hidden_node_layers} = new_training_classes - training_o;
+    deltas{num_hidden_node_layers + 1} = new_training_classes - training_o;
     
     % Internal hidden layer deltas
-    for layer=num_hidden_node_layers-1:-1:1
-        deltas{layer} = (weights{layer + 1} * deltas{layer + 1}')' .* (training_h{layer} .* (1 - training_h{layer}));
+    for layer=num_hidden_node_layers:-1:1
+        deltas{layer} = (deltas{layer + 1} * weights{layer + 1}') .* (training_h{layer} .* (1 - training_h{layer}));
     end
     
     % Update weights
-    for layer=num_hidden_node_layers-1:-1:1
+    for layer=num_hidden_node_layers:-1:1
         weights{layer+1} = weights{layer+1} + ((deep_ann.eta/num_training_rows) * deltas{layer+1}' * training_h{layer})';
     end
     
@@ -157,12 +163,12 @@ end
 testing_h = activation_fxn(std_testing_fields * weights{1});
 
 % Compute internal hidden layers
-for layer=2:num_hidden_node_layers - 1
+for layer=2:num_hidden_node_layers
     testing_h = activation_fxn(testing_h * weights{layer});
 end
 
 % Compute output layer
-testing_o = activation_fxn(testing_h * weights{num_hidden_node_layers});
+testing_o = activation_fxn(testing_h * weights{num_hidden_node_layers + 1});
 
 % Choose maximum output node as value
 [~,testing_o] = max(testing_o,[],2);
