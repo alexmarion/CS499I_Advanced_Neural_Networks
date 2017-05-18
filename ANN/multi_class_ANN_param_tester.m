@@ -151,7 +151,7 @@ ylabel('Accuracy');
 hold off;
 % Save image and data
 saveas(fig,'../Latex/figs/num_hidden_nodes_empirical.png');
-save('../Data/num_hidden_nodes_empirical','training_accuracies','testing_accuracies')
+save('../Data/num_hidden_nodes_empirical','training_accuracies','testing_accuracies','validation_accuracies')
 
 %% Optimally Trained Network
 % Using max validation values from number of fields and num hidden nodes
