@@ -4,14 +4,14 @@ image_size = 40;
 
 rng(0);
 ann = ANN;
-[~,training_accuracy,validation_accuracy,~] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
+[~,~,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
 
 rng(0);
 
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 1.45;%1.61803399;%1.4;
+deep_ann.hidden_layer_division = 1.29;%1.61803399;%1.4;
 deep_ann.training_iters = 1000;
 deep_ann.eta = 0.5;
 deep_ann.percent_field_retention = 0.95;
@@ -116,41 +116,42 @@ end
 training_accuracy = zeros(deep_ann.training_iters, 2);
 
 % Track training h values
-training_h = cell(num_hidden_node_layers,1);
+training_out = cell(num_hidden_node_layers,1);
 
 iter = 0;
 while iter < deep_ann.training_iters
     iter = iter + 1;    
     %% Forward Propagation
     % Compute first hidden layer
-    training_h{1} = activation_fxn(std_training_fields * weights{1});
+    training_out{1} = activation_fxn(std_training_fields * weights{1});
     
     % Compute internal hidden layers
-    for layer=2:num_hidden_node_layers
-        training_h{layer} = activation_fxn(training_h{layer-1} * weights{layer});
+    for layer=2:num_hidden_node_layers + 1
+        training_out{layer} = activation_fxn(training_out{layer-1} * weights{layer});
     end
     
     % Compute output layer
-    training_o = activation_fxn(training_h{num_hidden_node_layers} * weights{num_hidden_node_layers + 1});
+    %training_o = activation_fxn(training_out{num_hidden_node_layers} * weights{num_hidden_node_layers + 1});
 
     %% Backward Propagation
     deltas = cell(num_hidden_node_layers + 1,1);
     
     % Output layer delta
-    deltas{num_hidden_node_layers + 1} = new_training_classes - training_o;
-    
-    % Internal hidden layer deltas
-    for layer=num_hidden_node_layers:-1:1
-        deltas{layer} = (deltas{layer + 1} * weights{layer + 1}') .* (training_h{layer} .* (1 - training_h{layer}));
+    deltas{num_hidden_node_layers+1} = new_training_classes - training_out{end};
+    weights{end} = weights{end} + ((deep_ann.eta/num_training_rows) * training_out{end-1}' * deltas{end});
+
+    % Update weights and compute internal hidden layer deltas
+    for layer=num_hidden_node_layers:-1:2
+        deltas{layer} = (deltas{layer + 1} * weights{layer + 1}') .* (training_out{layer} .* (1 - training_out{layer}));                
+        weights{layer} = weights{layer} + ((deep_ann.eta/num_training_rows) * deltas{layer}' * training_out{layer-1})';
     end
     
-    % Update weights
-    for layer=num_hidden_node_layers:-1:1
-        weights{layer+1} = weights{layer+1} + ((deep_ann.eta/num_training_rows) * deltas{layer+1}' * training_h{layer})';
-    end
+    % Input layer delta
+    deltas{1} = (deltas{2} * weights{2}') .* (training_out{1} .* (1 - training_out{1}));
+    weights{1} = weights{1} + ((deep_ann.eta/num_training_rows) * deltas{1}' * std_training_fields)';
     
     % Choose maximum output node as value
-    [~,training_o] = max(training_o,[],2);
+    [~,training_o] = max(training_out{end},[],2);
 
     % Log training error
     num_correct = numel(find(~(training_classes - training_o)));
