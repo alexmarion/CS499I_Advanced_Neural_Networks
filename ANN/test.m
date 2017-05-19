@@ -2,8 +2,12 @@ rng(0);
 image_size = 40;
 [num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
 
+training_fields = [training_fields;validation_fields];
+training_classes = [training_classes;validation_classes];
+
 rng(0);
 ann = ANN;
+ann.should_plot_train = true
 [~,~,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
 
 rng(0);
@@ -11,9 +15,9 @@ rng(0);
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 1.29;%1.61803399;%1.4;
+deep_ann.hidden_layer_division = 1.45;%1.29;%1.61803399;
 deep_ann.training_iters = 1000;
-deep_ann.eta = 0.5;
+deep_ann.eta = 1.5;
 deep_ann.percent_field_retention = 0.95;
 
 %% Control Flow Values
@@ -28,6 +32,7 @@ activation_fxn = @(x) 1./(1 + exp(-x));
 
 % Get number of training rows and number of testing rows
 num_training_rows = length(training_fields(:,1));
+num_validation_rows = length(validation_fields(:,1));
 num_testing_rows = length(testing_fields(:,1));
 
 num_data_cols = length(training_fields(1,:));
@@ -36,6 +41,7 @@ num_data_cols = length(training_fields(1,:));
 if deep_ann.should_perform_PCA
     projection_vectors = PCA(training_fields,deep_ann.percent_field_retention);
     training_fields = training_fields * projection_vectors;
+    validation_fields = validation_fields * projection_vectors;
     testing_fields = testing_fields * projection_vectors;
 
     num_data_cols = length(training_fields(1,:));
@@ -62,10 +68,14 @@ if deep_ann.should_std_data
     % Standardize data via training mean and training std dev
     [std_training_fields,training_fields_mean,training_fields_std_dev] = standardize_data(training_fields);
 
+    std_validation_fields = validation_fields - repmat(training_fields_mean,size(validation_fields,1),1);
+    std_validation_fields = std_validation_fields ./ repmat(training_fields_std_dev,size(std_validation_fields,1),1);
+    
     std_testing_fields = testing_fields - repmat(training_fields_mean,size(testing_fields,1),1);
     std_testing_fields = std_testing_fields ./ repmat(training_fields_std_dev,size(std_testing_fields,1),1);
 else
     std_training_fields = training_fields;
+    std_validation_fields = validation_fields;
     std_testing_fields = testing_fields;
 end
 
@@ -73,6 +83,7 @@ end
 if deep_ann.should_add_bias_to_input
     % Add bias node and increase number of columns by 1
     std_training_fields = [ones(num_training_rows, 1), std_training_fields];
+    std_validation_fields = [ones(num_validation_rows, 1), std_validation_fields];
     std_testing_fields = [ones(num_testing_rows, 1), std_testing_fields];
     num_data_cols = num_data_cols + 1;
 end
@@ -143,12 +154,12 @@ while iter < deep_ann.training_iters
     % Update weights and compute internal hidden layer deltas
     for layer=num_hidden_node_layers:-1:2
         deltas{layer} = (deltas{layer + 1} * weights{layer + 1}') .* (training_out{layer} .* (1 - training_out{layer}));                
-        weights{layer} = weights{layer} + ((deep_ann.eta/num_training_rows) * deltas{layer}' * training_out{layer-1})';
+        weights{layer} = weights{layer} + ((deep_ann.eta/num_training_rows) * training_out{layer-1}' * deltas{layer});
     end
     
     % Input layer delta
     deltas{1} = (deltas{2} * weights{2}') .* (training_out{1} .* (1 - training_out{1}));
-    weights{1} = weights{1} + ((deep_ann.eta/num_training_rows) * deltas{1}' * std_training_fields)';
+    weights{1} = weights{1} + ((deep_ann.eta/num_training_rows) * std_training_fields' * deltas{1});
     
     % Choose maximum output node as value
     [~,training_o] = max(training_out{end},[],2);
@@ -157,6 +168,13 @@ while iter < deep_ann.training_iters
     num_correct = numel(find(~(training_classes - training_o)));
     acc = num_correct/num_training_rows;
     training_accuracy(iter,:) = [iter,acc];
+    
+    % Decide learning rate dynamically                
+    if iter >= 3  && (acc - training_accuracy(iter - 1,2)) < (training_accuracy(iter - 1,2) - training_accuracy(iter - 2,2))
+        ann.eta = ann.eta/2;
+    else
+        ann.eta = ann.eta + 0.05;
+    end
 end
 
 %% Testing
