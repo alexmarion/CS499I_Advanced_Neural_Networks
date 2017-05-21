@@ -29,12 +29,6 @@ classdef ANN
             ann.should_perform_PCA = vals(4);
         end
         function [ ann,training_accuracy,validation_accuracy,testing_accuracy ] = train_ANN( ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes )
-            %% Control Flow Values
-            % ann.should_add_bias_to_input = true;
-            % ann.should_add_bias_to_hidden = false;
-            % ann.should_std_data = true;
-            % ann.should_perform_PCA = true;
-
             %% Set Initial Vals
             num_output_nodes = ann.num_classes;
 
@@ -255,8 +249,7 @@ classdef ANN
                 fprintf('Mean Validation Accuracy: %f%%\n',mean(s_validation_accuracies(:,2)) * 100);
                 fprintf('Mean Testing Accuracy: %f%%\n',mean(s_testing_accuracies(:,2)) * 100);
             end  
-        end
-        
+        end       
         function s = control_flow_str( ann )
             s1 = ANN.binary_to_str(ann.should_add_bias_to_input);
             s2 = ANN.binary_to_str(ann.should_add_bias_to_hidden);

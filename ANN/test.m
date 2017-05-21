@@ -1,21 +1,28 @@
 rng(0);
 image_size = 40;
 [num_classes,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes] = load_and_shuffle_data(image_size);
+[~,classes,fields] = load_image_data(image_size,image_size);
 
-training_fields = [training_fields;validation_fields];
-training_classes = [training_classes;validation_classes];
+%training_fields = [training_fields;validation_fields];
+%training_classes = [training_classes;validation_classes];
 
-% rng(0);
-% ann = ANN;
-% ann.should_plot_train = true
-% [~,~,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
+rng(0);
+DANN = Deep_ANN;
+DANN.should_plot_train = true;
+[~,~,validation_accuracy,testing_accuracy ] = train_deep_ANN(DANN,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
+
+rng(0);
+DANN.should_plot_train = false;
+DANN.should_plot_s_folds = true;
+S = 9;
+[~,s_training_accuracies,s_validation_accuracies,s_testing_accuracies] = cross_validate_deep_ANN(DANN,S,fields,classes)
 
 rng(0);
 
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 1.5;%1.29;%1.61803399;
+deep_ann.hidden_layer_division = 1.35;%1.29;%1.61803399;
 deep_ann.training_iters = 1000;
 deep_ann.eta = 1.5;
 deep_ann.percent_field_retention = 0.95;
@@ -112,9 +119,8 @@ h = size(weights{num_hidden_node_layers},2);
 w = num_output_nodes;
 weights{num_hidden_node_layers + 1} = (range(2)-range(1)).*rand(h, w)+range(1);
 
-%{
 if deep_ann.should_add_bias_to_hidden
-    for layer=1:num_hidden_node_layers
+    for layer=1:num_hidden_node_layers + 1
         if mod(layer,2) == 0
             weights{layer} = [ones(1,size(weights{layer},2));weights{layer}];
         else
@@ -122,7 +128,7 @@ if deep_ann.should_add_bias_to_hidden
         end
     end
 end
-%}
+
 % Matrix to track training error for plotting
 training_accuracy = zeros(deep_ann.training_iters, 2);
 
