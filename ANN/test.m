@@ -5,17 +5,17 @@ image_size = 40;
 training_fields = [training_fields;validation_fields];
 training_classes = [training_classes;validation_classes];
 
-rng(0);
-ann = ANN;
-ann.should_plot_train = true
-[~,~,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
+% rng(0);
+% ann = ANN;
+% ann.should_plot_train = true
+% [~,~,validation_accuracy,testing_accuracy] = train_ANN(ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes)
 
 rng(0);
 
 
 %% Parameters
 deep_ann.num_classes = 15;
-deep_ann.hidden_layer_division = 1.45;%1.29;%1.61803399;
+deep_ann.hidden_layer_division = 1.5;%1.29;%1.61803399;
 deep_ann.training_iters = 1000;
 deep_ann.eta = 1.5;
 deep_ann.percent_field_retention = 0.95;
@@ -136,14 +136,11 @@ while iter < deep_ann.training_iters
     % Compute first hidden layer
     training_out{1} = activation_fxn(std_training_fields * weights{1});
     
-    % Compute internal hidden layers
+    % Compute internal hidden/output layers
     for layer=2:num_hidden_node_layers + 1
         training_out{layer} = activation_fxn(training_out{layer-1} * weights{layer});
     end
     
-    % Compute output layer
-    %training_o = activation_fxn(training_out{num_hidden_node_layers} * weights{num_hidden_node_layers + 1});
-
     %% Backward Propagation
     deltas = cell(num_hidden_node_layers + 1,1);
     
@@ -171,9 +168,9 @@ while iter < deep_ann.training_iters
     
     % Decide learning rate dynamically                
     if iter >= 3  && (acc - training_accuracy(iter - 1,2)) < (training_accuracy(iter - 1,2) - training_accuracy(iter - 2,2))
-        ann.eta = ann.eta/2;
+        deep_ann.eta = deep_ann.eta/2;
     else
-        ann.eta = ann.eta + 0.05;
+        deep_ann.eta = deep_ann.eta + 0.05;
     end
 end
 
