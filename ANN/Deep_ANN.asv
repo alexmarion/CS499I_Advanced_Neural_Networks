@@ -125,8 +125,8 @@ classdef Deep_ANN
             end
             
             % Sanity check
-            if size(deep_ann.weights{end}, 2) > num_output_nodes
-                deep_ann.weights{end} = deep_ann.weights{end}(:,1:num_output_nodes);
+            if size(deep_ann.weights{end}, 2) > 15
+                deep_ann.weights{end}(:,1:
             end
 
             % Matrix to track training error for plotting
@@ -151,6 +151,7 @@ classdef Deep_ANN
                 deltas = cell(deep_ann.num_hidden_node_layers + 1,1);
 
                 % Output layer delta
+                disp(iter);
                 deltas{deep_ann.num_hidden_node_layers+1} = new_training_classes - training_out{end};
                 deep_ann.weights{end} = deep_ann.weights{end} + ((deep_ann.eta/num_training_rows) * training_out{end-1}' * deltas{end});
 

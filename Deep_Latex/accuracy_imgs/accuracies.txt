@@ -10,3 +10,7 @@
 \testingValidationAccuracyTableAndPlot{N}{Y}{N}{Y}{0.295971}{0.233716}
 \testingValidationAccuracyTableAndPlot{N}{N}{Y}{Y}{0.946069}{0.934866}
 \testingValidationAccuracyTableAndPlot{Y}{Y}{Y}{N}{0.072125}{0.095785}
+\testingValidationAccuracyTableAndPlot{Y}{Y}{N}{Y}{0.366472}{0.310345}
+\testingValidationAccuracyTableAndPlot{Y}{N}{Y}{Y}{0.939896}{0.908046}
+\testingValidationAccuracyTableAndPlot{N}{Y}{Y}{Y}{0.946069}{0.934866}
+\testingValidationAccuracyTableAndPlot{Y}{Y}{Y}{Y}{0.964263}{0.919540}
