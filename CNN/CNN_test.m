@@ -11,20 +11,32 @@ num_vertical_windows = length(1:stride:image_height - stride);
 [std_image_maps,m,s] = standardize_data(image_maps);
 
 % Slightly different for first iteration (because of indexing from 1)
-start_pt = 1;
-end_pt = start_pt + window_size - 1;
-for w = 1:num_vertical_windows
-    fprintf('Start: %d\nEnd: %d\n',start_pt,end_pt);
-    window = std_image_maps(start_pt:end_pt,1:window_size,1);
-    figure();
-    imshow(window);
-    
-    if w == 1
-        start_pt = start_pt + stride - 1;
-    else
-        start_pt = start_pt + stride;
+height_start_pt = 1;
+height_end_pt = height_start_pt + window_size - 1;
+for h = 1:num_vertical_windows
+    width_start_pt = 1;
+    width_end_pt = width_start_pt + window_size - 1;
+    fprintf('Height Start: %d\nHeight End: %d\n',height_start_pt,height_end_pt);
+    for w = 1:num_horizontal_windows
+        fprintf('Width Start: %d\nWidth End: %d\n',width_start_pt,width_end_pt);
+        window = std_image_maps(height_start_pt:height_end_pt,width_start_pt:width_end_pt,1);
+        
+        %figure();
+        %imshow(window);
+
+        if w == 1
+            width_start_pt = width_start_pt + stride - 1;
+        else
+            width_start_pt = width_start_pt + stride;
+        end
+        width_end_pt = width_start_pt + window_size;
     end
-    end_pt = start_pt + window_size;
+    if h == 1
+        height_start_pt = height_start_pt + stride - 1;
+    else
+        height_start_pt = height_start_pt + stride;
+    end
+    height_end_pt = height_start_pt + window_size;
 end
 
 figure();
