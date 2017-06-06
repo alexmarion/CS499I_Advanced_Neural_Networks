@@ -1,7 +1,7 @@
-image_height = 6;
-image_width = 6;
+image_height = 5;
+image_width = 5;
 
-stride = 2;
+stride = 1;
 window_size = 2;
 
 [num_classes,classes,image_maps] = load_image_data(image_height,image_width);
