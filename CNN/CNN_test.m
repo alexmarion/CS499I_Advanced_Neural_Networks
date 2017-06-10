@@ -3,15 +3,15 @@ activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
 training_iters = 1000;
         
-image_height = 100;
-image_width = 100;
-stride = 25;
-window_size = 50;
+% image_height = 100;
+% image_width = 100;
+% stride = 25;
+% window_size = 50;
 
-% image_height = 10;
-% image_width = 10;
-% stride = 1;
-% window_size = 5;
+image_height = 40;
+image_width = 40;
+stride = 1;
+window_size = 20;
 
 horizontal_stride_test = 1:stride:image_width - window_size + 1;
 vertical_stride_test = 1:stride:image_height -  window_size + 1;
@@ -160,8 +160,8 @@ for iter = 1:training_iters
     [x,y,z] = size(pooled_feature_map);
     delta_pool = reshape(delta_pool,x,y,z);
 
-    % Flip feature map 180 deg so that all filters are flipped
-    feature_map = rot90(rot90(feature_map));
+    % Flip filter 180 deg so that all filters are flipped
+    %filter = rot90(rot90(filter));
 
     % Compute feature error
     delta_feature = zeros(size(feature_map));
@@ -185,27 +185,30 @@ for iter = 1:training_iters
 
     %% Backward Propagation: Filter
     % Update filter
-    delta_filter = 0;
+    delta_filter = zeros(size(filter));
     for w = 1:length(window_coords)
         wc = window_coords{w};
         window = std_image_maps(wc.y1:wc.y2,wc.x1:wc.x2,1);
         feature_map_window = feature_map(wc.y1:wc.y2,wc.x1:wc.x2);
 
+        
+        delta_filter = delta_filter + delta_pool .* activation_fxn(feature_map_window);
+        
         %delta_pool = (beta * delta_hidden')' .* (input_pool_vec .* (1 - input_pool_vec));
-        delta_pool_T = permute(delta_pool,[2 1 3]);
         %delta_filter = delta_filter + permute((feature_map_window .* delta_pool_T),[2 1 3]) .* (filter .* (1 - filter));
-        delta_filter = delta_filter + mean(permute((feature_map_window .* delta_pool_T),[2 1 3]),3) .* (filter .* (1 - filter));
-
+        
+        %delta_pool_T = permute(delta_pool,[2 1 3]);
+        %delta_filter = delta_filter + mean(permute((feature_map_window .* delta_pool_T),[2 1 3]),3) .* (filter .* (1 - filter));        
         
         %feature_map(wc.y1:wc.y2,wc.x1:wc.x2) = activation_fxn(filter .* window);
     end
 
-    delta_filter = delta_filter / length(window_coords);
+    %delta_filter = delta_filter / length(window_coords);
     delta_filter_T = permute(delta_filter,[2 1 3]);
     filter = filter + (eta/num_training_rows) * permute((delta_filter_T .* feature_map_window),[2 1 3]);
 
-    % Flip feature map 180 deg back
-    feature_map = rot90(rot90(feature_map));
+    % Flip filter 180 deg back
+    %filter = rot90(rot90(filter));
     
     %% Training error tracking
     % Choose maximum output node as value

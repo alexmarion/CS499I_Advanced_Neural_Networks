@@ -30,7 +30,8 @@ function [ num_classes, classes, image_maps ] = load_image_data(image_height,ima
             end
         end
     end
-    
+    % Set classes to a column vector
+    classes = classes';
     num_classes = numel(class_folders);
 end
 
