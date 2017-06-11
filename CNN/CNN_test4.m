@@ -1,13 +1,11 @@
 rng(0);
 activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
-training_iters = 10000;
+training_iters = 2000;
 num_filters = 1;
 
-% image_size = 28;
-% filter_size = 9;
-image_size = 10;
-filter_size = 5;
+image_size = 28;
+filter_size = 9;
 conv_size = image_size - filter_size + 1;
 
 %% Image Loading
@@ -43,16 +41,17 @@ theta = (range(2)-range(1)).*rand(num_hidden_nodes,num_classes) + range(1);
 training_accuracy = zeros(training_iters, 2);
 
 activated_image_maps = activation_fxn(std_image_maps);
+
 for iter = 1:training_iters
     %% Convolution
     for image = 1:num_training_images
         for filter = 1:num_filters
-            feature_maps(:,:,image,filter) = conv2(std_image_maps(:,:,image),filters(:,:,filter),'valid');
+            feature_maps(:,:,image,filter) = activation_fxn(conv2(std_image_maps(:,:,image),filters(:,:,filter),'valid'));
         end
     end
     
     %% Activating Convolution
-    activated_feature_maps = activation_fxn(feature_maps);
+    %activated_feature_maps = activation_fxn(feature_maps);
 
     %% Pooling
     pool_height_start_pt = 1;
@@ -122,9 +121,6 @@ for iter = 1:training_iters
         for w = 1:1:size(pooled_feature_map_max_coords,2)
             x = pooled_feature_map_max_coords{h,w}.x;
             y = pooled_feature_map_max_coords{h,w}.y;
-            % TODO: Figure out the vectorized version of this, wasnt
-            % working with below:
-            % delta_feature(y,x,:) = delta_pool(h,w,:);
             for layer = 1:num_training_images
                 delta_feature(y(layer),x(layer),layer,:) = delta_pool(h,w,layer,:);
 %                 for filter = 1:num_filters
@@ -138,16 +134,23 @@ for iter = 1:training_iters
     % May not be an error, but something to consider
     % Compute error at convolution
     delta_conv = delta_feature .* (feature_maps .* (1 - feature_maps)); 
-
+            
+    %conv2(delta_feature,filters(:,:,1).*(feature_maps(:,:,1,1) .* (1 - feature_maps(:,:,1,1))));
+    %conv2(filters(:,:,1),(feature_maps(:,:,1,1) .* (1 - feature_maps(:,:,1,1))),'same')
+    
     % Compute gradient at filter
     rot_delta_conv = rot90(delta_conv,2);
     delta_filter = zeros(filter_size,filter_size,num_training_images,num_filters);
     for image = 1:num_training_images
         for filter = 1:num_filters
             delta_filter(:,:,image,filter) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image,filter),'valid'); %.* (filters(:,:,filter) .* (1 - filter(:,:,filter)));
+            %delta_filter(:,:,image,filter) = conv2(filters(:,:,filter),(feature_maps(:,:,image,filter) .* (1 - feature_maps(:,:,image,filter))),'same');
         end
     end
-
+    
+    %size(conv2(delta_conv(:,:,1,1),filters(:,:,1),'valid'))
+    %conv2(delta_conv(:,:,1,1)
+    
     % Update filter
     % filter = filter + (eta/num_training_images) * mean(delta_filter,3);
     filters = filters + (eta/num_training_images) * squeeze(sum(delta_filter,3));

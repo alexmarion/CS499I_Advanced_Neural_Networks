@@ -2,10 +2,10 @@ rng(0);
 activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
 training_iters = 1000;
-num_filters = 20;
+num_filters = 25;
 
-image_size = 28; %28, 9
-filter_size = floor(image_size * (1/3));
+image_size = 50; %28, 9
+filter_size = ceil(image_size * (1/3));
 conv_size = image_size - filter_size + 1;
 
 %% Image Loading
