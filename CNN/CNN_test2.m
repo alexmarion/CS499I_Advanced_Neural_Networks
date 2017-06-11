@@ -2,7 +2,7 @@ rng(0);
 activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
 training_iters = 1000;
-num_filters = 1;
+num_filters = 2;
 
 image_size = 28;
 filter_size = 9;
