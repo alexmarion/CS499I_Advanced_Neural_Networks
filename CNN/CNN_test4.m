@@ -1,8 +1,8 @@
 rng(0);
 activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
-training_iters = 2000;
-num_filters = 1;
+training_iters = 1000;
+num_filters = 5;
 
 image_size = 28;
 filter_size = 9;
@@ -143,7 +143,8 @@ for iter = 1:training_iters
     delta_filter = zeros(filter_size,filter_size,num_training_images,num_filters);
     for image = 1:num_training_images
         for filter = 1:num_filters
-            delta_filter(:,:,image,filter) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image,filter),'valid'); %.* (filters(:,:,filter) .* (1 - filter(:,:,filter)));
+            %delta_filter(:,:,image,filter) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image,filter),'valid'); %.* (filters(:,:,filter) .* (1 - filter(:,:,filter)));
+            delta_filter(:,:,image,filter) = rot90(conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image,filter),'valid'),2);
             %delta_filter(:,:,image,filter) = conv2(filters(:,:,filter),(feature_maps(:,:,image,filter) .* (1 - feature_maps(:,:,image,filter))),'same');
         end
     end
