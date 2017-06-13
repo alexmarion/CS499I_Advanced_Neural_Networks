@@ -108,12 +108,10 @@ for iter = 1:training_iters
         % Update beta
         beta(:,:,filter) = beta(:,:,filter) + (eta/num_training_images) * (delta_hidden' * input_pool_vec(:,:,filter))';
     
-    
         %% Backward Propagation: Pooling and feature map
         % Compute pooling error
         delta_pool = (beta(:,:,filter) * delta_hidden')' .* (input_pool_vec(:,:,filter) .* (1 - input_pool_vec(:,:,filter)));
         [x,y,z,alpha] = size(pooled_feature_map);
-        %delta_pool = reshape(delta_pool,x,y,z,alpha);
         delta_pool = reshape(delta_pool,x,y,z);
         
         delta_feature = zeros(size(feature_maps(:,:,:,filter)));
@@ -127,8 +125,6 @@ for iter = 1:training_iters
             end
         end
         
-        % TODO: This is blowing up because of the zeros from the max pooling
-        % May not be an error, but something to consider
         % Compute error at convolution
         delta_conv = delta_feature .* (feature_maps(:,:,:,filter) .* (1 - feature_maps(:,:,:,filter)));
         
@@ -141,7 +137,6 @@ for iter = 1:training_iters
         end
         
         % Update filter
-        % filter = filter + (eta/num_training_images) * mean(delta_filter,3);
         filters(:,:,filter) = filters(:,:,filter) + (eta/num_training_images) * squeeze(sum(delta_filter,3));
         
         %% Training error tracking
@@ -150,7 +145,6 @@ for iter = 1:training_iters
         
         % Log training error
         num_correct = num_correct + numel(find(~(training_classes - training_o)));
-        %num_correct = numel(find(~(repmat(training_classes,num_filters,1) - training_o)));
     end
     acc = num_correct/(num_training_images*num_filters);
     training_accuracy(iter,:) = [iter,acc];
@@ -172,3 +166,59 @@ for filter = 1:num_filters
     subplot(a,b,filter);
     imshow(std_filter);
 end
+
+%% Testing Accuracy
+%% Convolution
+num_testing_images = size(std_training_maps,3);
+for image = 1:num_testing_images
+    for filter = 1:num_filters
+        feature_maps(:,:,image,filter) = activation_fxn(conv2(std_training_maps(:,:,image),filters(:,:,filter),'valid'));
+    end
+end
+
+%% Pooling
+pool_height_start_pt = 1;
+pool_height_end_pt = pool_height_start_pt + pool_window_size - 1;
+for h = 1:(conv_size/pool_window_size)
+    pool_width_start_pt = 1;
+    pool_width_end_pt = pool_width_start_pt + pool_window_size - 1;
+
+    for w = 1:(conv_size/pool_window_size)
+        for filter = 1:num_filters
+            pool = feature_maps(pool_height_start_pt:pool_height_end_pt,pool_width_start_pt:pool_width_end_pt,:,filter);
+            [x,y,~] = size(pool);
+            [pooled_feature_map(h,w,:,filter),pool_max_idx] = max(reshape(pool(:),x*y,[]));
+
+            % Track the position of the max value for error propogation
+            [max_y,max_x] = ind2sub([x y],pool_max_idx);
+            pooled_feature_map_max_coords{h,w,filter} = struct('x',pool_width_start_pt+max_x-1,'y',pool_height_start_pt+max_y-1);
+        end
+
+        pool_width_start_pt = pool_width_start_pt + pool_window_size;
+        pool_width_end_pt = pool_width_end_pt + pool_window_size;
+    end
+
+    pool_height_start_pt = pool_height_start_pt + pool_window_size;
+    pool_height_end_pt = pool_height_end_pt + pool_window_size;
+end
+
+%% Fully Connected Layer
+% Flatten pools into vector
+input_pool_vec = reshape(pooled_feature_map,num_testing_images,numel(pooled_feature_map(:,:,1,1)),num_filters);
+
+num_correct = 0;
+for filter = 1:num_filters
+    % Compute hidden layer
+    testing_h = activation_fxn(input_pool_vec(:,:,filter) * beta(:,:,filter));
+
+    % Compute output layer    
+    testing_o = activation_fxn(testing_h * theta(:,:,filter));
+
+    %% Testing error tracking
+    % Choose maximum output node as value
+    [~,testing_o] = max(testing_o,[],2);
+
+    % Log training error
+    num_correct = num_correct + numel(find(~(training_classes - testing_o)));
+end
+acc = num_correct/(num_testing_images*num_filters);
