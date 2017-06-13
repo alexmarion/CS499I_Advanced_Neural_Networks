@@ -2,19 +2,26 @@ rng(0);
 activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
 training_iters = 1000;
-num_filters = 10;
+num_filters = 3;
 
-image_size = 50;
-filter_size = ceil(image_size * (1/3));
+image_size = 28;
+filter_size = 9;%ceil(image_size * (1/3));
 conv_size = image_size - filter_size + 1;
 
 %% Image Loading
 [num_classes,classes,image_maps] = load_image_data(image_size,image_size);
+[training_maps,training_classes,validation_maps,validation_classes,testing_maps,testing_classes] = get_training_and_testing_sets(image_maps,classes);
 
-[std_image_maps,m,s] = standardize_data(image_maps);
-%num_training_rows = 1;
-num_training_images = size(std_image_maps,3);
-training_classes = classes;
+% Standardize data
+[std_training_maps,m,s] = standardize_data(training_maps);
+
+std_validation_maps = validation_maps - m;
+std_validation_maps = std_validation_maps ./ s;
+
+std_testing_maps = testing_maps - m;
+std_testing_maps = std_testing_maps ./ s;
+
+num_training_images = size(std_training_maps,3);
 
 % Reformat training classes
 new_training_classes = zeros(num_training_images,num_classes);
@@ -39,13 +46,12 @@ num_hidden_nodes = 20;
 beta = (range(2)-range(1)).*rand(size(pooled_feature_map,1) * size(pooled_feature_map,2),num_hidden_nodes,num_filters) + range(1);
 theta = (range(2)-range(1)).*rand(num_hidden_nodes,num_classes,num_filters) + range(1);
 training_accuracy = zeros(training_iters, 2);
-%training_o = zeros(num_training_images,num_classes,num_filters);
 
 for iter = 1:training_iters
     %% Convolution
     for image = 1:num_training_images
         for filter = 1:num_filters
-            feature_maps(:,:,image,filter) = activation_fxn(conv2(std_image_maps(:,:,image),filters(:,:,filter),'valid'));
+            feature_maps(:,:,image,filter) = activation_fxn(conv2(std_training_maps(:,:,image),filters(:,:,filter),'valid'));
         end
     end
 
@@ -131,7 +137,7 @@ for iter = 1:training_iters
         delta_filter = zeros(filter_size,filter_size,num_training_images);
         for image = 1:num_training_images 
             %delta_filter(:,:,image) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image),'valid');
-            delta_filter(:,:,image) = rot90(conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image),'valid'),2);
+            delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),rot_delta_conv(:,:,image),'valid'),2);
         end
         
         % Update filter
