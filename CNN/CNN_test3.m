@@ -2,11 +2,28 @@ rng(0);
 activation_fxn = @(x) 1./(1 + exp(-x));
 eta = 0.5;
 training_iters = 1000;
-num_filters = 3;
+num_filters = 1;
 
 image_size = 28;
 filter_size = 9;%ceil(image_size * (1/3));
 conv_size = image_size - filter_size + 1;
+
+test_filter = [0,-1,0;-1,1,-1;0,-1,0];
+% test_filter = zeros(filter_size);
+% for l = 1:length(test_filter)
+%     test_filter(l,l) = 1;
+%     
+%     if l > 1
+%         test_filter(l,l-1) = 0.75;
+%         test_filter(l-1,l) = 0.75;
+%     end
+%     
+%     if l > 2
+%         test_filter(l,l-2) = 0.5;
+%         test_filter(l-2,l) = 0.5;
+%     end
+% end
+
 
 %% Image Loading
 [num_classes,classes,image_maps] = load_image_data(image_size,image_size);
@@ -42,7 +59,7 @@ pool_coords = cell(size(pooled_feature_map,1) * size(pooled_feature_map,2));
 pooled_feature_map_max_coords = cell(size(pooled_feature_map,1),size(pooled_feature_map,2),num_filters);
 
 % Shallow ANN vars
-num_hidden_nodes = 20;
+num_hidden_nodes = 30;
 beta = (range(2)-range(1)).*rand(size(pooled_feature_map,1) * size(pooled_feature_map,2),num_hidden_nodes,num_filters) + range(1);
 theta = (range(2)-range(1)).*rand(num_hidden_nodes,num_classes,num_filters) + range(1);
 training_accuracy = zeros(training_iters, 2);
@@ -114,16 +131,23 @@ for iter = 1:training_iters
         [x,y,z,alpha] = size(pooled_feature_map);
         delta_pool = reshape(delta_pool,x,y,z);
         
+        
         delta_feature = zeros(size(feature_maps(:,:,:,filter)));
-        for h = 1:size(pooled_feature_map_max_coords,1)
-            for w = 1:1:size(pooled_feature_map_max_coords,2)
-                x = pooled_feature_map_max_coords{h,w,filter}.x;
-                y = pooled_feature_map_max_coords{h,w,filter}.y;
-                for layer = 1:num_training_images
-                    delta_feature(y(layer),x(layer),layer) = delta_pool(h,w,layer);
-                end
-            end
+        for image = 1:num_training_images
+            delta_feature(:,:,image) = kron(delta_pool(:,:,image), ones(pool_window_size));
         end
+        
+        
+%         delta_feature = zeros(size(feature_maps(:,:,:,filter)));
+%         for h = 1:size(pooled_feature_map_max_coords,1)
+%             for w = 1:1:size(pooled_feature_map_max_coords,2)
+%                 x = pooled_feature_map_max_coords{h,w,filter}.x;
+%                 y = pooled_feature_map_max_coords{h,w,filter}.y;
+%                 for layer = 1:num_training_images
+%                     delta_feature(y(layer),x(layer),layer) = delta_pool(h,w,layer);
+%                 end
+%             end
+%         end
         
         % Compute error at convolution
         delta_conv = delta_feature .* (feature_maps(:,:,:,filter) .* (1 - feature_maps(:,:,:,filter)));
@@ -133,7 +157,8 @@ for iter = 1:training_iters
         delta_filter = zeros(filter_size,filter_size,num_training_images);
         for image = 1:num_training_images 
             %delta_filter(:,:,image) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image),'valid');
-            delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),rot_delta_conv(:,:,image),'valid'),2);
+            %delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),rot_delta_conv(:,:,image),'valid'),2);
+            delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),delta_conv(:,:,image),'valid'),2);
         end
         
         % Update filter
@@ -168,11 +193,20 @@ for filter = 1:num_filters
 end
 
 %% Testing Accuracy
+num_testing_images = size(std_testing_maps,3);
+
+% Feature map vars
+feature_maps = zeros(conv_size,conv_size,num_testing_images,num_filters);
+
+% Pool vars
+pooled_feature_map = zeros(conv_size/pool_window_size,conv_size/pool_window_size,num_testing_images,num_filters);
+pool_coords = cell(size(pooled_feature_map,1) * size(pooled_feature_map,2));
+pooled_feature_map_max_coords = cell(size(pooled_feature_map,1),size(pooled_feature_map,2),num_filters);
+
 %% Convolution
-num_testing_images = size(std_training_maps,3);
 for image = 1:num_testing_images
     for filter = 1:num_filters
-        feature_maps(:,:,image,filter) = activation_fxn(conv2(std_training_maps(:,:,image),filters(:,:,filter),'valid'));
+        feature_maps(:,:,image,filter) = activation_fxn(conv2(std_testing_maps(:,:,image),filters(:,:,filter),'valid'));
     end
 end
 
@@ -188,10 +222,6 @@ for h = 1:(conv_size/pool_window_size)
             pool = feature_maps(pool_height_start_pt:pool_height_end_pt,pool_width_start_pt:pool_width_end_pt,:,filter);
             [x,y,~] = size(pool);
             [pooled_feature_map(h,w,:,filter),pool_max_idx] = max(reshape(pool(:),x*y,[]));
-
-            % Track the position of the max value for error propogation
-            [max_y,max_x] = ind2sub([x y],pool_max_idx);
-            pooled_feature_map_max_coords{h,w,filter} = struct('x',pool_width_start_pt+max_x-1,'y',pool_height_start_pt+max_y-1);
         end
 
         pool_width_start_pt = pool_width_start_pt + pool_window_size;
@@ -219,6 +249,7 @@ for filter = 1:num_filters
     [~,testing_o] = max(testing_o,[],2);
 
     % Log training error
-    num_correct = num_correct + numel(find(~(training_classes - testing_o)));
+    num_correct = num_correct + numel(find(~(testing_classes - testing_o)));
 end
 acc = num_correct/(num_testing_images*num_filters);
+fprintf("Testing Accuracy: %f\n",acc);
