@@ -1,14 +1,14 @@
-classdef Autoencoder < ANN
+classdef Aencoder < ANN
     properties
-        
+        activation_fxn = @(x) x 
     end
     methods
         function [ ann,training_accuracy,validation_accuracy,testing_accuracy ] = train_ANN( ann,training_fields,training_classes,validation_fields,validation_classes,testing_fields,testing_classes )
             %% Control Flow Values
             % ann.should_add_bias_to_input = true;
             % ann.should_add_bias_to_hidden = false;
-            ann.should_std_data = false;
-            ann.should_perform_PCA = false;
+%             ann.should_std_data = false;
+%             ann.should_perform_PCA = false;
 
             %% Set Initial Vals
             num_output_nodes = length(training_fields);
@@ -49,7 +49,7 @@ classdef Autoencoder < ANN
             end
             
             %% Add noise to input layer
-            std_output_fields = std_training_fields;
+            std_output_fields = std_training_fields;                                                                                                                                                            
             std_training_fields = std_training_fields + randn(size(std_training_fields));
             
             
@@ -78,7 +78,7 @@ classdef Autoencoder < ANN
             % Matrix to track training error for plotting
             training_accuracy = zeros(ann.training_iters, 2);
 
-            while iter < 10000
+            while iter < training_iters
                 iter = iter + 1;    
                 %% Forward Propagation
                 % Compute hidden layer
@@ -116,7 +116,7 @@ classdef Autoencoder < ANN
 %                 end
             end
             
-            ann.theta = mean(ann.theta, 2); 
+            ann.theta = mean(zeros(size(ann.theta)), 2);
             new_training_classes = zeros(num_training_rows,ann.num_classes);
             
             
