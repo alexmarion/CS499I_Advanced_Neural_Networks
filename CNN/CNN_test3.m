@@ -4,25 +4,17 @@ eta = 0.5;
 training_iters = 1000;
 num_filters = 1;
 
+conv_type = 'valid';
+
 image_size = 28;
 filter_size = 9;%ceil(image_size * (1/3));
 conv_size = image_size - filter_size + 1;
+%conv_size = size(conv2(zeros(image_size),zeros(filter_size)), 1);
 
-test_filter = [0,-1,0;-1,1,-1;0,-1,0];
-% test_filter = zeros(filter_size);
-% for l = 1:length(test_filter)
-%     test_filter(l,l) = 1;
-%     
-%     if l > 1
-%         test_filter(l,l-1) = 0.75;
-%         test_filter(l-1,l) = 0.75;
-%     end
-%     
-%     if l > 2
-%         test_filter(l,l-2) = 0.5;
-%         test_filter(l-2,l) = 0.5;
-%     end
-% end
+
+if mod(conv_size,2) ~= 0
+    error("Image size - filter size + 1 must be divisble by 2\n")
+end
 
 
 %% Image Loading
@@ -68,7 +60,7 @@ for iter = 1:training_iters
     %% Convolution
     for image = 1:num_training_images
         for filter = 1:num_filters
-            feature_maps(:,:,image,filter) = activation_fxn(conv2(std_training_maps(:,:,image),filters(:,:,filter),'valid'));
+            feature_maps(:,:,image,filter) = activation_fxn(conv2(std_training_maps(:,:,image),filters(:,:,filter),conv_type));
         end
     end
 
@@ -155,15 +147,21 @@ for iter = 1:training_iters
         % Compute gradient at filter
         rot_delta_conv = rot90(delta_conv,2);
         delta_filter = zeros(filter_size,filter_size,num_training_images);
+        conv_grad = zeros(filter_size,filter_size,num_training_images);
         for image = 1:num_training_images 
-            %delta_filter(:,:,image) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image),'valid');
-            %delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),rot_delta_conv(:,:,image),'valid'),2);
-            delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),delta_conv(:,:,image),'valid'),2);
+            %delta_filter(:,:,image) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image),conv_type);
+            %delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),rot_delta_conv(:,:,image),conv_type),2);
+            delta_filter(:,:,image) = rot90(conv2(std_training_maps(:,:,image),delta_conv(:,:,image),conv_type),2);
+            
+            % Update filter
+            %filters(:,:,filter) = filters(:,:,filter) + (eta/(num_training_images*num_filters)) * (squeeze(sum(delta_filter,3)) * conv2(std_training_maps(:,:,image),ones(20),conv_type));
+            conv_grad(:,:,image) = conv2(delta_filter(:,:,image),activation_fxn(rot90(std_training_maps(:,:,image),2)),'same');
         end
-        
+
         % Update filter
-        filters(:,:,filter) = filters(:,:,filter) + (eta/num_training_images) * squeeze(sum(delta_filter,3));
-        
+        conv_grad = squeeze(sum(conv_grad,3));
+        filters(:,:,filter) = filters(:,:,filter) + (eta/(num_training_images*num_filters)) * conv_grad;
+
         %% Training error tracking
         % Choose maximum output node as value
         [~,training_o] = max(training_o,[],2);
@@ -206,7 +204,7 @@ pooled_feature_map_max_coords = cell(size(pooled_feature_map,1),size(pooled_feat
 %% Convolution
 for image = 1:num_testing_images
     for filter = 1:num_filters
-        feature_maps(:,:,image,filter) = activation_fxn(conv2(std_testing_maps(:,:,image),filters(:,:,filter),'valid'));
+        feature_maps(:,:,image,filter) = activation_fxn(conv2(std_testing_maps(:,:,image),filters(:,:,filter),conv_type));
     end
 end
 

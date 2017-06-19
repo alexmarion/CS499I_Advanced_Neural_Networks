@@ -146,6 +146,8 @@ for iter = 1:training_iters
             %delta_filter(:,:,image,filter) = conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image,filter),'valid'); %.* (filters(:,:,filter) .* (1 - filter(:,:,filter)));
             delta_filter(:,:,image,filter) = rot90(conv2(std_image_maps(:,:,image),rot_delta_conv(:,:,image,filter),'valid'),2);
             %delta_filter(:,:,image,filter) = conv2(filters(:,:,filter),(feature_maps(:,:,image,filter) .* (1 - feature_maps(:,:,image,filter))),'same');
+            
+            %filters(:,:,filter) = filters(:,:,filter) + (eta/(num_training_images*num_filters)) * (squeeze(sum(delta_filter,3)) * conv2(std_training_maps(:,:,image),ones(20),'valid'));
         end
     end
     
@@ -177,7 +179,7 @@ for filter = 1:num_filters
     m = mean2(filters(:,:,filter));
     s = std2(filters(:,:,filter));
     s(s == 0) = 1;
-    std_filter = filters(:,:,filter) - m;
+    std_filter = filters(:,:,filter) - m;s
     std_filter = std_filter ./ s;
     
     subplot(a,b,filter);
